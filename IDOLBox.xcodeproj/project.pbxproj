@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E714919DCF2CC00247A08 /* AppDelegate.swift */; };
-		EE0E714C19DCF2CC00247A08 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E714B19DCF2CC00247A08 /* FirstViewController.swift */; };
-		EE0E714E19DCF2CC00247A08 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E714D19DCF2CC00247A08 /* SecondViewController.swift */; };
 		EE0E715119DCF2CC00247A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0E714F19DCF2CC00247A08 /* Main.storyboard */; };
 		EE0E715319DCF2CC00247A08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EE0E715619DCF2CC00247A08 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */; };
 		EE0E716219DCF2CC00247A08 /* IDOLBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */; };
+		EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */; };
+		EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */; };
+		EE48999B19E414BB00BB7977 /* ListIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */; };
+		EE48999D19E44A7500BB7977 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999C19E44A7500BB7977 /* Constants.swift */; };
+		EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECE47F019E3B3F600981656 /* ErrorReporter.swift */; };
+		EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */; };
+		EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC619E3789300F718F8 /* FindViewController.swift */; };
+		EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */; };
+		EEF9DECD19E3A3FA00F718F8 /* IDOLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */; };
+		EEF9DED019E3A48000F718F8 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DECF19E3A48000F718F8 /* DBHelper.swift */; };
+		EEF9DED319E3A53800F718F8 /* IDOLBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */; };
+		EEF9DED519E3A59B00F718F8 /* IdolIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +40,24 @@
 		EE0E714419DCF2CC00247A08 /* IDOLBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDOLBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0E714819DCF2CC00247A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0E714919DCF2CC00247A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EE0E714B19DCF2CC00247A08 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		EE0E714D19DCF2CC00247A08 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		EE0E715019DCF2CC00247A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE0E715219DCF2CC00247A08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EE0E715519DCF2CC00247A08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EE0E715B19DCF2CC00247A08 /* IDOLBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDOLBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0E716019DCF2CC00247A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDOLBoxTests.swift; sourceTree = "<group>"; };
+		EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
+		EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListIndexResponseParser.swift; sourceTree = "<group>"; };
+		EE48999C19E44A7500BB7977 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EECE47F019E3B3F600981656 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
+		EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EEF9DEC619E3789300F718F8 /* FindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
+		EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIndexTableViewController.swift; sourceTree = "<group>"; };
+		EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDOLService.swift; sourceTree = "<group>"; };
+		EEF9DECF19E3A48000F718F8 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		EEF9DED219E3A53800F718F8 /* IDOLBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDOLBox.xcdatamodel; sourceTree = "<group>"; };
+		EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolIndexes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +99,14 @@
 		EE0E714619DCF2CC00247A08 /* IDOLBox */ = {
 			isa = PBXGroup;
 			children = (
-				EE0E714919DCF2CC00247A08 /* AppDelegate.swift */,
-				EE0E714B19DCF2CC00247A08 /* FirstViewController.swift */,
-				EE0E714D19DCF2CC00247A08 /* SecondViewController.swift */,
-				EE0E714F19DCF2CC00247A08 /* Main.storyboard */,
+				EEF9DECE19E3A47600F718F8 /* Helpers */,
+				EEF9DECB19E3A3AF00F718F8 /* IDOL */,
+				EEF9DECA19E3A3A500F718F8 /* UI */,
 				EE0E715219DCF2CC00247A08 /* Images.xcassets */,
 				EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */,
 				EE0E714719DCF2CC00247A08 /* Supporting Files */,
+				EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */,
+				EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */,
 			);
 			path = IDOLBox;
 			sourceTree = "<group>";
@@ -113,6 +134,39 @@
 				EE0E716019DCF2CC00247A08 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEF9DECA19E3A3A500F718F8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EE0E714919DCF2CC00247A08 /* AppDelegate.swift */,
+				EE0E714F19DCF2CC00247A08 /* Main.storyboard */,
+				EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */,
+				EEF9DEC619E3789300F718F8 /* FindViewController.swift */,
+				EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */,
+				EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		EEF9DECB19E3A3AF00F718F8 /* IDOL */ = {
+			isa = PBXGroup;
+			children = (
+				EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */,
+				EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */,
+			);
+			name = IDOL;
+			sourceTree = "<group>";
+		};
+		EEF9DECE19E3A47600F718F8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EEF9DECF19E3A48000F718F8 /* DBHelper.swift */,
+				EECE47F019E3B3F600981656 /* ErrorReporter.swift */,
+				EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */,
+				EE48999C19E44A7500BB7977 /* Constants.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +269,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE0E714E19DCF2CC00247A08 /* SecondViewController.swift in Sources */,
 				EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */,
-				EE0E714C19DCF2CC00247A08 /* FirstViewController.swift in Sources */,
+				EEF9DED519E3A59B00F718F8 /* IdolIndexes.swift in Sources */,
+				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
+				EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */,
+				EE48999B19E414BB00BB7977 /* ListIndexResponseParser.swift in Sources */,
+				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,
+				EEF9DED019E3A48000F718F8 /* DBHelper.swift in Sources */,
+				EE48999D19E44A7500BB7977 /* Constants.swift in Sources */,
+				EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */,
+				EEF9DED319E3A53800F718F8 /* IDOLBox.xcdatamodeld in Sources */,
+				EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */,
+				EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */,
+				EEF9DECD19E3A3FA00F718F8 /* IDOLService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +409,7 @@
 				INFOPLIST_FILE = IDOLBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -355,6 +420,7 @@
 				INFOPLIST_FILE = IDOLBox/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -411,6 +477,7 @@
 				EE0E716719DCF2CC00247A08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE0E716819DCF2CC00247A08 /* Build configuration list for PBXNativeTarget "IDOLBoxTests" */ = {
 			isa = XCConfigurationList;
@@ -419,8 +486,22 @@
 				EE0E716A19DCF2CC00247A08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EEF9DED219E3A53800F718F8 /* IDOLBox.xcdatamodel */,
+			);
+			currentVersion = EEF9DED219E3A53800F718F8 /* IDOLBox.xcdatamodel */;
+			path = IDOLBox.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EE0E713C19DCF2CC00247A08 /* Project object */;
 }
