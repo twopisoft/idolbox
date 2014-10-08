@@ -21,9 +21,10 @@ class FindViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancel(segue : UIStoryboardSegue!) {
-       NSLog("FindViewController: cancel")
+    @IBAction func unwindFromSettings(segue : UIStoryboardSegue) {
+        
     }
+    
     /*
     // MARK: - Navigation
 

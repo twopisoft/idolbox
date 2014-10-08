@@ -27,8 +27,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.apiKeyTextField.delegate = self
-        reloadSettings()
+        loadSettings()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +35,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.row == 0 {
             self.apiKeyTextField.becomeFirstResponder()
         }
-    }
-    
-    @IBAction func cancel(sender: AnyObject!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func save(sender: AnyObject) {
@@ -57,8 +52,19 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         defaults.setObject(_searchIndexes, forKey: Constants.kSearchIndexes)
         defaults.setObject(_addIndex, forKey: Constants.kAddIndex)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("SettingsSave", sender: self)
     }
+    
+    
+    @IBAction func toggleSecureText(sender: UIButton) {
+        self.apiKeyTextField.secureTextEntry = !self.apiKeyTextField.secureTextEntry
+        if self.apiKeyTextField.secureTextEntry {
+            sender.setImage(UIImage(named: "unlock"), forState: UIControlState.Normal)
+        } else {
+            sender.setImage(UIImage(named: "lock"), forState: UIControlState.Normal)
+        }
+    }
+    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.apiKeyTextField.resignFirstResponder()
@@ -93,7 +99,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func unwindToSettings(segue : UIStoryboardSegue) {
+    @IBAction func unwindFromSelection(segue : UIStoryboardSegue) {
         if segue.sourceViewController.isKindOfClass(SelectIndexTableViewController) {
             let vc = segue.sourceViewController as SelectIndexTableViewController
             
@@ -105,7 +111,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    private func reloadSettings() {
+    private func loadSettings() {
         let defaults = NSUserDefaults.standardUserDefaults()
         _apiKey = defaults.valueForKey(Constants.kApiKey) as? String
         _maxResults = defaults.valueForKey(Constants.kMaxResults) as? Int
@@ -144,9 +150,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
         
         if let sort = _sortStyle {
-            switch (sort.lowercaseString) {
-            case Constants.SortStyleDate: sortStyleButton.selectedSegmentIndex = 1
-            default: break
+            if sort.lowercaseString == Constants.SortStyleDate {
+                sortStyleButton.selectedSegmentIndex = 1
             }
         }
         

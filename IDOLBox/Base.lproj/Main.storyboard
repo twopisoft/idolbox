@@ -46,7 +46,7 @@
                     <navigationItem key="navigationItem" title="Box" id="iKv-yu-bFd">
                         <barButtonItem key="rightBarButtonItem" image="settings" style="done" id="Q9g-44-zWh">
                             <connections>
-                                <segue destination="a5U-7f-YKY" kind="presentation" id="chc-90-xFL"/>
+                                <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="chc-90-xFL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,7 +96,7 @@
                     <navigationItem key="navigationItem" title="Find" id="kIq-cy-foK">
                         <barButtonItem key="rightBarButtonItem" image="settings" style="done" id="FYu-Qv-Bhd">
                             <connections>
-                                <segue destination="a5U-7f-YKY" kind="presentation" identifier="Settings" modalTransitionStyle="coverVertical" id="6DH-DY-NKR"/>
+                                <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="6DH-DY-NKR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -121,19 +121,41 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bk5-m2-320" id="UaL-Y7-QjZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type in IDOL API Key" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzb-K0-AoI">
-                                                    <rect key="frame" x="8" y="8" width="584" height="43"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type in IDOL API Key" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jzb-K0-AoI">
+                                                    <rect key="frame" x="8" y="15" width="584" height="34"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="43" id="8A5-BH-wS8"/>
+                                                        <constraint firstAttribute="height" constant="34" id="c3i-06-rJX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Zo2-vH-bcx" id="Hns-ne-pnf"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="jzb-K0-AoI" firstAttribute="top" secondItem="UaL-Y7-QjZ" secondAttribute="top" constant="8" id="Pik-Yn-XiU"/>
-                                                <constraint firstItem="jzb-K0-AoI" firstAttribute="leading" secondItem="UaL-Y7-QjZ" secondAttribute="leading" constant="8" id="aDu-XJ-fqa"/>
-                                                <constraint firstAttribute="trailing" secondItem="jzb-K0-AoI" secondAttribute="trailing" constant="8" id="mnY-CJ-rYe"/>
+                                                <constraint firstItem="jzb-K0-AoI" firstAttribute="leading" secondItem="UaL-Y7-QjZ" secondAttribute="leading" constant="8" id="3fg-WT-Zfo"/>
+                                                <constraint firstItem="jzb-K0-AoI" firstAttribute="top" secondItem="UaL-Y7-QjZ" secondAttribute="top" constant="15" id="6ph-Gj-HTO"/>
+                                                <constraint firstAttribute="trailing" secondItem="jzb-K0-AoI" secondAttribute="trailing" constant="8" id="ZAA-GI-v6I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="31" id="NbK-Ql-dzJ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NbK-Ql-dzJ" id="5dd-1p-iqm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7k-PY-Rp8">
+                                                    <rect key="frame" x="289" y="4" width="22" height="22"/>
+                                                    <state key="normal" image="unlock"/>
+                                                    <connections>
+                                                        <action selector="toggleSecureText:" destination="Zo2-vH-bcx" eventType="touchUpInside" id="BEs-Oy-0oy"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="A7k-PY-Rp8" secondAttribute="centerX" id="7BD-El-9xv"/>
+                                                <constraint firstAttribute="centerY" secondItem="A7k-PY-Rp8" secondAttribute="centerY" id="ULC-uh-X3q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -304,7 +326,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="KnC-Nm-VBa">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rEa-Vs-bfi">
                             <connections>
-                                <action selector="cancel:" destination="Zo2-vH-bcx" id="tBI-Zc-4UQ"/>
+                                <segue destination="O1x-k4-at9" kind="unwind" identifier="SettingsCancel" unwindAction="unwindFromSettings:" id="GmI-CO-XoE"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="QRP-u6-IG9">
@@ -319,11 +341,13 @@
                         <outlet property="passcodeSwitch" destination="bnW-Xb-aRA" id="hgH-al-dfw"/>
                         <outlet property="sortStyleButton" destination="m7I-uk-KT9" id="eOQ-gp-gL9"/>
                         <outlet property="summaryStyleButton" destination="n9u-DN-ad6" id="tVT-dG-z86"/>
+                        <segue destination="O1x-k4-at9" kind="unwind" identifier="SettingsSave" unwindAction="unwindFromSettings:" id="WIg-bg-MZn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9az-eV-Xrx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="O1x-k4-at9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2321" y="1880"/>
+            <point key="canvasLocation" x="2321" y="1862"/>
         </scene>
         <!--Select Index-->
         <scene sceneID="7K2-m4-c3C">
@@ -357,7 +381,7 @@
                     <navigationItem key="navigationItem" id="req-S3-FES">
                         <barButtonItem key="leftBarButtonItem" image="backButton" style="done" id="Mpf-dV-q3p">
                             <connections>
-                                <segue destination="1EX-Lx-DuH" kind="unwind" unwindAction="unwindToSettings:" id="1U4-Ch-7tz"/>
+                                <segue destination="1EX-Lx-DuH" kind="unwind" unwindAction="unwindFromSelection:" id="u3Q-ut-j9o"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="r1x-fR-CPc">
@@ -490,9 +514,10 @@
         <image name="box" width="22" height="22"/>
         <image name="find" width="22" height="22"/>
         <image name="settings" width="22" height="22"/>
+        <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6DH-DY-NKR"/>
+        <segue reference="chc-90-xFL"/>
         <segue reference="0Ax-We-Csw"/>
     </inferredMetricsTieBreakers>
 </document>
