@@ -80,31 +80,6 @@
             </objects>
             <point key="canvasLocation" x="3031" y="-357"/>
         </scene>
-        <!--Find-->
-        <scene sceneID="wg7-f3-ORb">
-            <objects>
-                <viewController id="8rJ-Kc-sve" customClass="FindViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Find" id="kIq-cy-foK">
-                        <barButtonItem key="rightBarButtonItem" image="settings" style="done" id="FYu-Qv-Bhd">
-                            <connections>
-                                <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="6DH-DY-NKR"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1539" y="349"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="NCF-5t-m9X">
             <objects>
@@ -347,7 +322,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9az-eV-Xrx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="O1x-k4-at9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2321" y="1862"/>
+            <point key="canvasLocation" x="1845" y="680"/>
         </scene>
         <!--Select Index-->
         <scene sceneID="7K2-m4-c3C">
@@ -397,7 +372,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrI-vJ-aNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1EX-Lx-DuH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3867" y="1871"/>
+            <point key="canvasLocation" x="2743" y="1479"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2f2-tf-xnG">
@@ -413,7 +388,103 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBk-7Y-82Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1584" y="1128"/>
+            <point key="canvasLocation" x="1022" y="680"/>
+        </scene>
+        <!--Search IDOL-->
+        <scene sceneID="5dp-81-B6a">
+            <objects>
+                <tableViewController id="Skm-hQ-Asx" customClass="FindViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9rb-UD-3zH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="" id="IsI-DS-J52">
+                                <cells>
+                                    <tableViewCell opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1mD-v5-Gzm">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1mD-v5-Gzm" id="q2s-3i-1Ip">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ttt-Aa-MOn">
+                                                    <rect key="frame" x="290" y="12" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="Ttt-Aa-MOn" secondAttribute="centerX" id="PAv-sl-IYK"/>
+                                                <constraint firstAttribute="centerY" secondItem="Ttt-Aa-MOn" secondAttribute="centerY" id="uh2-hm-zkC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="center" selectionStyle="default" indentationWidth="10" id="tDq-qo-T61">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tDq-qo-T61" id="RAP-KC-sp2">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Search Text or URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yis-6v-dAR">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Nue-CI-EMY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Skm-hQ-Asx" id="7UD-lz-W3M"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yis-6v-dAR" secondAttribute="trailing" constant="8" id="kKF-SY-doe"/>
+                                                <constraint firstItem="yis-6v-dAR" firstAttribute="leading" secondItem="RAP-KC-sp2" secondAttribute="leading" constant="8" id="lGT-5H-5Tj"/>
+                                                <constraint firstItem="yis-6v-dAR" firstAttribute="top" secondItem="RAP-KC-sp2" secondAttribute="top" constant="7" id="yh5-9i-zxD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="ZyM-N9-ddu">
+                                <cells>
+                                    <tableViewCell alpha="0.49999999999999961" contentMode="center" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="OVL-Aj-bxa" style="IBUITableViewCellStyleDefault" id="pUH-s3-9hn">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pUH-s3-9hn" id="fHX-Cv-np4">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Select Indexes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OVL-Aj-bxa">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                        <connections>
+                                            <segue destination="86f-j7-PEN" kind="show" identifier="FindSelectIndex" id="UsL-I9-cgT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Skm-hQ-Asx" id="8kr-Y6-poX"/>
+                            <outlet property="delegate" destination="Skm-hQ-Asx" id="3iI-rT-j5F"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search IDOL" id="Dae-Xn-Ioq">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="ZSu-Nr-bt9">
+                            <connections>
+                                <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="tSH-2g-tRj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchActivityIndicator" destination="Ttt-Aa-MOn" id="UFs-wk-pk7"/>
+                        <outlet property="searchTextField" destination="yis-6v-dAR" id="Cn2-e4-vYT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aea-A3-gFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30" y="1965"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -426,7 +497,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8jZ-1X-Az6" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="Nj3-Er-oyq" kind="relationship" relationship="viewControllers" id="nZi-hj-S0D"/>
                         <segue destination="oDH-Hl-seT" kind="relationship" relationship="viewControllers" id="Bjb-QQ-1q7"/>
                     </connections>
                 </tabBarController>
@@ -471,25 +542,6 @@
             </objects>
             <point key="canvasLocation" x="2219" y="-357"/>
         </scene>
-        <!--Find-->
-        <scene sceneID="hnT-dW-TdB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8jZ-1X-Az6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Find" image="find" id="cPa-gy-q4n"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="avH-A3-VZX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="VJQ-AJ-Dtm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z4P-t5-GeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="727" y="349"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="NFn-hi-z9J">
             <objects>
@@ -506,7 +558,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GfI-1P-9Vu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055" y="1871"/>
+            <point key="canvasLocation" x="1845" y="1479"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="wW7-Re-BvS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nj3-Er-oyq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="find" id="ObM-vO-CZq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="siI-OA-gT2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Skm-hQ-Asx" kind="relationship" relationship="rootViewController" id="uQS-wS-N5f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfD-1p-kAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30" y="1128"/>
         </scene>
     </scenes>
     <resources>
@@ -517,7 +588,7 @@
         <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="chc-90-xFL"/>
-        <segue reference="0Ax-We-Csw"/>
+        <segue reference="UsL-I9-cgT"/>
+        <segue reference="tSH-2g-tRj"/>
     </inferredMetricsTieBreakers>
 </document>

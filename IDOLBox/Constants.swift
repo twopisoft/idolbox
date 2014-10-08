@@ -26,4 +26,6 @@ struct Constants {
     
     static let SelectIndexSearchSegue   = "SelectIndexSearch"
     static let SelectIndexAddSegue      = "SelectIndexAdd"
+    
+    static let FindSelectIndexSegue     = "FindSelectIndex"
 }
