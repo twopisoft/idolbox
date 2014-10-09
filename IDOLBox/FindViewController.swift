@@ -19,6 +19,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         readSettings()
+        registerForSettingsChange()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,14 +89,27 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+        if keyPath == Constants.kSearchIndexes {
+            _searchIndexes = change[NSKeyValueChangeNewKey]! as? String
+        } else if keyPath == Constants.kApiKey {
+            _apiKey = change[NSKeyValueChangeNewKey]! as? String
+        }
+    }
+    
     private func readSettings() {
         let defaults = NSUserDefaults.standardUserDefaults()
         _apiKey = defaults.valueForKey(Constants.kApiKey) as? String
         _searchIndexes = defaults.valueForKey(Constants.kSearchIndexes) as? String
     }
     
+    private func registerForSettingsChange() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.addObserver(self, forKeyPath: Constants.kSearchIndexes, options: NSKeyValueObservingOptions.New, context: nil)
+        defaults.addObserver(self, forKeyPath: Constants.kApiKey, options: NSKeyValueObservingOptions.New, context: nil)
+    }
+    
     private func readControls() {
         _searchTerm = searchTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
-    
 }
