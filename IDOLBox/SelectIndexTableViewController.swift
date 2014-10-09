@@ -121,12 +121,13 @@ class SelectIndexTableViewController: UITableViewController {
         }
         return indexPath
     }
-        
-    func cellConfigHandler(controller: NSFetchedResultsController, tableView : UITableView, indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+    
+    func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolIndexes
         
-        cell!.textLabel!.text = obj.name
+        cell.textLabel!.text = obj.name
+        
+        return cell
     }
     
     @IBAction func refresh(sender: AnyObject) {

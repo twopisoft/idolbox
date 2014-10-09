@@ -74,10 +74,7 @@ class SearchResultTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell", forIndexPath: indexPath) as UITableViewCell
         
-        let obj = fetchController().objectAtIndexPath(indexPath) as IdolSearchResults
-        cell.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
-        cell.detailTextLabel!.text = obj.reference
-        return cell
+        return cellConfigHandler(fetchController(), cell: cell, indexPath: indexPath)
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -98,12 +95,13 @@ class SearchResultTableViewController: UITableViewController {
         return fetchController().sectionForSectionIndexTitle(title, atIndex: index)
     }
     
-    func cellConfigHandler(controller: NSFetchedResultsController, tableView : UITableView, indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+    func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResults
         
-        cell!.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
-        cell!.detailTextLabel!.text = obj.reference
+        cell.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
+        cell.detailTextLabel!.text = obj.reference
+        
+        return cell
     }
     
     private func fetchController() -> NSFetchedResultsController {

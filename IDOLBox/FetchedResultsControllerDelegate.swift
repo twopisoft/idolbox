@@ -11,7 +11,7 @@ import CoreData
 
 class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
    
-    typealias ConfigHandler = (controller: NSFetchedResultsController, tableView : UITableView, indexPath: NSIndexPath) -> ()
+    typealias ConfigHandler = (controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell
     
     private var _tableView : UITableView!
     private var _cellConfigHandler : ConfigHandler?
@@ -44,7 +44,8 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
             
         case NSFetchedResultsChangeType.Update:
             if self._cellConfigHandler != nil {
-                self._cellConfigHandler!(controller: controller,tableView: self._tableView,indexPath: indexPath!)
+                let cell = self._tableView.cellForRowAtIndexPath(indexPath!)
+                self._cellConfigHandler!(controller: controller, cell: cell! ,indexPath: indexPath!)
             }
             
         case NSFetchedResultsChangeType.Move:
