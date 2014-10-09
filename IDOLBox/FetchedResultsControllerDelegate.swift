@@ -11,10 +11,14 @@ import CoreData
 
 class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
    
-    private var _tableView : UITableView!
+    typealias ConfigHandler = (controller: NSFetchedResultsController, tableView : UITableView, indexPath: NSIndexPath) -> ()
     
-    init(tableView : UITableView) {
+    private var _tableView : UITableView!
+    private var _cellConfigHandler : ConfigHandler?
+    
+    init(tableView : UITableView, configHandler : ConfigHandler?) {
         self._tableView = tableView
+        self._cellConfigHandler = configHandler
     }
     
     // MARK: NSFetchedResultsControllerDelegate methods
@@ -39,9 +43,9 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
             tabView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             
         case NSFetchedResultsChangeType.Update:
-            let cell = tabView.cellForRowAtIndexPath(indexPath!)
-            let obj = controller.objectAtIndexPath(indexPath!) as IdolIndexes
-            cell?.textLabel?.text = obj.name
+            if self._cellConfigHandler != nil {
+                self._cellConfigHandler!(controller: controller,tableView: self._tableView,indexPath: indexPath!)
+            }
             
         case NSFetchedResultsChangeType.Move:
             tabView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
@@ -62,5 +66,9 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
             
         default: break
         }
+    }
+    
+    func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String!) -> String! {
+        return sectionName
     }
 }

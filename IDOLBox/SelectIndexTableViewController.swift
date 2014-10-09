@@ -72,12 +72,19 @@ class SelectIndexTableViewController: UITableViewController {
         cell.textLabel!.text = obj.name
         if let i = find(self.selectedIndexes, obj.name) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-            tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            
+            if !self.multiSelect {
+                tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.None)
+            }
         }
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if self.multiSelect {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
         
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         let indexName = cell?.textLabel?.text
@@ -89,12 +96,17 @@ class SelectIndexTableViewController: UITableViewController {
                 self.selectedIndexes.removeAtIndex(i!)
             }
         } else {
-            self.selectedIndexes.append(indexName!)
+            if self.selectedIndexes.count == 0 {
+                self.selectedIndexes = [indexName!]
+            } else {
+                self.selectedIndexes.append(indexName!)
+            }
             cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+
         if let currentSelPath = tableView.indexPathForSelectedRow() {
             if !self.multiSelect {
                 let cell = tableView.cellForRowAtIndexPath(currentSelPath)
@@ -108,6 +120,13 @@ class SelectIndexTableViewController: UITableViewController {
             
         }
         return indexPath
+    }
+        
+    func cellConfigHandler(controller: NSFetchedResultsController, tableView : UITableView, indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let obj = controller.objectAtIndexPath(indexPath) as IdolIndexes
+        
+        cell!.textLabel!.text = obj.name
     }
     
     @IBAction func refresh(sender: AnyObject) {
@@ -125,7 +144,6 @@ class SelectIndexTableViewController: UITableViewController {
             if error == nil {
                 let indexes = ListIndexResponseParser.parseResponse(data)
                 DBHelper.updateIndexes(self.managedObjectContext, data: indexes)
-                //self.fetchController().performFetch(nil)
             } else {
                 ErrorReporter.showErrorAlert(self, error: error!)
             }
@@ -156,7 +174,7 @@ class SelectIndexTableViewController: UITableViewController {
             fetchRequest.sortDescriptors = sortDescriptors
             fetchRequest.predicate = filterPredicate
             
-            _fetchControllerDelegate = FetchedResultsControllerDelegate(tableView: self.indexTableView)
+            _fetchControllerDelegate = FetchedResultsControllerDelegate(tableView: self.indexTableView, configHandler: self.cellConfigHandler)
             
             _fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
             _fetchController!.delegate = _fetchControllerDelegate

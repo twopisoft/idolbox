@@ -142,7 +142,7 @@ class IDOLService {
                     if error == nil {
                         var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.convertFromNilLiteral(), error: nil) as NSDictionary
                         let actions = json["actions"] as NSArray
-                        NSLog("actions=\(actions)")
+                        //NSLog("actions=\(actions)")
                         for act in actions {
                             if let a  = act["errors"] as? NSArray {
                                 let code = a[0]["error"] as Int

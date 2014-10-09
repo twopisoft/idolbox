@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             if identifier == Constants.SelectIndexSearchSegue {
                 viewController.multiSelect = true
                 if let si = _searchIndexes {
-                    viewController.selectedIndexes = si.componentsSeparatedByString(",")
+                    viewController.selectedIndexes = si.isEmpty ? [] : si.componentsSeparatedByString(",")
                 }
             } else {
                 viewController.multiSelect = false

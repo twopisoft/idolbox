@@ -16,6 +16,9 @@
 		EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */; };
 		EE48999B19E414BB00BB7977 /* ListIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */; };
 		EE48999D19E44A7500BB7977 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999C19E44A7500BB7977 /* Constants.swift */; };
+		EE4899A019E543ED00BB7977 /* IdolSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */; };
+		EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */; };
+		EE4F669B19E55E70001FFCB5 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */; };
 		EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECE47F019E3B3F600981656 /* ErrorReporter.swift */; };
 		EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */; };
 		EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC619E3789300F718F8 /* FindViewController.swift */; };
@@ -50,6 +53,9 @@
 		EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
 		EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListIndexResponseParser.swift; sourceTree = "<group>"; };
 		EE48999C19E44A7500BB7977 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearchResults.swift; sourceTree = "<group>"; };
+		EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
+		EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
 		EECE47F019E3B3F600981656 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
 		EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EEF9DEC619E3789300F718F8 /* FindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
@@ -99,14 +105,11 @@
 		EE0E714619DCF2CC00247A08 /* IDOLBox */ = {
 			isa = PBXGroup;
 			children = (
+				EE48999E19E5206C00BB7977 /* Data */,
 				EEF9DECE19E3A47600F718F8 /* Helpers */,
 				EEF9DECB19E3A3AF00F718F8 /* IDOL */,
 				EEF9DECA19E3A3A500F718F8 /* UI */,
-				EE0E715219DCF2CC00247A08 /* Images.xcassets */,
-				EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */,
 				EE0E714719DCF2CC00247A08 /* Supporting Files */,
-				EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */,
-				EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */,
 			);
 			path = IDOLBox;
 			sourceTree = "<group>";
@@ -114,6 +117,7 @@
 		EE0E714719DCF2CC00247A08 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE0E715219DCF2CC00247A08 /* Images.xcassets */,
 				EE0E714819DCF2CC00247A08 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -136,15 +140,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EE48999E19E5206C00BB7977 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */,
+				EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */,
+				EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		EEF9DECA19E3A3A500F718F8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */,
 				EE0E714919DCF2CC00247A08 /* AppDelegate.swift */,
 				EE0E714F19DCF2CC00247A08 /* Main.storyboard */,
 				EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */,
 				EEF9DEC619E3789300F718F8 /* FindViewController.swift */,
 				EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */,
 				EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */,
+				EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -154,6 +170,7 @@
 			children = (
 				EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */,
 				EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */,
+				EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */,
 			);
 			name = IDOL;
 			sourceTree = "<group>";
@@ -273,6 +290,8 @@
 				EEF9DED519E3A59B00F718F8 /* IdolIndexes.swift in Sources */,
 				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
 				EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */,
+				EE4899A019E543ED00BB7977 /* IdolSearchResults.swift in Sources */,
+				EE4F669B19E55E70001FFCB5 /* SearchResultParser.swift in Sources */,
 				EE48999B19E414BB00BB7977 /* ListIndexResponseParser.swift in Sources */,
 				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,
 				EEF9DED019E3A48000F718F8 /* DBHelper.swift in Sources */,
@@ -282,6 +301,7 @@
 				EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */,
 				EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */,
 				EEF9DECD19E3A3FA00F718F8 /* IDOLService.swift in Sources */,
+				EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

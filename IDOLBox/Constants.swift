@@ -28,4 +28,8 @@ struct Constants {
     static let SelectIndexAddSegue      = "SelectIndexAdd"
     
     static let FindSelectIndexSegue     = "FindSelectIndex"
+    
+    static let SearchResultSegue        = "SearchResult"
+    
+    static let DefaultSearchIndex       = "wiki_eng"
 }

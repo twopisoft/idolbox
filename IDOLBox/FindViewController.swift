@@ -10,14 +10,15 @@ import UIKit
 
 class FindViewController: UITableViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var searchActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchTextField: UITextField!
     
     private var _apiKey : String? = nil
     private var _searchIndexes : String? = nil
+    private var _searchTerm : String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        readSettings()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,10 +34,19 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.searchTextField.resignFirstResponder()
+        
+        readControls()
+        if !_searchTerm!.isEmpty {
+            performSegueWithIdentifier(Constants.SearchResultSegue, sender: self)
+        }
         return true
     }
     
     @IBAction func unwindFromSettings(segue : UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func unwindFromSearchResult(segue : UIStoryboardSegue) {
         
     }
     
@@ -54,18 +64,27 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
         let identifier = segue.identifier
         if identifier == Constants.FindSelectIndexSegue {
-            
-            readSettings()
             
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SelectIndexTableViewController
             viewController.apiKey = _apiKey
             viewController.multiSelect = true
             if let si = _searchIndexes {
-                viewController.selectedIndexes = si.componentsSeparatedByString(",")
+                viewController.selectedIndexes =  si.isEmpty ? [] : si.componentsSeparatedByString(",")
             }
+        } else if identifier == Constants.SearchResultSegue {
+            let navController = segue.destinationViewController as UINavigationController
+            var viewController = navController.topViewController as SearchResultTableViewController
+            viewController.apiKey = _apiKey
+            if let si = _searchIndexes {
+                viewController.selectedIndexes = si.isEmpty ? [] : si.componentsSeparatedByString(",")
+            } else {
+                viewController.selectedIndexes = [Constants.DefaultSearchIndex]
+            }
+            viewController.searchTerm = _searchTerm
         }
     }
     
@@ -75,5 +94,8 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         _searchIndexes = defaults.valueForKey(Constants.kSearchIndexes) as? String
     }
     
-
+    private func readControls() {
+        _searchTerm = searchTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    }
+    
 }
