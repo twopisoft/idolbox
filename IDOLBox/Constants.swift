@@ -25,15 +25,19 @@ struct Constants {
     static let MaxResultParam       = "absolute_max_results"
     static let HighlightParam       = "highlight"
     static let PrintFieldParam      = "print_fields"
+    static let StartTagParam        = "start_tag"
     
     static let SummaryStyleQuick    = "quick"
     static let SummaryStyleContext  = "context"
     static let SummaryStyleConcept  = "concept"
     
+    static let StartTagStyle        = "<span style='background-color:green; color:white'>"
+    
     static let SortStyleRelevance   = "relevance"
     static let SortStyleDate        = "date"
     
-    static let HighlightStyleSentence = "sentences"
+    static let HighlightStyleSentence           = "sentences"
+    static let HighlightStyleSummarySentence    = "summary_sentences"
     
     static let PrintFieldDate       = "modified_date"
     

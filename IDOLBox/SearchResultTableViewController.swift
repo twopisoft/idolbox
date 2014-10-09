@@ -193,7 +193,8 @@ class SearchResultTableViewController: UITableViewController {
             ret[Constants.SortParam] = sortStyle.lowercaseString
         }
         
-        ret[Constants.HighlightParam] = Constants.HighlightStyleSentence
+        ret[Constants.HighlightParam] = Constants.HighlightStyleSummarySentence
+        ret[Constants.StartTagParam] = Constants.StartTagStyle
         
         ret[Constants.PrintFieldParam] = Constants.PrintFieldDate
         

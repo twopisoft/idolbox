@@ -82,11 +82,11 @@ class IDOLService {
         
         // For keyword term search, we make use of HTTP GET request
         var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&text=" + encodeStr(text) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
-        NSLog("urlStr=\(urlStr)")
+        //NSLog("url= %@",urlStr)
         
         var request = NSURLRequest(URL: NSURL(string: urlStr)!)
         
-        NSLog("findSimilarDocs: text=\(text), indexName=\(indexName)")
+        NSLog("findSimilarDocs: text=%@, indexName=%@",text,indexName)
         findSimilarDocs(apiKey, request: request, completionHandler: handler)
     }
 
@@ -98,7 +98,7 @@ class IDOLService {
         
         var request = NSURLRequest(URL: NSURL(string: urlStr)!)
         
-        NSLog("findSimilarDocsUrl: url=\(url), indexName=\(indexName)")
+        NSLog("findSimilarDocsUrl: url=%@, indexName=%@",url,indexName)
         findSimilarDocs(apiKey, request: request, completionHandler: handler)
 
     }
@@ -109,7 +109,7 @@ class IDOLService {
         // For file requests, create a HTTP POST request
         var request = createFindSimilarFileRequest(fileName, indexName: indexName, apiKey: apiKey, searchParams: searchParams)
         
-        NSLog("findSimilarDocsFile: url=\(fileName), indexName=\(indexName)")
+        NSLog("findSimilarDocsFile: filename=%@, indexName=%@",fileName,indexName)
         findSimilarDocs(apiKey, request: request, completionHandler: handler)
     }
 
@@ -203,7 +203,7 @@ class IDOLService {
         
         var (req, postData) = initPostRequest(apiKey, reqUrlStr: _URLS.findSimilarUrl)
         
-        NSLog("Processing file=\(filePath)")
+        NSLog("Processing file=%@",filePath)
         let fileData = NSFileManager.defaultManager().contentsAtPath(filePath)
         postData.appendData(paramSeparatorData(Boundary))
         postData.appendData(stringToData("Content-Disposition: form-data; name=\"file\"; filename=\"\(filePath)\"\r\n"))
@@ -239,7 +239,7 @@ class IDOLService {
         // return strange error for some files
         for (path,fname,isDir) in fileMeta {
             if !isDir {
-                NSLog("Processing file=\(fname)")
+                NSLog("Processing file=%@",fname)
                 let fileData = NSFileManager.defaultManager().contentsAtPath(path)
                 postData.appendData(paramSeparatorData(Boundary))
                 postData.appendData(stringToData("Content-Disposition: form-data; name=\"file\"; filename=\"\(path)\"\r\n"))
@@ -300,7 +300,7 @@ class IDOLService {
     
     // Encode non-URL characters to URL allowed ones
     private func encodeStr(str : String) -> String {
-        return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+        return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
     }
     
     // Converts a string to Data
