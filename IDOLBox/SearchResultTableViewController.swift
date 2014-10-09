@@ -16,6 +16,8 @@ class SearchResultTableViewController: UITableViewController {
     var managedObjectContext : NSManagedObjectContext!
     var selectedIndexes : [String] = []
     
+    private var _selectedItem : IdolSearchResults? = nil
+    
     @IBOutlet var indexTableView: UITableView!
     
     private lazy var activityIndicator : UIActivityIndicatorView = {
@@ -93,6 +95,14 @@ class SearchResultTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return fetchController().sectionForSectionIndexTitle(title, atIndex: index)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        _selectedItem = fetchController().objectAtIndexPath(indexPath) as? IdolSearchResults
+        
+        if _selectedItem != nil {
+            performSegueWithIdentifier(Constants.SearchResultDetailSegue, sender: self)
+        }
     }
     
     func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
@@ -193,7 +203,7 @@ class SearchResultTableViewController: UITableViewController {
             ret[Constants.SortParam] = sortStyle.lowercaseString
         }
         
-        ret[Constants.HighlightParam] = Constants.HighlightStyleSummarySentence
+        ret[Constants.HighlightParam] = Constants.HighlightStyleSummaryTerms
         ret[Constants.StartTagParam] = Constants.StartTagStyle
         
         ret[Constants.PrintFieldParam] = Constants.PrintFieldDate
@@ -208,14 +218,18 @@ class SearchResultTableViewController: UITableViewController {
         return urlTest!.evaluateWithObject(str)
     }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let identifier = segue.identifier
+        
+        if identifier == Constants.SearchResultDetailSegue {
+            let navController = segue.destinationViewController as UINavigationController
+            var viewController = navController.topViewController as SearchResultDetailViewController
+            viewController.managedObjectContext = self.managedObjectContext
+            viewController.selectedItem = _selectedItem
+        }
     }
-    */
+    
 
 }

@@ -31,13 +31,14 @@ struct Constants {
     static let SummaryStyleContext  = "context"
     static let SummaryStyleConcept  = "concept"
     
-    static let StartTagStyle        = "<span style='background-color:green; color:white'>"
+    static let StartTagStyle        = "<span style='background-color:yellow; color:black'>"
     
     static let SortStyleRelevance   = "relevance"
     static let SortStyleDate        = "date"
     
     static let HighlightStyleSentence           = "sentences"
     static let HighlightStyleSummarySentence    = "summary_sentences"
+    static let HighlightStyleSummaryTerms       = "summary_terms"
     
     static let PrintFieldDate       = "modified_date"
     
@@ -47,6 +48,8 @@ struct Constants {
     static let FindSelectIndexSegue     = "FindSelectIndex"
     
     static let SearchResultSegue        = "SearchResult"
+    
+    static let SearchResultDetailSegue  = "SearchResultDetail"
     
     static let DefaultSearchIndex       = "wiki_eng"
 }

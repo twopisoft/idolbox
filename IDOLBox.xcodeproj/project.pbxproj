@@ -19,6 +19,12 @@
 		EE4899A019E543ED00BB7977 /* IdolSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */; };
 		EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */; };
 		EE4F669B19E55E70001FFCB5 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */; };
+		EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */; };
+		EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40319E6A8FB005A4D7E /* reset.css */; };
+		EEC9D40619E6A929005A4D7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40519E6A929005A4D7E /* style.css */; };
+		EEC9D40A19E6A99F005A4D7E /* ViewDocumentTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40919E6A99F005A4D7E /* ViewDocumentTemplate.html */; };
+		EEC9D40C19E6B0CC005A4D7E /* skin.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40B19E6B0CC005A4D7E /* skin.css */; };
+		EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */; };
 		EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECE47F019E3B3F600981656 /* ErrorReporter.swift */; };
 		EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */; };
 		EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC619E3789300F718F8 /* FindViewController.swift */; };
@@ -56,6 +62,12 @@
 		EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearchResults.swift; sourceTree = "<group>"; };
 		EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
+		EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
+		EEC9D40319E6A8FB005A4D7E /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
+		EEC9D40519E6A929005A4D7E /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		EEC9D40919E6A99F005A4D7E /* ViewDocumentTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ViewDocumentTemplate.html; sourceTree = "<group>"; };
+		EEC9D40B19E6B0CC005A4D7E /* skin.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = skin.css; sourceTree = "<group>"; };
+		EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDocumentTemplateProcessor.swift; sourceTree = "<group>"; };
 		EECE47F019E3B3F600981656 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
 		EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EEF9DEC619E3789300F718F8 /* FindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +129,8 @@
 		EE0E714719DCF2CC00247A08 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEC9D40919E6A99F005A4D7E /* ViewDocumentTemplate.html */,
+				EEC9D40219E6A8C4005A4D7E /* css */,
 				EE0E715219DCF2CC00247A08 /* Images.xcassets */,
 				EE0E714819DCF2CC00247A08 /* Info.plist */,
 			);
@@ -150,6 +164,16 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		EEC9D40219E6A8C4005A4D7E /* css */ = {
+			isa = PBXGroup;
+			children = (
+				EEC9D40B19E6B0CC005A4D7E /* skin.css */,
+				EEC9D40519E6A929005A4D7E /* style.css */,
+				EEC9D40319E6A8FB005A4D7E /* reset.css */,
+			);
+			name = css;
+			sourceTree = "<group>";
+		};
 		EEF9DECA19E3A3A500F718F8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +185,7 @@
 				EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */,
 				EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */,
 				EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */,
+				EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -182,6 +207,7 @@
 				EECE47F019E3B3F600981656 /* ErrorReporter.swift */,
 				EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */,
 				EE48999C19E44A7500BB7977 /* Constants.swift */,
+				EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -267,8 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE0E715119DCF2CC00247A08 /* Main.storyboard in Resources */,
+				EEC9D40619E6A929005A4D7E /* style.css in Resources */,
+				EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */,
 				EE0E715619DCF2CC00247A08 /* LaunchScreen.xib in Resources */,
+				EEC9D40A19E6A99F005A4D7E /* ViewDocumentTemplate.html in Resources */,
 				EE0E715319DCF2CC00247A08 /* Images.xcassets in Resources */,
+				EEC9D40C19E6B0CC005A4D7E /* skin.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +328,9 @@
 				EE48999D19E44A7500BB7977 /* Constants.swift in Sources */,
 				EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */,
 				EEF9DED319E3A53800F718F8 /* IDOLBox.xcdatamodeld in Sources */,
+				EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */,
 				EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */,
+				EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */,
 				EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */,
 				EEF9DECD19E3A3FA00F718F8 /* IDOLService.swift in Sources */,
 				EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */,
