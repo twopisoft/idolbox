@@ -19,7 +19,7 @@ class DBHelper {
     typealias IndexTuple = (name:String,flavor:String,isPublic:Bool,info:String)
     
     // Tuple for Search Result
-    typealias ResultTuple = (title:String,reference:String,weight:Double,index:String,summary:String,content:String)
+    typealias ResultTuple = (title:String,reference:String,weight:Double,index:String,moddate:NSDate,summary:String,content:String)
     
     // MARK: Data handlers for index information
     
@@ -76,12 +76,13 @@ class DBHelper {
     
     class func storeSearchResults(managedObjectContext : NSManagedObjectContext, searchResults : [ResultTuple]) -> NSError? {
         for result in searchResults {
-            let (title,reference,weight,index,summary,content) = result
+            let (title,reference,weight,index,moddate,summary,content) = result
             let obj = IdolSearchResults(entity: NSEntityDescription.entityForName("IdolSearchResults", inManagedObjectContext: managedObjectContext)!, insertIntoManagedObjectContext: managedObjectContext)
             obj.setValue(title, forKeyPath: "title")
             obj.setValue(reference, forKeyPath: "reference")
             obj.setValue(weight, forKeyPath: "weight")
             obj.setValue(index, forKeyPath: "index")
+            obj.setValue(moddate, forKeyPath: "moddate")
             obj.setValue(summary, forKeyPath: "summary")
             obj.setValue(content, forKeyPath: "content")
         }

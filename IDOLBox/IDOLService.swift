@@ -78,11 +78,11 @@ class IDOLService {
     }
     
     // Method to invoke IDOL Find Similar Documents API when user has provided a keyword term
-    func findSimilarDocs(apiKey:String, text: String, indexName: String, completionHandler handler: ResponseHandler?) {
+    func findSimilarDocs(apiKey:String, text: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
         
         // For keyword term search, we make use of HTTP GET request
-        var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&text=" + encodeStr(text) + "&indexes=" + encodeStr(indexName) +
-                     "&print=reference"
+        var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&text=" + encodeStr(text) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
+        NSLog("urlStr=\(urlStr)")
         
         var request = NSURLRequest(URL: NSURL(string: urlStr)!)
         
@@ -91,11 +91,10 @@ class IDOLService {
     }
 
     // Method to invoke IDOL Find Similar Documents API when user has provided a url
-    func findSimilarDocsUrl(apiKey:String, url: String, indexName: String, completionHandler handler: ResponseHandler?) {
+    func findSimilarDocsUrl(apiKey:String, url: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
     
         // For keyword term search, we make use of HTTP GET request
-        var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&url=" + encodeStr(url) + "&indexes=" + encodeStr(indexName) +
-        "&print=reference"
+        var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&url=" + encodeStr(url) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
         
         var request = NSURLRequest(URL: NSURL(string: urlStr)!)
         
@@ -105,14 +104,13 @@ class IDOLService {
     }
     
     // Method to invoke IDOL Find Similar Documents API when user has provided a file
-    func findSimilarDocsFile(apiKey:String, fileName: String, indexName: String, completionHandler handler: ResponseHandler?) {
+    func findSimilarDocsFile(apiKey:String, fileName: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
         
         // For file requests, create a HTTP POST request
-        var request = createFindSimilarFileRequest(fileName, indexName: indexName, apiKey: apiKey)
+        var request = createFindSimilarFileRequest(fileName, indexName: indexName, apiKey: apiKey, searchParams: searchParams)
         
         NSLog("findSimilarDocsFile: url=\(fileName), indexName=\(indexName)")
         findSimilarDocs(apiKey, request: request, completionHandler: handler)
-
     }
 
     // MARK: Helper methods
@@ -126,6 +124,14 @@ class IDOLService {
             // Then process the job result
             self.processJobResult(apiKey, jobId: jobId, jobErr: jobErr, handler: handler)
         })
+    }
+    
+    private func paramsForGet(params : [String:String]) -> String {
+        var ret = ""
+        for p in params.keys {
+            ret += "&\(p)=" + encodeStr(params[p]!)
+        }
+        return ret
     }
     
     // Method to request for and recieve the async job result
@@ -172,7 +178,7 @@ class IDOLService {
             
             if error == nil {
                 var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-                NSLog("jobId response=\(json)")
+                //NSLog("jobId response=\(json)")
                 if let jobId = json["jobID"] as? String { // Handle the jobId response
                     handler(jobId: jobId,jobError: nil)
                 } else if json["details"] != nil {  // Handle the error response
@@ -193,7 +199,7 @@ class IDOLService {
     }
     
     // Create a HTTP POST request for Find Similar service when user specifies a file
-    private func createFindSimilarFileRequest(filePath: String, indexName: String, apiKey: String) -> NSURLRequest {
+    private func createFindSimilarFileRequest(filePath: String, indexName: String, apiKey: String, searchParams : [String:String]) -> NSURLRequest {
         
         var (req, postData) = initPostRequest(apiKey, reqUrlStr: _URLS.findSimilarUrl)
         
@@ -207,9 +213,13 @@ class IDOLService {
         postData.appendData(paramSeparatorData(Boundary))
         postData.appendData(contentDispositionData("indexes"))
         postData.appendData(stringToData(indexName))
-        postData.appendData(paramSeparatorData(Boundary))
-        postData.appendData(contentDispositionData("print"))
-        postData.appendData(stringToData("reference"))
+        
+        for p in searchParams.keys {
+            postData.appendData(paramSeparatorData(Boundary))
+            postData.appendData(contentDispositionData(p))
+            postData.appendData(stringToData(searchParams[p]!))
+        }
+        
         postData.appendData(stringToData("\r\n--\(Boundary)--\r\n"))
         
         req.HTTPBody = postData

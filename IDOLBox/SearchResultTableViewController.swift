@@ -130,9 +130,11 @@ class SearchResultTableViewController: UITableViewController {
         
         self.activityIndicator.startAnimating()
         
+        let searchParams = getSearchParams()
+        
         for (i,index) in enumerate(selectedIndexes) {
             if isUrl(searchTerm!) {
-                IDOLService.sharedInstance.findSimilarDocsUrl(apiKey!, url: searchTerm!, indexName: index, completionHandler: { (data : NSData?, err: NSError?) in
+                IDOLService.sharedInstance.findSimilarDocsUrl(apiKey!, url: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data : NSData?, err: NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.handleSearchResults(data, err: err)
@@ -143,7 +145,7 @@ class SearchResultTableViewController: UITableViewController {
                     }
                 })
             } else {
-                IDOLService.sharedInstance.findSimilarDocs(apiKey!, text: searchTerm!, indexName: index, completionHandler: { (data: NSData?, err: NSError?) in
+                IDOLService.sharedInstance.findSimilarDocs(apiKey!, text: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data: NSData?, err: NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.handleSearchResults(data, err: err)
@@ -172,6 +174,31 @@ class SearchResultTableViewController: UITableViewController {
                 self.activityIndicator.stopAnimating()
             })
         }
+    }
+    
+    private func getSearchParams() -> [String:String] {
+        var ret : [String:String] = [:]
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let maxResults = defaults.valueForKey(Constants.kMaxResults) as? Int {
+            ret[Constants.MaxResultParam] = "\(maxResults)"
+        }
+        
+        if let summaryStyle = defaults.valueForKey(Constants.kSummaryStyle) as? String {
+            ret[Constants.SummaryParam] = summaryStyle.lowercaseString
+        }
+        
+        if let sortStyle = defaults.valueForKey(Constants.kSortStyle) as? String {
+            ret[Constants.SortParam] = sortStyle.lowercaseString
+        }
+        
+        ret[Constants.HighlightParam] = Constants.HighlightStyleSentence
+        
+        ret[Constants.PrintFieldParam] = Constants.PrintFieldDate
+        
+        return ret
+        
     }
     
     private func isUrl(str : String) -> Bool {

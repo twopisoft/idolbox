@@ -17,12 +17,25 @@ struct Constants {
     static let kSearchIndexes       = "IDOL_SearchIndexes"
     static let kAddIndex            = "IDOL_AddIndex"
     
+    static let ApiKeyParam          = "apikey"
+    static let IndexesParam         = "indexes"
+    static let RelevanceParam       = "relevance"
+    static let SortParam            = "sort"
+    static let SummaryParam         = "summary"
+    static let MaxResultParam       = "absolute_max_results"
+    static let HighlightParam       = "highlight"
+    static let PrintFieldParam      = "print_fields"
+    
     static let SummaryStyleQuick    = "quick"
     static let SummaryStyleContext  = "context"
     static let SummaryStyleConcept  = "concept"
     
     static let SortStyleRelevance   = "relevance"
     static let SortStyleDate        = "date"
+    
+    static let HighlightStyleSentence = "sentences"
+    
+    static let PrintFieldDate       = "modified_date"
     
     static let SelectIndexSearchSegue   = "SelectIndexSearch"
     static let SelectIndexAddSegue      = "SelectIndexAdd"

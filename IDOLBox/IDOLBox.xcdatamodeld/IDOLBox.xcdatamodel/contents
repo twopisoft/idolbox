@@ -9,6 +9,7 @@
     <entity name="IdolSearchResults" representedClassName="IDOLBox.IdolSearchResults" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,6 +17,6 @@
     </entity>
     <elements>
         <element name="IdolIndexes" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="IdolSearchResults" positionX="-63" positionY="9" width="128" height="135"/>
+        <element name="IdolSearchResults" positionX="-63" positionY="9" width="128" height="150"/>
     </elements>
 </model>

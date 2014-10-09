@@ -17,5 +17,6 @@ class IdolSearchResults: NSManagedObject {
     @NSManaged var index: String
     @NSManaged var summary: String
     @NSManaged var content: String
+    @NSManaged var moddate: NSDate
 
 }
