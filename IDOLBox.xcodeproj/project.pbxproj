@@ -26,6 +26,12 @@
 		EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */; };
 		EEC9D41B19E7BCC4005A4D7E /* skin.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D41A19E7BCC4005A4D7E /* skin.css */; };
 		EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECE47F019E3B3F600981656 /* ErrorReporter.swift */; };
+		EEEFD72C19E7FAA40041D1EF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */; };
+		EEEFD72E19E7FAA40041D1EF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEEFD72D19E7FAA40041D1EF /* MainInterface.storyboard */; };
+		EEEFD73119E7FAA40041D1EF /* IDOLBoxAction.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EEEFD74119E7FB760041D1EF /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFD74019E7FB760041D1EF /* ShareViewController.swift */; };
+		EEEFD74319E7FB760041D1EF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEEFD74219E7FB760041D1EF /* MainInterface.storyboard */; };
+		EEEFD74619E7FB760041D1EF /* IDOLBoxShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EEEFD73C19E7FB760041D1EF /* IDOLBoxShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */; };
 		EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC619E3789300F718F8 /* FindViewController.swift */; };
 		EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */; };
@@ -43,7 +49,50 @@
 			remoteGlobalIDString = EE0E714319DCF2CC00247A08;
 			remoteInfo = IDOLBox;
 		};
+		EEEFD72F19E7FAA40041D1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0E713C19DCF2CC00247A08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEEFD72619E7FAA30041D1EF;
+			remoteInfo = IDOLBoxAction;
+		};
+		EEEFD73219E7FAA40041D1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0E713C19DCF2CC00247A08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEEFD72619E7FAA30041D1EF;
+			remoteInfo = IDOLBoxAction;
+		};
+		EEEFD74419E7FB760041D1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0E713C19DCF2CC00247A08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEEFD73B19E7FB760041D1EF;
+			remoteInfo = IDOLBoxShare;
+		};
+		EEEFD74719E7FB760041D1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE0E713C19DCF2CC00247A08 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEEFD73B19E7FB760041D1EF;
+			remoteInfo = IDOLBoxShare;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EEEFD73719E7FAA40041D1EF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EEEFD74619E7FB760041D1EF /* IDOLBoxShare.appex in Embed App Extensions */,
+				EEEFD73119E7FAA40041D1EF /* IDOLBoxAction.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EE0E714419DCF2CC00247A08 /* IDOLBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDOLBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +118,16 @@
 		EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDocumentTemplateProcessor.swift; sourceTree = "<group>"; };
 		EEC9D41A19E7BCC4005A4D7E /* skin.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = skin.css; sourceTree = "<group>"; };
 		EECE47F019E3B3F600981656 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
+		EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IDOLBoxAction.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEEFD72A19E7FAA40041D1EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		EEEFD72D19E7FAA40041D1EF /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		EEEFD73C19E7FB760041D1EF /* IDOLBoxShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IDOLBoxShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEEFD73F19E7FB760041D1EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEEFD74019E7FB760041D1EF /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		EEEFD74219E7FB760041D1EF /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		EEEFD75019E821810041D1EF /* IDOLBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IDOLBox.entitlements; sourceTree = "<group>"; };
+		EEEFD75119E822020041D1EF /* IDOLBoxShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IDOLBoxShare.entitlements; sourceTree = "<group>"; };
 		EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EEF9DEC619E3789300F718F8 /* FindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIndexTableViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +152,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EEEFD72419E7FAA30041D1EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEFD73919E7FB760041D1EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -101,6 +174,8 @@
 			children = (
 				EE0E714619DCF2CC00247A08 /* IDOLBox */,
 				EE0E715E19DCF2CC00247A08 /* IDOLBoxTests */,
+				EEEFD72819E7FAA40041D1EF /* IDOLBoxAction */,
+				EEEFD73D19E7FB760041D1EF /* IDOLBoxShare */,
 				EE0E714519DCF2CC00247A08 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,6 +185,8 @@
 			children = (
 				EE0E714419DCF2CC00247A08 /* IDOLBox.app */,
 				EE0E715B19DCF2CC00247A08 /* IDOLBoxTests.xctest */,
+				EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */,
+				EEEFD73C19E7FB760041D1EF /* IDOLBoxShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +194,7 @@
 		EE0E714619DCF2CC00247A08 /* IDOLBox */ = {
 			isa = PBXGroup;
 			children = (
+				EEEFD75019E821810041D1EF /* IDOLBox.entitlements */,
 				EE48999E19E5206C00BB7977 /* Data */,
 				EEF9DECE19E3A47600F718F8 /* Helpers */,
 				EEF9DECB19E3A3AF00F718F8 /* IDOL */,
@@ -174,6 +252,43 @@
 			name = css;
 			sourceTree = "<group>";
 		};
+		EEEFD72819E7FAA40041D1EF /* IDOLBoxAction */ = {
+			isa = PBXGroup;
+			children = (
+				EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */,
+				EEEFD72D19E7FAA40041D1EF /* MainInterface.storyboard */,
+				EEEFD72919E7FAA40041D1EF /* Supporting Files */,
+			);
+			path = IDOLBoxAction;
+			sourceTree = "<group>";
+		};
+		EEEFD72919E7FAA40041D1EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEEFD72A19E7FAA40041D1EF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEEFD73D19E7FB760041D1EF /* IDOLBoxShare */ = {
+			isa = PBXGroup;
+			children = (
+				EEEFD75119E822020041D1EF /* IDOLBoxShare.entitlements */,
+				EEEFD74019E7FB760041D1EF /* ShareViewController.swift */,
+				EEEFD74219E7FB760041D1EF /* MainInterface.storyboard */,
+				EEEFD73E19E7FB760041D1EF /* Supporting Files */,
+			);
+			path = IDOLBoxShare;
+			sourceTree = "<group>";
+		};
+		EEEFD73E19E7FB760041D1EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EEEFD73F19E7FB760041D1EF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		EEF9DECA19E3A3A500F718F8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,10 +318,10 @@
 		EEF9DECE19E3A47600F718F8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EE48999C19E44A7500BB7977 /* Constants.swift */,
 				EEF9DECF19E3A48000F718F8 /* DBHelper.swift */,
 				EECE47F019E3B3F600981656 /* ErrorReporter.swift */,
 				EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */,
-				EE48999C19E44A7500BB7977 /* Constants.swift */,
 				EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */,
 			);
 			name = Helpers;
@@ -222,10 +337,15 @@
 				EE0E714019DCF2CC00247A08 /* Sources */,
 				EE0E714119DCF2CC00247A08 /* Frameworks */,
 				EE0E714219DCF2CC00247A08 /* Resources */,
+				EEEFD73719E7FAA40041D1EF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EEEFD73019E7FAA40041D1EF /* PBXTargetDependency */,
+				EEEFD73319E7FAA40041D1EF /* PBXTargetDependency */,
+				EEEFD74519E7FB760041D1EF /* PBXTargetDependency */,
+				EEEFD74819E7FB760041D1EF /* PBXTargetDependency */,
 			);
 			name = IDOLBox;
 			productName = IDOLBox;
@@ -250,6 +370,40 @@
 			productReference = EE0E715B19DCF2CC00247A08 /* IDOLBoxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EEEFD72619E7FAA30041D1EF /* IDOLBoxAction */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEEFD73419E7FAA40041D1EF /* Build configuration list for PBXNativeTarget "IDOLBoxAction" */;
+			buildPhases = (
+				EEEFD72319E7FAA30041D1EF /* Sources */,
+				EEEFD72419E7FAA30041D1EF /* Frameworks */,
+				EEEFD72519E7FAA30041D1EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IDOLBoxAction;
+			productName = IDOLBoxAction;
+			productReference = EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		EEEFD73B19E7FB760041D1EF /* IDOLBoxShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEEFD74919E7FB760041D1EF /* Build configuration list for PBXNativeTarget "IDOLBoxShare" */;
+			buildPhases = (
+				EEEFD73819E7FB760041D1EF /* Sources */,
+				EEEFD73919E7FB760041D1EF /* Frameworks */,
+				EEEFD73A19E7FB760041D1EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IDOLBoxShare;
+			productName = IDOLBoxShare;
+			productReference = EEEFD73C19E7FB760041D1EF /* IDOLBoxShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -261,10 +415,28 @@
 				TargetAttributes = {
 					EE0E714319DCF2CC00247A08 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = WBDBMBMJVX;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					EE0E715A19DCF2CC00247A08 = {
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = EE0E714319DCF2CC00247A08;
+					};
+					EEEFD72619E7FAA30041D1EF = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EEEFD73B19E7FB760041D1EF = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = WBDBMBMJVX;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -283,6 +455,8 @@
 			targets = (
 				EE0E714319DCF2CC00247A08 /* IDOLBox */,
 				EE0E715A19DCF2CC00247A08 /* IDOLBoxTests */,
+				EEEFD72619E7FAA30041D1EF /* IDOLBoxAction */,
+				EEEFD73B19E7FB760041D1EF /* IDOLBoxShare */,
 			);
 		};
 /* End PBXProject section */
@@ -306,6 +480,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEFD72519E7FAA30041D1EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEFD72E19E7FAA40041D1EF /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEFD73A19E7FB760041D1EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEFD74319E7FB760041D1EF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +535,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EEEFD72319E7FAA30041D1EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEFD72C19E7FAA40041D1EF /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEEFD73819E7FB760041D1EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEEFD74119E7FB760041D1EF /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -352,6 +558,26 @@
 			isa = PBXTargetDependency;
 			target = EE0E714319DCF2CC00247A08 /* IDOLBox */;
 			targetProxy = EE0E715C19DCF2CC00247A08 /* PBXContainerItemProxy */;
+		};
+		EEEFD73019E7FAA40041D1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEEFD72619E7FAA30041D1EF /* IDOLBoxAction */;
+			targetProxy = EEEFD72F19E7FAA40041D1EF /* PBXContainerItemProxy */;
+		};
+		EEEFD73319E7FAA40041D1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEEFD72619E7FAA30041D1EF /* IDOLBoxAction */;
+			targetProxy = EEEFD73219E7FAA40041D1EF /* PBXContainerItemProxy */;
+		};
+		EEEFD74519E7FB760041D1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEEFD73B19E7FB760041D1EF /* IDOLBoxShare */;
+			targetProxy = EEEFD74419E7FB760041D1EF /* PBXContainerItemProxy */;
+		};
+		EEEFD74819E7FB760041D1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEEFD73B19E7FB760041D1EF /* IDOLBoxShare */;
+			targetProxy = EEEFD74719E7FB760041D1EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -458,10 +684,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IDOLBox/IDOLBox.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = IDOLBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -470,10 +700,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IDOLBox/IDOLBox.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = IDOLBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -512,6 +746,66 @@
 			};
 			name = Release;
 		};
+		EEEFD73519E7FAA40041D1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IDOLBoxAction/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EEEFD73619E7FAA40041D1EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = IDOLBoxAction/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EEEFD74A19E7FB760041D1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = IDOLBoxShare/IDOLBoxShare.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IDOLBoxShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EEEFD74B19E7FB760041D1EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = IDOLBoxShare/IDOLBoxShare.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = IDOLBoxShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -538,6 +832,24 @@
 			buildConfigurations = (
 				EE0E716919DCF2CC00247A08 /* Debug */,
 				EE0E716A19DCF2CC00247A08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEEFD73419E7FAA40041D1EF /* Build configuration list for PBXNativeTarget "IDOLBoxAction" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEEFD73519E7FAA40041D1EF /* Debug */,
+				EEEFD73619E7FAA40041D1EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEEFD74919E7FB760041D1EF /* Build configuration list for PBXNativeTarget "IDOLBoxShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEEFD74A19E7FB760041D1EF /* Debug */,
+				EEEFD74B19E7FB760041D1EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

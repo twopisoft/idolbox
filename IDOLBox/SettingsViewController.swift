@@ -42,15 +42,17 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func save(sender: AnyObject) {
         readControls()
-        var defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(_apiKey, forKey: Constants.kApiKey)
-        defaults.setInteger(_maxResults!, forKey: Constants.kMaxResults)
-        defaults.setObject(_summaryStyle, forKey: Constants.kSummaryStyle)
-        defaults.setObject(_sortStyle, forKey: Constants.kSortStyle)
-        defaults.setBool(_settingsPasscode!, forKey: Constants.kSettingsPasscode)
+        var defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        defaults!.setObject(_apiKey, forKey: Constants.kApiKey)
+        defaults!.setInteger(_maxResults!, forKey: Constants.kMaxResults)
+        defaults!.setObject(_summaryStyle, forKey: Constants.kSummaryStyle)
+        defaults!.setObject(_sortStyle, forKey: Constants.kSortStyle)
+        defaults!.setBool(_settingsPasscode!, forKey: Constants.kSettingsPasscode)
         
-        defaults.setObject(_searchIndexes, forKey: Constants.kSearchIndexes)
-        defaults.setObject(_addIndex, forKey: Constants.kAddIndex)
+        defaults!.setObject(_searchIndexes, forKey: Constants.kSearchIndexes)
+        defaults!.setObject(_addIndex, forKey: Constants.kAddIndex)
+        
+        //defaults!.synchronize()
         
         performSegueWithIdentifier("SettingsSave", sender: self)
     }
@@ -112,14 +114,14 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func loadSettings() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        _apiKey = defaults.valueForKey(Constants.kApiKey) as? String
-        _maxResults = defaults.valueForKey(Constants.kMaxResults) as? Int
-        _summaryStyle = defaults.valueForKey(Constants.kSummaryStyle) as? String
-        _sortStyle = defaults.valueForKey(Constants.kSortStyle) as? String
-        _searchIndexes = defaults.valueForKey(Constants.kSearchIndexes) as? String
-        _addIndex = defaults.valueForKey(Constants.kAddIndex) as? String
-        _settingsPasscode = defaults.valueForKey(Constants.kSettingsPasscode) as? Bool
+        let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
+        _maxResults = defaults!.valueForKey(Constants.kMaxResults) as? Int
+        _summaryStyle = defaults!.valueForKey(Constants.kSummaryStyle) as? String
+        _sortStyle = defaults!.valueForKey(Constants.kSortStyle) as? String
+        _searchIndexes = defaults!.valueForKey(Constants.kSearchIndexes) as? String
+        _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
+        _settingsPasscode = defaults!.valueForKey(Constants.kSettingsPasscode) as? Bool
         
         adjustControls()
     }

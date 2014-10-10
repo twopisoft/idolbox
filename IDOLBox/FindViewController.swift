@@ -18,6 +18,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         readSettings()
         registerForSettingsChange()
     }
@@ -89,24 +90,18 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
-        if keyPath == Constants.kSearchIndexes {
-            _searchIndexes = change[NSKeyValueChangeNewKey]! as? String
-        } else if keyPath == Constants.kApiKey {
-            _apiKey = change[NSKeyValueChangeNewKey]! as? String
-        }
+    private func readSettings() {
+        let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
+        _searchIndexes = defaults!.valueForKey(Constants.kSearchIndexes) as? String
     }
     
-    private func readSettings() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        _apiKey = defaults.valueForKey(Constants.kApiKey) as? String
-        _searchIndexes = defaults.valueForKey(Constants.kSearchIndexes) as? String
+    func settingsChanged(notification : NSNotification!) {
+        readSettings()
     }
     
     private func registerForSettingsChange() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.addObserver(self, forKeyPath: Constants.kSearchIndexes, options: NSKeyValueObservingOptions.New, context: nil)
-        defaults.addObserver(self, forKeyPath: Constants.kApiKey, options: NSKeyValueObservingOptions.New, context: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged:", name: NSUserDefaultsDidChangeNotification, object: nil)
     }
     
     private func readControls() {
