@@ -59,9 +59,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func toggleSecureText(sender: UIButton) {
         self.apiKeyTextField.secureTextEntry = !self.apiKeyTextField.secureTextEntry
         if self.apiKeyTextField.secureTextEntry {
-            sender.setImage(UIImage(named: "unlock"), forState: UIControlState.Normal)
-        } else {
             sender.setImage(UIImage(named: "lock"), forState: UIControlState.Normal)
+        } else {
+            sender.setImage(UIImage(named: "unlock"), forState: UIControlState.Normal)
         }
     }
     

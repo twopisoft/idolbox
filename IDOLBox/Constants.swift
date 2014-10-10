@@ -40,7 +40,7 @@ struct Constants {
     static let HighlightStyleSummarySentence    = "summary_sentences"
     static let HighlightStyleSummaryTerms       = "summary_terms"
     
-    static let PrintFieldDate       = "modified_date"
+    static let PrintFieldDate       = "modified_date,content"
     
     static let SelectIndexSearchSegue   = "SelectIndexSearch"
     static let SelectIndexAddSegue      = "SelectIndexAdd"

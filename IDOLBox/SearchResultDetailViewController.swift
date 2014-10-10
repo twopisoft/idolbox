@@ -72,7 +72,8 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         var fields : [String : String] = ["title"       : data.title,
                                           "reference"   : data.reference,
                                           "index"       : data.index,
-                                           "summary"    : data.summary]
+                                          "summary"     : data.summary,
+                                          "content"     : data.content]
         
         
         

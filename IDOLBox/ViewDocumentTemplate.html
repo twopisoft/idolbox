@@ -4,7 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="style.css" type="text/css">
-  <title></title>  
+  <title></title>
+  
+  <script type="text/javascript">
+      function toggle(id,butid) {
+          var e = document.getElementById(id)
+          var b = document.getElementById(butid)
+          if (e.style.display == 'block') {
+              e.style.display = 'none';
+              b.innerHTML = 'More...'
+          } else {
+              e.style.display = 'block';
+              b.innerHTML = 'Less...'
+          }
+      }
+  </script>
+  
 </head>
 
 <body>
@@ -13,7 +28,6 @@
     <header class="header clearfix">
       <div class="logo"><a href="@reference@">@title@</a></div>
     </header>
-
 
     <div class="info">
       <article class="hero clearfix">
@@ -30,7 +44,17 @@
               <p>@summary@</p>
           </div>
       </article>
-    </div>
+      
+      <div>
+          <button type="button" class="button" id="togbut" onclick="toggle('content','togbut');">More...</button>
+      <div>
+          
+      <article class="article clearfix" id="content" style="display: none;">
+          <div class="col_100">
+              <h2>Content</h2>
+              <p>@content@</p>
+          </div>
+      </article>
 
   </div>
 </body>

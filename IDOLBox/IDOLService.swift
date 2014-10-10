@@ -147,16 +147,20 @@ class IDOLService {
                     
                     if error == nil {
                         var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.convertFromNilLiteral(), error: nil) as NSDictionary
-                        let actions = json["actions"] as NSArray
-                        //NSLog("actions=\(actions)")
-                        for act in actions {
-                            if let a  = act["errors"] as? NSArray {
-                                let code = a[0]["error"] as Int
-                                let msg = a[0]["reason"] as String
-                                return handler!(data: nil,error: self.createError(code, msg: msg))
-                            } else {
-                                handler!(data: data,error: nil)
+                        //NSLog("json=\(json)")
+                        if let actions = json["actions"] as? NSArray {
+                            //NSLog("actions=\(actions)")
+                            for act in actions {
+                                if let a  = act["errors"] as? NSArray {
+                                    let code = a[0]["error"] as Int
+                                    let msg = a[0]["reason"] as String
+                                    return handler!(data: nil,error: self.createError(code, msg: msg))
+                                } else {
+                                    handler!(data: data,error: nil)
+                                }
                             }
+                        } else {
+                            return handler!(data: nil, error: self.createError(ErrCodes.ErrUnknown, msg: "Unknown Error"))
                         }
                     } else {
                         handler!(data: nil, error: error)

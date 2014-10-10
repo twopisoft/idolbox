@@ -122,7 +122,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7k-PY-Rp8">
                                                     <rect key="frame" x="289" y="4" width="22" height="22"/>
-                                                    <state key="normal" image="unlock"/>
+                                                    <state key="normal" image="lock"/>
                                                     <connections>
                                                         <action selector="toggleSecureText:" destination="Zo2-vH-bcx" eventType="touchUpInside" id="BEs-Oy-0oy"/>
                                                     </connections>
@@ -729,11 +729,11 @@
         <image name="backButton" width="22" height="22"/>
         <image name="box" width="22" height="22"/>
         <image name="find" width="22" height="22"/>
+        <image name="lock" width="22" height="22"/>
         <image name="settings" width="22" height="22"/>
-        <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UsL-I9-cgT"/>
         <segue reference="tSH-2g-tRj"/>
+        <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>
