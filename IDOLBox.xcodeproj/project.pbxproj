@@ -12,20 +12,17 @@
 		EE0E715319DCF2CC00247A08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EE0E715619DCF2CC00247A08 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */; };
 		EE0E716219DCF2CC00247A08 /* IDOLBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */; };
+		EE2196FF19E8C0B00027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
+		EE21970F19E8C8600027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
 		EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */; };
 		EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */; };
-		EE48999B19E414BB00BB7977 /* ListIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */; };
-		EE48999D19E44A7500BB7977 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999C19E44A7500BB7977 /* Constants.swift */; };
-		EE4899A019E543ED00BB7977 /* IdolSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */; };
 		EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */; };
-		EE4F669B19E55E70001FFCB5 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */; };
 		EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */; };
 		EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40319E6A8FB005A4D7E /* reset.css */; };
 		EEC9D40619E6A929005A4D7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40519E6A929005A4D7E /* style.css */; };
 		EEC9D40A19E6A99F005A4D7E /* ViewDocumentTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40919E6A99F005A4D7E /* ViewDocumentTemplate.html */; };
 		EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */; };
 		EEC9D41B19E7BCC4005A4D7E /* skin.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D41A19E7BCC4005A4D7E /* skin.css */; };
-		EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECE47F019E3B3F600981656 /* ErrorReporter.swift */; };
 		EEEFD72C19E7FAA40041D1EF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */; };
 		EEEFD72E19E7FAA40041D1EF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEEFD72D19E7FAA40041D1EF /* MainInterface.storyboard */; };
 		EEEFD73119E7FAA40041D1EF /* IDOLBoxAction.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -35,10 +32,6 @@
 		EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */; };
 		EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC619E3789300F718F8 /* FindViewController.swift */; };
 		EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */; };
-		EEF9DECD19E3A3FA00F718F8 /* IDOLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */; };
-		EEF9DED019E3A48000F718F8 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DECF19E3A48000F718F8 /* DBHelper.swift */; };
-		EEF9DED319E3A53800F718F8 /* IDOLBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */; };
-		EEF9DED519E3A59B00F718F8 /* IdolIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +41,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = EE0E714319DCF2CC00247A08;
 			remoteInfo = IDOLBox;
+		};
+		EE2196F919E8BF760027B190 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE2196D819E8BF750027B190;
+			remoteInfo = IDOLBoxFramework;
+		};
+		EE2196FB19E8BF760027B190 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE2196E319E8BF750027B190;
+			remoteInfo = IDOLBoxFrameworkTests;
 		};
 		EEEFD72F19E7FAA40041D1EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -104,20 +111,16 @@
 		EE0E715B19DCF2CC00247A08 /* IDOLBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDOLBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0E716019DCF2CC00247A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDOLBoxTests.swift; sourceTree = "<group>"; };
+		EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IDOLBoxFramework.xcodeproj; path = IDOLBoxFramework/IDOLBoxFramework.xcodeproj; sourceTree = "<group>"; };
 		EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
 		EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
-		EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListIndexResponseParser.swift; sourceTree = "<group>"; };
-		EE48999C19E44A7500BB7977 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearchResults.swift; sourceTree = "<group>"; };
 		EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
-		EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
 		EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
 		EEC9D40319E6A8FB005A4D7E /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
 		EEC9D40519E6A929005A4D7E /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		EEC9D40919E6A99F005A4D7E /* ViewDocumentTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ViewDocumentTemplate.html; sourceTree = "<group>"; };
 		EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDocumentTemplateProcessor.swift; sourceTree = "<group>"; };
 		EEC9D41A19E7BCC4005A4D7E /* skin.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = skin.css; sourceTree = "<group>"; };
-		EECE47F019E3B3F600981656 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
 		EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IDOLBoxAction.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEFD72A19E7FAA40041D1EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
@@ -131,10 +134,6 @@
 		EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EEF9DEC619E3789300F718F8 /* FindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindViewController.swift; sourceTree = "<group>"; };
 		EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIndexTableViewController.swift; sourceTree = "<group>"; };
-		EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDOLService.swift; sourceTree = "<group>"; };
-		EEF9DECF19E3A48000F718F8 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
-		EEF9DED219E3A53800F718F8 /* IDOLBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDOLBox.xcdatamodel; sourceTree = "<group>"; };
-		EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolIndexes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE2196FF19E8C0B00027B190 /* IDOLBoxFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE21970F19E8C8600027B190 /* IDOLBoxFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +173,7 @@
 		EE0E713B19DCF2CC00247A08 = {
 			isa = PBXGroup;
 			children = (
+				EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */,
 				EE0E714619DCF2CC00247A08 /* IDOLBox */,
 				EE0E715E19DCF2CC00247A08 /* IDOLBoxTests */,
 				EEEFD72819E7FAA40041D1EF /* IDOLBoxAction */,
@@ -195,9 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				EEEFD75019E821810041D1EF /* IDOLBox.entitlements */,
-				EE48999E19E5206C00BB7977 /* Data */,
 				EEF9DECE19E3A47600F718F8 /* Helpers */,
-				EEF9DECB19E3A3AF00F718F8 /* IDOL */,
 				EEF9DECA19E3A3A500F718F8 /* UI */,
 				EE0E714719DCF2CC00247A08 /* Supporting Files */,
 			);
@@ -232,14 +232,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EE48999E19E5206C00BB7977 /* Data */ = {
+		EE2196F519E8BF750027B190 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EEF9DED419E3A59B00F718F8 /* IdolIndexes.swift */,
-				EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */,
-				EE48999F19E543ED00BB7977 /* IdolSearchResults.swift */,
+				EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */,
+				EE2196FC19E8BF760027B190 /* IDOLBoxFrameworkTests.xctest */,
 			);
-			name = Data;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EEC9D40219E6A8C4005A4D7E /* css */ = {
@@ -305,22 +304,9 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		EEF9DECB19E3A3AF00F718F8 /* IDOL */ = {
-			isa = PBXGroup;
-			children = (
-				EEF9DECC19E3A3FA00F718F8 /* IDOLService.swift */,
-				EE48999A19E414BB00BB7977 /* ListIndexResponseParser.swift */,
-				EE4F669A19E55E70001FFCB5 /* SearchResultParser.swift */,
-			);
-			name = IDOL;
-			sourceTree = "<group>";
-		};
 		EEF9DECE19E3A47600F718F8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				EE48999C19E44A7500BB7977 /* Constants.swift */,
-				EEF9DECF19E3A48000F718F8 /* DBHelper.swift */,
-				EECE47F019E3B3F600981656 /* ErrorReporter.swift */,
 				EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */,
 				EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */,
 			);
@@ -451,6 +437,12 @@
 			mainGroup = EE0E713B19DCF2CC00247A08;
 			productRefGroup = EE0E714519DCF2CC00247A08 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EE2196F519E8BF750027B190 /* Products */;
+					ProjectRef = EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EE0E714319DCF2CC00247A08 /* IDOLBox */,
@@ -460,6 +452,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IDOLBoxFramework.framework;
+			remoteRef = EE2196F919E8BF760027B190 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EE2196FC19E8BF760027B190 /* IDOLBoxFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = IDOLBoxFrameworkTests.xctest;
+			remoteRef = EE2196FB19E8BF760027B190 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EE0E714219DCF2CC00247A08 /* Resources */ = {
@@ -507,22 +516,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */,
-				EEF9DED519E3A59B00F718F8 /* IdolIndexes.swift in Sources */,
 				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
-				EECE47F119E3B3F600981656 /* ErrorReporter.swift in Sources */,
-				EE4899A019E543ED00BB7977 /* IdolSearchResults.swift in Sources */,
-				EE4F669B19E55E70001FFCB5 /* SearchResultParser.swift in Sources */,
-				EE48999B19E414BB00BB7977 /* ListIndexResponseParser.swift in Sources */,
 				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,
-				EEF9DED019E3A48000F718F8 /* DBHelper.swift in Sources */,
-				EE48999D19E44A7500BB7977 /* Constants.swift in Sources */,
 				EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */,
-				EEF9DED319E3A53800F718F8 /* IDOLBox.xcdatamodeld in Sources */,
 				EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */,
 				EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */,
 				EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */,
 				EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */,
-				EEF9DECD19E3A3FA00F718F8 /* IDOLService.swift in Sources */,
 				EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -855,19 +855,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		EEF9DED119E3A53800F718F8 /* IDOLBox.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EEF9DED219E3A53800F718F8 /* IDOLBox.xcdatamodel */,
-			);
-			currentVersion = EEF9DED219E3A53800F718F8 /* IDOLBox.xcdatamodel */;
-			path = IDOLBox.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = EE0E713C19DCF2CC00247A08 /* Project object */;
 }

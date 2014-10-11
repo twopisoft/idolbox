@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 import CoreData
 
 class IdolSearchResults: NSManagedObject {
@@ -19,4 +19,4 @@ class IdolSearchResults: NSManagedObject {
     @NSManaged var content: String
     @NSManaged var moddate: NSDate
 
-}
+}*/

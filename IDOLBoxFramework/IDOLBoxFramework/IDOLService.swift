@@ -1,26 +1,27 @@
 //
 //  IDOLService.swift
-//  IDOLBox
+//  IDOLBoxFramework
 //
-//  Created by TwoPi on 19/9/14.
+//  Created by TwoPi on 11/10/14.
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-//import Foundation
-//import CoreData
+import Foundation
+
+import CoreData
 
 // Central class for carrying out communication with HP IDOL OnDemand webservices
 // Designed as a singleton.
 // Completely uses async requests
 
-/*class IDOLService {
+public class IDOLService {
     
-    typealias FileMeta          = (path:String,name:String,isDir:Bool)
-    typealias ResponseHandler   = (data:NSData?, error:NSError?) -> ()
-    typealias JobRespHandler    = (jobId:String?, jobError:NSError?) -> ()
+    public typealias FileMeta          = (path:String,name:String,isDir:Bool)
+    public typealias ResponseHandler   = (data:NSData?, error:NSError?) -> ()
+    public typealias JobRespHandler    = (jobId:String?, jobError:NSError?) -> ()
     
     // MARK: Inner Class and Structs
-    class var sharedInstance : IDOLService {
+    public class var sharedInstance : IDOLService {
         struct Singleton {
             static let instance = IDOLService()
         }
@@ -50,7 +51,7 @@
     // MARK: - IDOL Service
     // Method to invoke List Index service and get back the results to caller in a completion handler
     
-    func fetchIndexList(apiKey:String, completionHandler handler: ResponseHandler?) {
+    public func fetchIndexList(apiKey:String, completionHandler handler: ResponseHandler?) {
         // First submit the async job and get back the job id
         submitAsyncJob(_URLS.listIndexUrl + apiKey, completionHandler: { (jobId: String?,jobErr: NSError?) in
             // Then process the job result
@@ -59,7 +60,7 @@
     }
     
     // Method to upload documents to an IDOL index using the Add to Index service
-    func uploadDocsToIndex(apiKey:String, dirPath : String, indexName: String, completionHandler handler: ResponseHandler?) {
+    public func uploadDocsToIndex(apiKey:String, dirPath : String, indexName: String, completionHandler handler: ResponseHandler?) {
         
         // Dipatch the request on a background thread
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
@@ -78,7 +79,7 @@
     }
     
     // Method to invoke IDOL Find Similar Documents API when user has provided a keyword term
-    func findSimilarDocs(apiKey:String, text: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
+    public func findSimilarDocs(apiKey:String, text: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
         
         // For keyword term search, we make use of HTTP GET request
         var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&text=" + encodeStr(text) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
@@ -91,7 +92,7 @@
     }
 
     // Method to invoke IDOL Find Similar Documents API when user has provided a url
-    func findSimilarDocsUrl(apiKey:String, url: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
+    public func findSimilarDocsUrl(apiKey:String, url: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
     
         // For keyword term search, we make use of HTTP GET request
         var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&url=" + encodeStr(url) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
@@ -104,7 +105,7 @@
     }
     
     // Method to invoke IDOL Find Similar Documents API when user has provided a file
-    func findSimilarDocsFile(apiKey:String, fileName: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
+    public func findSimilarDocsFile(apiKey:String, fileName: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
         
         // For file requests, create a HTTP POST request
         var request = createFindSimilarFileRequest(fileName, indexName: indexName, apiKey: apiKey, searchParams: searchParams)
@@ -366,4 +367,4 @@
     private func createError(code: Int, msg: String) -> NSError {
        return NSError(domain: "IDOLService", code: code, userInfo: ["Description":msg])
     }
-}*/
+}

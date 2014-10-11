@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IDOLBoxFramework
 
 class SelectIndexTableViewController: UITableViewController {
 
@@ -68,7 +69,7 @@ class SelectIndexTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("selectIndexCell", forIndexPath: indexPath) as UITableViewCell
         
-        let obj = fetchController().objectAtIndexPath(indexPath) as IdolIndexes
+        let obj = fetchController().objectAtIndexPath(indexPath) as IdolIndex
         cell.textLabel!.text = obj.name
         if let i = find(self.selectedIndexes, obj.name) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -123,7 +124,7 @@ class SelectIndexTableViewController: UITableViewController {
     }
     
     func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
-        let obj = controller.objectAtIndexPath(indexPath) as IdolIndexes
+        let obj = controller.objectAtIndexPath(indexPath) as IdolIndex
         
         cell.textLabel!.text = obj.name
         
@@ -170,7 +171,7 @@ class SelectIndexTableViewController: UITableViewController {
             let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "name", ascending: true)]
             let filterPredicate = !self.multiSelect ? NSPredicate(format: "isPublic=%@", argumentArray: [self.multiSelect]) : nil
             var fetchRequest = NSFetchRequest()
-            let entity = NSEntityDescription.entityForName("IdolIndexes", inManagedObjectContext: self.managedObjectContext)
+            let entity = NSEntityDescription.entityForName("IdolIndex", inManagedObjectContext: self.managedObjectContext)
             fetchRequest.entity = entity
             fetchRequest.sortDescriptors = sortDescriptors
             fetchRequest.predicate = filterPredicate

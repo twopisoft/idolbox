@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE2196DE19E8BF750027B190 /* IDOLBoxFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EE2196DD19E8BF750027B190 /* IDOLBoxFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EE2196E419E8BF750027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196D819E8BF750027B190 /* IDOLBoxFramework.framework */; };
+		EE2196EB19E8BF750027B190 /* IDOLBoxFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2196EA19E8BF750027B190 /* IDOLBoxFrameworkTests.swift */; };
+		EE2196FE19E8C0000027B190 /* IDOLService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2196FD19E8C0000027B190 /* IDOLService.swift */; };
+		EE21970219E8C6420027B190 /* ListIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970119E8C6420027B190 /* ListIndexResponseParser.swift */; };
+		EE21970419E8C64E0027B190 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970319E8C64E0027B190 /* SearchResultParser.swift */; };
+		EE21970719E8C7810027B190 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970619E8C7810027B190 /* Constants.swift */; };
+		EE21970919E8C78A0027B190 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970819E8C78A0027B190 /* DBHelper.swift */; };
+		EE5170ED19E8CA7500322AC5 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */; };
+		EE5170F519E8D4A100322AC5 /* IDOLBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */; };
+		EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F619E8D6A900322AC5 /* IdolIndex.swift */; };
+		EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE2196E519E8BF750027B190 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE2196CF19E8BF750027B190 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE2196D719E8BF750027B190;
+			remoteInfo = IDOLBoxFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EE2196D819E8BF750027B190 /* IDOLBoxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IDOLBoxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE2196DC19E8BF750027B190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE2196DD19E8BF750027B190 /* IDOLBoxFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDOLBoxFramework.h; sourceTree = "<group>"; };
+		EE2196E319E8BF750027B190 /* IDOLBoxFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDOLBoxFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE2196E919E8BF750027B190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE2196EA19E8BF750027B190 /* IDOLBoxFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDOLBoxFrameworkTests.swift; sourceTree = "<group>"; };
+		EE2196FD19E8C0000027B190 /* IDOLService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDOLService.swift; sourceTree = "<group>"; };
+		EE21970119E8C6420027B190 /* ListIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListIndexResponseParser.swift; sourceTree = "<group>"; };
+		EE21970319E8C64E0027B190 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
+		EE21970619E8C7810027B190 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EE21970819E8C78A0027B190 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
+		EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDOLBox.xcdatamodel; sourceTree = "<group>"; };
+		EE5170F619E8D6A900322AC5 /* IdolIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolIndex.swift; sourceTree = "<group>"; };
+		EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearchResult.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE2196D419E8BF750027B190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE2196E019E8BF750027B190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE2196E419E8BF750027B190 /* IDOLBoxFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE2196CE19E8BF750027B190 = {
+			isa = PBXGroup;
+			children = (
+				EE2196DA19E8BF750027B190 /* IDOLBoxFramework */,
+				EE2196E719E8BF750027B190 /* IDOLBoxFrameworkTests */,
+				EE2196D919E8BF750027B190 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE2196D919E8BF750027B190 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE2196D819E8BF750027B190 /* IDOLBoxFramework.framework */,
+				EE2196E319E8BF750027B190 /* IDOLBoxFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE2196DA19E8BF750027B190 /* IDOLBoxFramework */ = {
+			isa = PBXGroup;
+			children = (
+				EE21970A19E8C7AF0027B190 /* Data */,
+				EE21970519E8C6560027B190 /* Helpers */,
+				EE21970019E8C61A0027B190 /* IDOL */,
+				EE2196DD19E8BF750027B190 /* IDOLBoxFramework.h */,
+				EE2196DB19E8BF750027B190 /* Supporting Files */,
+			);
+			path = IDOLBoxFramework;
+			sourceTree = "<group>";
+		};
+		EE2196DB19E8BF750027B190 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE2196DC19E8BF750027B190 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EE2196E719E8BF750027B190 /* IDOLBoxFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE2196EA19E8BF750027B190 /* IDOLBoxFrameworkTests.swift */,
+				EE2196E819E8BF750027B190 /* Supporting Files */,
+			);
+			path = IDOLBoxFrameworkTests;
+			sourceTree = "<group>";
+		};
+		EE2196E819E8BF750027B190 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE2196E919E8BF750027B190 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EE21970019E8C61A0027B190 /* IDOL */ = {
+			isa = PBXGroup;
+			children = (
+				EE21970319E8C64E0027B190 /* SearchResultParser.swift */,
+				EE21970119E8C6420027B190 /* ListIndexResponseParser.swift */,
+				EE2196FD19E8C0000027B190 /* IDOLService.swift */,
+			);
+			name = IDOL;
+			sourceTree = "<group>";
+		};
+		EE21970519E8C6560027B190 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */,
+				EE21970619E8C7810027B190 /* Constants.swift */,
+				EE21970819E8C78A0027B190 /* DBHelper.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		EE21970A19E8C7AF0027B190 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */,
+				EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */,
+				EE5170F619E8D6A900322AC5 /* IdolIndex.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EE2196D519E8BF750027B190 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE2196DE19E8BF750027B190 /* IDOLBoxFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EE2196D719E8BF750027B190 /* IDOLBoxFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE2196EE19E8BF750027B190 /* Build configuration list for PBXNativeTarget "IDOLBoxFramework" */;
+			buildPhases = (
+				EE2196D319E8BF750027B190 /* Sources */,
+				EE2196D419E8BF750027B190 /* Frameworks */,
+				EE2196D519E8BF750027B190 /* Headers */,
+				EE2196D619E8BF750027B190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IDOLBoxFramework;
+			productName = IDOLBoxFramework;
+			productReference = EE2196D819E8BF750027B190 /* IDOLBoxFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EE2196E219E8BF750027B190 /* IDOLBoxFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE2196F119E8BF750027B190 /* Build configuration list for PBXNativeTarget "IDOLBoxFrameworkTests" */;
+			buildPhases = (
+				EE2196DF19E8BF750027B190 /* Sources */,
+				EE2196E019E8BF750027B190 /* Frameworks */,
+				EE2196E119E8BF750027B190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE2196E619E8BF750027B190 /* PBXTargetDependency */,
+			);
+			name = IDOLBoxFrameworkTests;
+			productName = IDOLBoxFrameworkTests;
+			productReference = EE2196E319E8BF750027B190 /* IDOLBoxFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE2196CF19E8BF750027B190 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = TwoPi;
+				TargetAttributes = {
+					EE2196D719E8BF750027B190 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EE2196E219E8BF750027B190 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = EE2196D219E8BF750027B190 /* Build configuration list for PBXProject "IDOLBoxFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EE2196CE19E8BF750027B190;
+			productRefGroup = EE2196D919E8BF750027B190 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE2196D719E8BF750027B190 /* IDOLBoxFramework */,
+				EE2196E219E8BF750027B190 /* IDOLBoxFrameworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE2196D619E8BF750027B190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE2196E119E8BF750027B190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE2196D319E8BF750027B190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE21970219E8C6420027B190 /* ListIndexResponseParser.swift in Sources */,
+				EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */,
+				EE2196FE19E8C0000027B190 /* IDOLService.swift in Sources */,
+				EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */,
+				EE21970919E8C78A0027B190 /* DBHelper.swift in Sources */,
+				EE5170ED19E8CA7500322AC5 /* ErrorReporter.swift in Sources */,
+				EE5170F519E8D4A100322AC5 /* IDOLBox.xcdatamodeld in Sources */,
+				EE21970419E8C64E0027B190 /* SearchResultParser.swift in Sources */,
+				EE21970719E8C7810027B190 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE2196DF19E8BF750027B190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE2196EB19E8BF750027B190 /* IDOLBoxFrameworkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE2196E619E8BF750027B190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE2196D719E8BF750027B190 /* IDOLBoxFramework */;
+			targetProxy = EE2196E519E8BF750027B190 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EE2196EC19E8BF750027B190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EE2196ED19E8BF750027B190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EE2196EF19E8BF750027B190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IDOLBoxFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EE2196F019E8BF750027B190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IDOLBoxFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EE2196F219E8BF750027B190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IDOLBoxFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE2196F319E8BF750027B190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IDOLBoxFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE2196D219E8BF750027B190 /* Build configuration list for PBXProject "IDOLBoxFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE2196EC19E8BF750027B190 /* Debug */,
+				EE2196ED19E8BF750027B190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE2196EE19E8BF750027B190 /* Build configuration list for PBXNativeTarget "IDOLBoxFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE2196EF19E8BF750027B190 /* Debug */,
+				EE2196F019E8BF750027B190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE2196F119E8BF750027B190 /* Build configuration list for PBXNativeTarget "IDOLBoxFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE2196F219E8BF750027B190 /* Debug */,
+				EE2196F319E8BF750027B190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */,
+			);
+			currentVersion = EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */;
+			path = IDOLBox.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EE2196CF19E8BF750027B190 /* Project object */;
+}

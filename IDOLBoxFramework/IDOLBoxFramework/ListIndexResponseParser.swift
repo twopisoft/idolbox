@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-/*import UIKit
+import UIKit
 
 public class ListIndexResponseParser: NSObject {
  
@@ -36,4 +36,4 @@ public class ListIndexResponseParser: NSObject {
         }
         return indexes
     }
-}*/
+}

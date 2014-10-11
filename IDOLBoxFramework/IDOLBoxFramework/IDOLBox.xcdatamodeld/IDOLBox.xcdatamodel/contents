@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6248" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="IdolIndexes" representedClassName="IDOLBox.IdolIndexes" syncable="YES">
+    <entity name="IdolIndex" representedClassName="IDOLBoxFramework.IdolIndex" syncable="YES">
+        <attribute name="createdate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="flavor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isPublic" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="moddate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="IdolSearchResults" representedClassName="IDOLBox.IdolSearchResults" syncable="YES">
+    <entity name="IdolSearchResult" representedClassName="IDOLBoxFramework.IdolSearchResult" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="moddate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -16,7 +18,7 @@
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="IdolIndexes" positionX="-63" positionY="-18" width="128" height="105"/>
-        <element name="IdolSearchResults" positionX="-63" positionY="9" width="128" height="150"/>
+        <element name="IdolIndex" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="IdolSearchResult" positionX="-54" positionY="-9" width="128" height="148"/>
     </elements>
 </model>

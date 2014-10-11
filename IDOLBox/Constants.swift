@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 
-struct Constants {
+public struct Constants {
     static let kApiKey              = "IDOL_APIKey"
     static let kMaxResults          = "IDOL_MaxResults"
     static let kSummaryStyle        = "IDOL_SummaryStyle"
@@ -52,4 +52,4 @@ struct Constants {
     static let SearchResultDetailSegue  = "SearchResultDetail"
     
     static let DefaultSearchIndex       = "wiki_eng"
-}
+}*/

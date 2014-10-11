@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreData
+import IDOLBoxFramework
 
 class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
 
     var managedObjectContext : NSManagedObjectContext!
-    var selectedItem : IdolSearchResults?
+    var selectedItem : IdolSearchResult?
     
     @IBOutlet weak var detailWebView: UIWebView!
     
@@ -67,7 +68,7 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         self.reloadButton.enabled = !self.detailWebView.loading
     }
     
-    private func processTemplate(data : IdolSearchResults) -> String {
+    private func processTemplate(data : IdolSearchResult) -> String {
         
         var fields : [String : String] = ["title"       : data.title,
                                           "reference"   : data.reference,

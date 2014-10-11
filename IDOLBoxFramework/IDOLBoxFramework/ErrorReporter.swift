@@ -6,15 +6,11 @@
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-/*import UIKit
+import UIKit
 
 public class ErrorReporter: NSObject {
     
-    typealias alertHanlder = () -> ()
-    
-    private struct Services {
-        static let IDOLService = "IDOLService"
-    }
+    public typealias alertHanlder = () -> ()
     
     public class func apiKeyNotSet(controller: UIViewController, handler : alertHanlder? = nil) {
         showAlertView(controller, title: "Please set the API Key", message: nil, alertHandler: handler)
@@ -41,7 +37,7 @@ public class ErrorReporter: NSObject {
     public class func showErrorAlert(controller : UIViewController, error: NSError, handler : alertHanlder? = nil) {
         var title = ""
         var desc = ""
-        if error.domain == Services.IDOLService {
+        if error.domain == Constants.IDOLService {
             title = "IDOLService Error"
             desc = error.userInfo!["Description"]! as String + "\nCode: \(error.code)"
         } else {
@@ -52,4 +48,4 @@ public class ErrorReporter: NSObject {
         showAlertView(controller, title: title, message: desc, alertHandler: handler)
     }
    
-}*/
+}

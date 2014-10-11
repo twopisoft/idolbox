@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IDOLBoxFramework
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
     

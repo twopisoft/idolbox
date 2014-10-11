@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-/*import UIKit
+import UIKit
 
-class SearchResultParser: NSObject {
+public class SearchResultParser: NSObject {
    
-    class func parseResponse(data:NSData?) -> [DBHelper.ResultTuple] {
+    public class func parseResponse(data:NSData?) -> [DBHelper.ResultTuple] {
         let json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         
         var searchResults : [DBHelper.ResultTuple] = []
@@ -78,4 +78,4 @@ class SearchResultParser: NSObject {
         
         return searchResults
     }
-}*/
+}

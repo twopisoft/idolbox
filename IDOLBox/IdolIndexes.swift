@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 import CoreData
 
 class IdolIndexes: NSManagedObject {
@@ -16,4 +16,4 @@ class IdolIndexes: NSManagedObject {
     @NSManaged var info: String
     @NSManaged var flavor: String
 
-}
+}*/

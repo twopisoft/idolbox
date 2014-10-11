@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IDOLBoxFramework
 
 class SearchResultTableViewController: UITableViewController {
     
@@ -16,7 +17,7 @@ class SearchResultTableViewController: UITableViewController {
     var managedObjectContext : NSManagedObjectContext!
     var selectedIndexes : [String] = []
     
-    private var _selectedItem : IdolSearchResults? = nil
+    private var _selectedItem : IdolSearchResult? = nil
     
     @IBOutlet var indexTableView: UITableView!
     
@@ -98,7 +99,7 @@ class SearchResultTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        _selectedItem = fetchController().objectAtIndexPath(indexPath) as? IdolSearchResults
+        _selectedItem = fetchController().objectAtIndexPath(indexPath) as? IdolSearchResult
         
         if _selectedItem != nil {
             performSegueWithIdentifier(Constants.SearchResultDetailSegue, sender: self)
@@ -106,7 +107,7 @@ class SearchResultTableViewController: UITableViewController {
     }
     
     func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
-        let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResults
+        let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResult
         
         cell.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
         cell.detailTextLabel!.text = obj.reference
@@ -119,7 +120,7 @@ class SearchResultTableViewController: UITableViewController {
             let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "weight", ascending: true)]
             
             var fetchRequest = NSFetchRequest()
-            let entity = NSEntityDescription.entityForName("IdolSearchResults", inManagedObjectContext: self.managedObjectContext)
+            let entity = NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: self.managedObjectContext)
             fetchRequest.entity = entity
             fetchRequest.sortDescriptors = sortDescriptors
             
