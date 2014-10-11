@@ -67,7 +67,7 @@ public class SearchResultParser: NSObject {
                             }
                             
                             let entry : DBHelper.ResultTuple = (title,reference,weight,index,moddate,summary,content)
-                            //NSLog("entry=\(entry)")
+                            //NSLog("summary=\(summary)")
                             searchResults.append(entry)
                             
                         }

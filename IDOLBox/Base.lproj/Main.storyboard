@@ -383,7 +383,7 @@ Attributions:  Icons made by Freepik from
 http://www.flaticon.com
 licensed under CC BY 3.0
 
-CSS Skins from 
+CSS stylesheets from 
 http://cssr.ru/simpliste</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -426,7 +426,7 @@ http://cssr.ru/simpliste</string>
             <objects>
                 <tableViewController title="Select Index" id="Hq9-Uq-NoV" customClass="SelectIndexTableViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VPP-sb-4nI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -509,11 +509,19 @@ http://cssr.ru/simpliste</string>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tDq-qo-T61" id="RAP-KC-sp2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Search Text or URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yis-6v-dAR">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8o-I6-K9t">
+                                                    <rect key="frame" x="560" y="11" width="22" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Nue-CI-EMY"/>
+                                                        <constraint firstAttribute="width" constant="22" id="7bc-gb-rma"/>
                                                     </constraints>
+                                                    <state key="normal" image="rightarrow"/>
+                                                    <connections>
+                                                        <action selector="search:" destination="Skm-hQ-Asx" eventType="touchUpInside" id="RTh-I4-Qn5"/>
+                                                        <action selector="search:" destination="Skm-hQ-Asx" eventType="touchUpOutside" id="aed-H4-ibN"/>
+                                                    </connections>
+                                                </button>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Search Text or URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yis-6v-dAR">
+                                                    <rect key="frame" x="21" y="8" width="531" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search"/>
                                                     <connections>
@@ -522,9 +530,11 @@ http://cssr.ru/simpliste</string>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="yis-6v-dAR" secondAttribute="trailing" constant="8" id="kKF-SY-doe"/>
-                                                <constraint firstItem="yis-6v-dAR" firstAttribute="leading" secondItem="RAP-KC-sp2" secondAttribute="leading" constant="8" id="lGT-5H-5Tj"/>
-                                                <constraint firstItem="yis-6v-dAR" firstAttribute="top" secondItem="RAP-KC-sp2" secondAttribute="top" constant="7" id="yh5-9i-zxD"/>
+                                                <constraint firstItem="g8o-I6-K9t" firstAttribute="top" secondItem="RAP-KC-sp2" secondAttribute="topMargin" constant="3" id="Exl-cV-22R"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="g8o-I6-K9t" secondAttribute="trailing" constant="10" id="V5D-bc-c7n"/>
+                                                <constraint firstItem="yis-6v-dAR" firstAttribute="leading" secondItem="RAP-KC-sp2" secondAttribute="leadingMargin" constant="13" id="WnI-Gv-sjy"/>
+                                                <constraint firstItem="yis-6v-dAR" firstAttribute="top" secondItem="RAP-KC-sp2" secondAttribute="topMargin" id="aIJ-gE-LlX"/>
+                                                <constraint firstItem="g8o-I6-K9t" firstAttribute="leading" secondItem="yis-6v-dAR" secondAttribute="trailing" constant="8" symbolic="YES" id="kQY-Jg-G0Z"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -566,13 +576,14 @@ http://cssr.ru/simpliste</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchButton" destination="g8o-I6-K9t" id="xta-Ie-klb"/>
                         <outlet property="searchTextField" destination="yis-6v-dAR" id="Cn2-e4-vYT"/>
                         <segue destination="7VY-GP-Vc0" kind="show" identifier="SearchResult" id="3xq-Zn-PGt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aea-A3-gFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="1965"/>
+            <point key="canvasLocation" x="-30" y="1959"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="0UX-dJ-YnK">
@@ -846,10 +857,11 @@ http://cssr.ru/simpliste</string>
         <image name="find" width="22" height="22"/>
         <image name="hp-idol" width="150" height="27"/>
         <image name="lock" width="22" height="22"/>
+        <image name="rightarrow" width="22" height="22"/>
         <image name="settings" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="UsL-I9-cgT"/>
         <segue reference="tSH-2g-tRj"/>
-        <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>

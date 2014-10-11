@@ -17,6 +17,8 @@
 		EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */; };
 		EE48999919E4137800BB7977 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE48999819E4137800BB7977 /* FetchedResultsControllerDelegate.swift */; };
 		EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */; };
+		EE54352619E908C90037A6D6 /* IDOLBoxFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EE54352719E915F00037A6D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */; };
 		EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40319E6A8FB005A4D7E /* reset.css */; };
 		EEC9D40619E6A929005A4D7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40519E6A929005A4D7E /* style.css */; };
@@ -87,6 +89,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		EE54352319E908B50037A6D6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EE54352619E908C90037A6D6 /* IDOLBoxFramework.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEEFD73719E7FAA40041D1EF /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,6 +336,7 @@
 				EE0E714119DCF2CC00247A08 /* Frameworks */,
 				EE0E714219DCF2CC00247A08 /* Resources */,
 				EEEFD73719E7FAA40041D1EF /* Embed App Extensions */,
+				EE54352319E908B50037A6D6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -504,6 +517,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE54352719E915F00037A6D6 /* Images.xcassets in Resources */,
 				EEEFD74319E7FB760041D1EF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -773,7 +787,7 @@
 		EEEFD74A19E7FB760041D1EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = IDOLBoxShare/IDOLBoxShare.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -793,7 +807,7 @@
 		EEEFD74B19E7FB760041D1EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = IDOLBoxShare/IDOLBoxShare.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

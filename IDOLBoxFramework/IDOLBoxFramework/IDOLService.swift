@@ -45,6 +45,13 @@ public class IDOLService {
         static let ErrAPIKeyInvalid     = -10003
     }
     
+    private lazy var sessionConfig : NSURLSessionConfiguration = {
+        let configName = "com.twopi.IDOLBox"
+        let sessionConfig = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(configName)
+        sessionConfig.sharedContainerIdentifier = "group.com.twopi.IDOLBox"
+        return sessionConfig
+    }()
+    
     // For HTTP parameter boundary
     private let Boundary = "---------------------------" + NSUUID().UUIDString
     
@@ -60,7 +67,7 @@ public class IDOLService {
     }
     
     // Method to upload documents to an IDOL index using the Add to Index service
-    public func uploadDocsToIndex(apiKey:String, dirPath : String, indexName: String, completionHandler handler: ResponseHandler?) {
+    public func addToIndexFile(apiKey:String, dirPath : String, indexName: String, completionHandler handler: ResponseHandler?) {
         
         // Dipatch the request on a background thread
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
@@ -72,6 +79,19 @@ public class IDOLService {
             
             // Submit the async job
             self.submitAsyncJob(postRequest, completionHandler: { (jobId: String?,jobErr: NSError?) in
+                // Then process the job result
+                self.processJobResult(apiKey, jobId: jobId, jobErr: jobErr, handler: handler)
+            })
+        })
+    }
+    
+    public func addToIndexUrl(apiKey:String, url:String, index:String, completionHandler handler: ResponseHandler?) {
+        
+        // Dipatch the request on a background thread
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+            let reqUrl = _URLS.addToIndexUrl + "?apikey=" + apiKey + "&url=" + self.encodeStr(url) + "&index=" + self.encodeStr(index)
+            // Submit the async job
+            self.submitAsyncJob(reqUrl, completionHandler: { (jobId: String?,jobErr: NSError?) in
                 // Then process the job result
                 self.processJobResult(apiKey, jobId: jobId, jobErr: jobErr, handler: handler)
             })
@@ -196,6 +216,26 @@ public class IDOLService {
             }
             
         })
+    }
+    
+    private func submitAsyncJobWithSession(request : NSURLRequest, completionHandler handler: JobRespHandler) {
+        let session = NSURLSession(configuration: self.sessionConfig)
+        let task = session.dataTaskWithRequest(request, completionHandler: { (data : NSData!, response : NSURLResponse!, error : NSError!) in
+            
+            if error == nil {
+                var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                //NSLog("jobId response=\(json)")
+                if let jobId = json["jobID"] as? String { // Handle the jobId response
+                    handler(jobId: jobId,jobError: nil)
+                } else if json["details"] != nil {  // Handle the error response
+                    handler(jobId: nil,jobError: self.createError(json))
+                }
+            } else {
+                NSLog("Job submission error: \(error)")
+                handler(jobId: nil,jobError: self.createError(error))
+            }
+        })
+        task.resume()
     }
     
     // Convenience method. Mainly used for GET requests

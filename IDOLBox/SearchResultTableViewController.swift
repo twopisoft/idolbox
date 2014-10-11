@@ -190,7 +190,7 @@ class SearchResultTableViewController: UITableViewController {
     private func getSearchParams() -> [String:String] {
         var ret : [String:String] = [:]
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults : NSUserDefaults! = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
         
         if let maxResults = defaults.valueForKey(Constants.kMaxResults) as? Int {
             ret[Constants.MaxResultParam] = "\(maxResults)"

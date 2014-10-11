@@ -12,6 +12,7 @@ import IDOLBoxFramework
 class FindViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     private var _apiKey : String? = nil
     private var _searchIndexes : String? = nil
@@ -31,18 +32,22 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 1 {
-            self.searchTextField.becomeFirstResponder()
+            self.searchButton.becomeFirstResponder()
         }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.searchTextField.resignFirstResponder()
         
+        search(self)
+        return true
+    }
+    
+    @IBAction func search(sender: AnyObject) {
         readControls()
         if !_searchTerm!.isEmpty {
             performSegueWithIdentifier(Constants.SearchResultSegue, sender: self)
         }
-        return true
     }
     
     @IBAction func unwindFromSettings(segue : UIStoryboardSegue) {
@@ -83,7 +88,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
             var viewController = navController.topViewController as SearchResultTableViewController
             viewController.apiKey = _apiKey
             if let si = _searchIndexes {
-                viewController.selectedIndexes = si.isEmpty ? [] : si.componentsSeparatedByString(",")
+                viewController.selectedIndexes = si.isEmpty ? [Constants.DefaultSearchIndex] : si.componentsSeparatedByString(",")
             } else {
                 viewController.selectedIndexes = [Constants.DefaultSearchIndex]
             }

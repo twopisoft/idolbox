@@ -13,7 +13,11 @@ public class ErrorReporter: NSObject {
     public typealias alertHanlder = () -> ()
     
     public class func apiKeyNotSet(controller: UIViewController, handler : alertHanlder? = nil) {
-        showAlertView(controller, title: "Please set the API Key", message: nil, alertHandler: handler)
+        showAlertView(controller, title: "IDOLBox Error", message: "Please set the API Key", alertHandler: handler)
+    }
+    
+    public class func addIndexNotSet(controller: UIViewController, handler : alertHanlder? = nil) {
+        showAlertView(controller, title: "IDOLBox Error", message: "Please set the Add Index", alertHandler: handler)
     }
     
     public class func showAlertView(controller: UIViewController, title : String?, message : String?, alertHandler ch: alertHanlder? = nil) {
