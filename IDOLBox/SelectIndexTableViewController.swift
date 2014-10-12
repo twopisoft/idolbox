@@ -42,6 +42,7 @@ class SelectIndexTableViewController: UITableViewController {
         }
         
         self.fetchController().performFetch(nil)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -135,6 +136,13 @@ class SelectIndexTableViewController: UITableViewController {
         if apiKey == nil || apiKey!.isEmpty {
             ErrorReporter.apiKeyNotSet(self, handler: nil)
             return
+        }
+        
+        if self.fetchController().performFetch(nil) {
+            for obj in self.fetchController().fetchedObjects! {
+                self.managedObjectContext.deleteObject(obj as NSManagedObject)
+            }
+            indexTableView.reloadData()
         }
         
         let oldRightItem = self.navigationItem.rightBarButtonItem

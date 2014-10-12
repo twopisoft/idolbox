@@ -18,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        /*let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        let _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
+        IDOLService.sharedInstance.queryTextIndex(_apiKey!, text: "*", index: "myindex", completionHandler: { (data:NSData?, error:NSError?) in
+            
+            if error == nil {
+                let docs = QueryTextIndexResponseParser.parseResponse(data)
+                NSLog("docs=\(docs)")
+            } else {
+                NSLog("error=\(error)")
+            }
+        })*/
         return true
     }
 

@@ -53,5 +53,7 @@ public struct Constants {
     
     public static let SearchResultDetailSegue  = "SearchResultDetail"
     
+    public static let SelectDocSegue           = "SelectDoc"
+    
     public static let DefaultSearchIndex       = "wiki_eng"
 }

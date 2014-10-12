@@ -53,7 +53,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         defaults!.setObject(_searchIndexes, forKey: Constants.kSearchIndexes)
         defaults!.setObject(_addIndex, forKey: Constants.kAddIndex)
         
-        //defaults!.synchronize()
+        defaults!.synchronize()
         
         performSegueWithIdentifier("SettingsSave", sender: self)
     }

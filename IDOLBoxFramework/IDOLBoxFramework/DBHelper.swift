@@ -14,13 +14,6 @@ import CoreData
 
 public class DBHelper {
     
-    // MARK: Typealiases
-    // Tuple for index info
-    public typealias IndexTuple = (name:String,flavor:String,isPublic:Bool,info:String)
-    
-    // Tuple for Search Result
-    public typealias ResultTuple = (title:String,reference:String,weight:Double,index:String,moddate:NSDate,summary:String,content:String)
-    
     public class var sharedInstance : DBHelper {
         struct Singleton {
             static let instance = DBHelper()
@@ -34,8 +27,8 @@ public class DBHelper {
     // 1. From the data coming in from List Index service, find what indexes are updated
     // 2. And which of the indexes have been deleted
     // 3. Finally, add the new index entries
-    public class func updateIndexes(managedObjectContext : NSManagedObjectContext, data : [IndexTuple]) -> NSError? {
-        var foundObjs :[Int:IndexTuple] = [:]
+    public class func updateIndexes(managedObjectContext : NSManagedObjectContext, data : [TypeAliases.IndexTuple]) -> NSError? {
+        var foundObjs :[Int:TypeAliases.IndexTuple] = [:]
         
         var freq = NSFetchRequest(entityName: "IdolIndex")
         let res = managedObjectContext.executeFetchRequest(freq, error: nil)
@@ -62,7 +55,7 @@ public class DBHelper {
         }
         
         // Finally, add the new index entries
-        var newData : [IndexTuple] = []
+        var newData : [TypeAliases.IndexTuple] = []
         for (i,entry) in enumerate(data) {
             if foundObjs[i] == nil {
                 newData.append(entry)
@@ -81,7 +74,7 @@ public class DBHelper {
         return nil
     }
     
-    public class func storeSearchResults(managedObjectContext : NSManagedObjectContext, searchResults : [ResultTuple]) -> NSError? {
+    public class func storeSearchResults(managedObjectContext : NSManagedObjectContext, searchResults : [TypeAliases.ResultTuple]) -> NSError? {
         for result in searchResults {
             let (title,reference,weight,index,moddate,summary,content) = result
             let obj = IdolSearchResult(entity: NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: managedObjectContext)!, insertIntoManagedObjectContext: managedObjectContext)
@@ -105,10 +98,28 @@ public class DBHelper {
         return res!.count > 0
     }
     
+    //Get a list of all the stored indexes
+    public class func fetchIndexes(managedObjectContext : NSManagedObjectContext, privateOnly : Bool) -> [TypeAliases.IndexTuple] {
+        var freq = NSFetchRequest(entityName: "IdolIndex")
+        freq.predicate = privateOnly ? NSPredicate(format: "isPublic=%@", argumentArray: [!privateOnly]) : nil
+        
+        var err : NSError? = NSError()
+        let res = managedObjectContext.executeFetchRequest(freq, error: nil) as? [IdolIndex]
+        
+        var ret : [TypeAliases.IndexTuple] = []
+        
+        for r in res! {
+            let e : TypeAliases.IndexTuple = (r.name,r.flavor,r.isPublic,r.info)
+            ret.append(e)
+        }
+
+        return ret
+    }
+    
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.twopi.IDOLBox" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.twopi.IDOLBox")
+        return url as NSURL!
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {

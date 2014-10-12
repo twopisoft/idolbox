@@ -9,29 +9,27 @@
 import UIKit
 import CoreData
 
-class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
-   
-    typealias ConfigHandler = (controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell
+public class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
     
     private var _tableView : UITableView!
-    private var _cellConfigHandler : ConfigHandler?
+    private var _cellConfigHandler : TypeAliases.ConfigHandler?
     
-    init(tableView : UITableView, configHandler : ConfigHandler?) {
+    public init(tableView : UITableView, configHandler : TypeAliases.ConfigHandler?) {
         self._tableView = tableView
         self._cellConfigHandler = configHandler
     }
     
     // MARK: NSFetchedResultsControllerDelegate methods
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    public func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self._tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    public func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self._tableView.endUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
 
         var tabView = self._tableView
         
@@ -45,6 +43,8 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
         case NSFetchedResultsChangeType.Update:
             if self._cellConfigHandler != nil {
                 let cell = self._tableView.cellForRowAtIndexPath(indexPath!)
+                NSLog("indexPath.section=\(indexPath?.section), indexPath.row=\(indexPath?.row)")
+                NSLog("cell=\(cell)")
                 self._cellConfigHandler!(controller: controller, cell: cell! ,indexPath: indexPath!)
             }
             
@@ -54,7 +54,7 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    public func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         
         var tabView = self._tableView
         
@@ -69,7 +69,7 @@ class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDele
         }
     }
     
-    func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String!) -> String! {
+    public func controller(controller: NSFetchedResultsController, sectionIndexTitleForSectionName sectionName: String!) -> String! {
         return sectionName
     }
 }

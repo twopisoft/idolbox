@@ -16,10 +16,6 @@ import CoreData
 
 public class IDOLService {
     
-    public typealias FileMeta          = (path:String,name:String,isDir:Bool)
-    public typealias ResponseHandler   = (data:NSData?, error:NSError?) -> ()
-    public typealias JobRespHandler    = (jobId:String?, jobError:NSError?) -> ()
-    
     // MARK: Inner Class and Structs
     public class var sharedInstance : IDOLService {
         struct Singleton {
@@ -35,6 +31,7 @@ public class IDOLService {
         static let listIndexUrl     = asyncSvc + "/listindexes/v1?apikey="
         static let addToIndexUrl    = asyncSvc + "/addtotextindex/v1"
         static let findSimilarUrl   = asyncSvc + "/findsimilar/v1"
+        static let querytextindex   = asyncSvc + "/querytextindex/v1"
         static let jobResult        = baseURL + "/job/result/"
     }
     
@@ -58,7 +55,7 @@ public class IDOLService {
     // MARK: - IDOL Service
     // Method to invoke List Index service and get back the results to caller in a completion handler
     
-    public func fetchIndexList(apiKey:String, completionHandler handler: ResponseHandler?) {
+    public func fetchIndexList(apiKey:String, completionHandler handler: TypeAliases.ResponseHandler?) {
         // First submit the async job and get back the job id
         submitAsyncJob(_URLS.listIndexUrl + apiKey, completionHandler: { (jobId: String?,jobErr: NSError?) in
             // Then process the job result
@@ -66,8 +63,20 @@ public class IDOLService {
         })
     }
     
+    // Method to invoke Query Text Index service and get back the results to caller in a completion handler
+    public func queryTextIndex(apiKey:String, text:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+            let reqUrl = _URLS.querytextindex + "?apikey=" + apiKey + "&text=" + self.encodeStr(text) + "&indexes=" + self.encodeStr(index)
+            // Submit the async job
+            self.submitAsyncJob(reqUrl, completionHandler: { (jobId: String?,jobErr: NSError?) in
+                // Then process the job result
+                self.processJobResult(apiKey, jobId: jobId, jobErr: jobErr, handler: handler)
+            })
+        })
+    }
+    
     // Method to upload documents to an IDOL index using the Add to Index service
-    public func addToIndexFile(apiKey:String, dirPath : String, indexName: String, completionHandler handler: ResponseHandler?) {
+    public func addToIndexFile(apiKey:String, dirPath : String, indexName: String, completionHandler handler: TypeAliases.ResponseHandler?) {
         
         // Dipatch the request on a background thread
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
@@ -85,7 +94,7 @@ public class IDOLService {
         })
     }
     
-    public func addToIndexUrl(apiKey:String, url:String, index:String, completionHandler handler: ResponseHandler?) {
+    public func addToIndexUrl(apiKey:String, url:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
         
         // Dipatch the request on a background thread
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
@@ -99,7 +108,7 @@ public class IDOLService {
     }
     
     // Method to invoke IDOL Find Similar Documents API when user has provided a keyword term
-    public func findSimilarDocs(apiKey:String, text: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
+    public func findSimilarDocs(apiKey:String, text: String, indexName: String, searchParams : [String:String], completionHandler handler: TypeAliases.ResponseHandler?) {
         
         // For keyword term search, we make use of HTTP GET request
         var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&text=" + encodeStr(text) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
@@ -112,7 +121,7 @@ public class IDOLService {
     }
 
     // Method to invoke IDOL Find Similar Documents API when user has provided a url
-    public func findSimilarDocsUrl(apiKey:String, url: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
+    public func findSimilarDocsUrl(apiKey:String, url: String, indexName: String, searchParams : [String:String], completionHandler handler: TypeAliases.ResponseHandler?) {
     
         // For keyword term search, we make use of HTTP GET request
         var urlStr = _URLS.findSimilarUrl + "?apikey=" + apiKey + "&url=" + encodeStr(url) + "&indexes=" + encodeStr(indexName) + paramsForGet(searchParams)
@@ -125,7 +134,7 @@ public class IDOLService {
     }
     
     // Method to invoke IDOL Find Similar Documents API when user has provided a file
-    public func findSimilarDocsFile(apiKey:String, fileName: String, indexName: String, searchParams : [String:String], completionHandler handler: ResponseHandler?) {
+    public func findSimilarDocsFile(apiKey:String, fileName: String, indexName: String, searchParams : [String:String], completionHandler handler: TypeAliases.ResponseHandler?) {
         
         // For file requests, create a HTTP POST request
         var request = createFindSimilarFileRequest(fileName, indexName: indexName, apiKey: apiKey, searchParams: searchParams)
@@ -138,7 +147,7 @@ public class IDOLService {
     // MARK: Request creation and submission
     
     // Common method used by all the findSimilar* methods
-    private func findSimilarDocs(apiKey:String, request : NSURLRequest, completionHandler handler: ResponseHandler?) {
+    private func findSimilarDocs(apiKey:String, request : NSURLRequest, completionHandler handler: TypeAliases.ResponseHandler?) {
         
         // Submit async job
         submitAsyncJob(request, completionHandler: { (jobId: String?,jobErr: NSError?) in
@@ -157,7 +166,7 @@ public class IDOLService {
     }
     
     // Method to request for and recieve the async job result
-    private func processJobResult(apiKey:String, jobId: String?, jobErr: NSError?, handler: ResponseHandler?) {
+    private func processJobResult(apiKey:String, jobId: String?, jobErr: NSError?, handler: TypeAliases.ResponseHandler?) {
         if handler != nil {
             if jobErr == nil {
                 let urlStr = _URLS.jobResult + jobId! + "?apikey=" + apiKey
@@ -197,7 +206,7 @@ public class IDOLService {
     }
     
     // Submits an async request and gets back a job id. Usually this method is chained with the processJobResult method
-    private func submitAsyncJob(request : NSURLRequest, completionHandler handler: JobRespHandler) {
+    private func submitAsyncJob(request : NSURLRequest, completionHandler handler: TypeAliases.JobRespHandler) {
         let queue = NSOperationQueue()
         
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) in
@@ -218,7 +227,7 @@ public class IDOLService {
         })
     }
     
-    private func submitAsyncJobWithSession(request : NSURLRequest, completionHandler handler: JobRespHandler) {
+    private func submitAsyncJobWithSession(request : NSURLRequest, completionHandler handler: TypeAliases.JobRespHandler) {
         let session = NSURLSession(configuration: self.sessionConfig)
         let task = session.dataTaskWithRequest(request, completionHandler: { (data : NSData!, response : NSURLResponse!, error : NSError!) in
             
@@ -239,7 +248,7 @@ public class IDOLService {
     }
     
     // Convenience method. Mainly used for GET requests
-    private func submitAsyncJob(url : String, completionHandler handler: JobRespHandler) {
+    private func submitAsyncJob(url : String, completionHandler handler: TypeAliases.JobRespHandler) {
         let request = NSURLRequest(URL: NSURL(string: url)!)
         submitAsyncJob(request, completionHandler: handler)
     }
@@ -276,7 +285,7 @@ public class IDOLService {
     // Create HTTP POST request for Add to Index service. This method iterates through a list
     // of files, reads their contents and appends to the post request. For a very large number of
     // *large size* files, this method may cause problems
-    private func createAddIndexRequest(fileMeta: [FileMeta], dirPath: String, indexName: String, apiKey: String) -> NSURLRequest {
+    private func createAddIndexRequest(fileMeta: [TypeAliases.FileMeta], dirPath: String, indexName: String, apiKey: String) -> NSURLRequest {
         
         let reqUrl = NSURL(string: _URLS.addToIndexUrl)
         var (req, postData) = initPostRequest(apiKey, reqUrlStr: _URLS.addToIndexUrl)
@@ -322,8 +331,8 @@ public class IDOLService {
     }
     
     // MARK: Method to read directory and file info
-    private func getFileMeta(dirPath: String) -> [FileMeta] {
-        var fileMeta : [FileMeta] = []
+    private func getFileMeta(dirPath: String) -> [TypeAliases.FileMeta] {
+        var fileMeta : [TypeAliases.FileMeta] = []
         
         // Get all director contents. Recursively descend to subdirectories
         let dirUrl = NSURL(fileURLWithPath: dirPath, isDirectory: true)

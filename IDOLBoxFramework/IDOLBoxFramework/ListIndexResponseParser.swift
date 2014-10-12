@@ -10,11 +10,11 @@ import UIKit
 
 public class ListIndexResponseParser: NSObject {
  
-    public class func parseResponse(data:NSData?) -> [DBHelper.IndexTuple] {
+    public class func parseResponse(data:NSData?) -> [TypeAliases.IndexTuple] {
         let json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         let actions = json["actions"] as NSArray
         let result = actions[0]["result"] as NSDictionary
-        var indexes : [DBHelper.IndexTuple] = []
+        var indexes : [TypeAliases.IndexTuple] = []
         let publicIndexes: AnyObject? = result["public_index"]
         let privateIndexes : AnyObject? = result["index"]
         

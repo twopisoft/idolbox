@@ -12,6 +12,7 @@ public class ErrorReporter: NSObject {
     
     public typealias alertHanlder = () -> ()
     
+    // convenience functions for displaying fixed error messages
     public class func apiKeyNotSet(controller: UIViewController, handler : alertHanlder? = nil) {
         showAlertView(controller, title: "IDOLBox Error", message: "Please set the API Key", alertHandler: handler)
     }
@@ -20,6 +21,7 @@ public class ErrorReporter: NSObject {
         showAlertView(controller, title: "IDOLBox Error", message: "Please set the Add Index", alertHandler: handler)
     }
     
+    // Main function for showing error alerts. If an alert handler is provided then execute it after user presses OK
     public class func showAlertView(controller: UIViewController, title : String?, message : String?, alertHandler ch: alertHanlder? = nil) {
         dispatch_async(dispatch_get_main_queue(), {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)

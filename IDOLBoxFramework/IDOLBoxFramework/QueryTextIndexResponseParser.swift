@@ -1,16 +1,17 @@
 //
-//  SearchResultParser.swift
-//  IDOLBox
+//  QueryTextIndexResponseParser.swift
+//  IDOLBoxFramework
 //
-//  Created by TwoPi on 8/10/14.
+//  Created by TwoPi on 11/10/14.
 //  Copyright (c) 2014 TwoPi. All rights reserved.
 //
 
 import UIKit
 
-public class SearchResultParser: NSObject {
+public class QueryTextIndexResponseParser: NSObject {
    
     public class func parseResponse(data:NSData?) -> [TypeAliases.ResultTuple] {
+        
         let json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         
         var searchResults : [TypeAliases.ResultTuple] = []
@@ -25,9 +26,7 @@ public class SearchResultParser: NSObject {
                             var reference = ""
                             var weight = 0.0
                             var index = ""
-                            var moddate : NSDate = NSDate()
-                            var summary = ""
-                            var content = ""
+                            var dummydate = NSDate.distantFuture() as NSDate
                             
                             if let _reference = doc["reference"] as? String {
                                 reference = _reference
@@ -47,27 +46,7 @@ public class SearchResultParser: NSObject {
                                 index = _index
                             }
                             
-                            if let _moddate = doc["modified_date"] as? NSArray {
-                                if _moddate.count > 0 {
-                                    let dateFormatter = NSDateFormatter()
-                                    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
-                                    dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-                                    if let d = dateFormatter.dateFromString(_moddate[0] as String) {
-                                        moddate = d
-                                    }
-                                }
-                            }
-                            
-                            if let _summary = doc["summary"] as? String {
-                                summary = _summary
-                            }
-                            
-                            if let _content = doc["content"] as? String {
-                                content = _content
-                            }
-                            
-                            let entry : TypeAliases.ResultTuple = (title,reference,weight,index,moddate,summary,content)
-                            //NSLog("summary=\(summary)")
+                            let entry : TypeAliases.ResultTuple = (title,reference,weight,index,dummydate,"","")
                             searchResults.append(entry)
                             
                         }
@@ -78,4 +57,6 @@ public class SearchResultParser: NSObject {
         
         return searchResults
     }
+
+    
 }
