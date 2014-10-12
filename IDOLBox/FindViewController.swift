@@ -18,11 +18,18 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     private var _searchIndexes : String? = nil
     private var _searchTerm : String? = nil
     
+    private var _autoCompleteTableView : UITableView!
+    private var _autoCompleteEntries : [String]!
+    private var _pastEntries : [String]!
+    
+    private var _autoCompleteTableViewDelegate : AutoCompleteTableViewDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         readSettings()
         registerForSettingsChange()
+        setupAutoComplete()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +46,25 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.searchTextField.resignFirstResponder()
         
+        hideViewAnimated(_autoCompleteTableView)
+        
+        if !(find(_pastEntries, searchTextField.text) != nil) {
+            _pastEntries.append(searchTextField.text)
+        }
+        
         search(self)
+        return true
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if _pastEntries.count > 0 {
+            showViewAnimated(_autoCompleteTableView)
+        }
+        
+        var substring : NSString = searchTextField.text
+        substring = substring.stringByReplacingCharactersInRange(range, withString: string)
+        self.searchAutoCompleteEntriesWithSubstring(substring)
         return true
     }
     
@@ -112,5 +137,77 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     
     private func readControls() {
         _searchTerm = searchTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    }
+    
+    private func setupAutoComplete() {
+        _pastEntries = []
+        _autoCompleteEntries = []
+        
+        _autoCompleteTableView = UITableView(frame: CGRectMake(20, 125, 320, 120))
+        _autoCompleteTableView.layer.borderWidth = 0.5
+        _autoCompleteTableView.layer.cornerRadius = 10
+        _autoCompleteTableView.layer.borderColor = UIColor.grayColor().CGColor
+        
+        _autoCompleteTableViewDelegate = AutoCompleteTableViewDelegate(autoCompleteEntries: self._autoCompleteEntries, searchTextField: self.searchTextField)
+        
+        _autoCompleteTableView.delegate = _autoCompleteTableViewDelegate
+        _autoCompleteTableView.dataSource = _autoCompleteTableViewDelegate
+        _autoCompleteTableView.scrollEnabled = true
+        hideViewAnimated(_autoCompleteTableView)
+        
+        self.view.addSubview(_autoCompleteTableView)
+    }
+    
+    private func searchAutoCompleteEntriesWithSubstring(substring : String) {
+        _autoCompleteEntries.removeAll(keepCapacity: false)
+        
+        for entry in _pastEntries {
+            let substringRange = entry.rangeOfString(substring, options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil, locale: nil)
+            if substringRange != nil {
+                _autoCompleteEntries.append(entry)
+            }
+        }
+        _autoCompleteTableView.reloadData()
+    }
+    
+    private func showViewAnimated(viewToShow : UIView) {
+        UIView.animateWithDuration(0.5, animations: {
+            viewToShow.alpha = 1
+        })
+    }
+    
+    private func hideViewAnimated(viewToHide : UIView) {
+        UIView.animateWithDuration(0.5, animations: {
+            viewToHide.alpha = 0
+        })
+    }
+}
+
+class AutoCompleteTableViewDelegate : NSObject, UITableViewDelegate, UITableViewDataSource {
+    
+    private var _autoCompleteEntries : [String]!
+    private var _searchTextField : UITextField!
+    
+    init(autoCompleteEntries : [String], searchTextField : UITextField) {
+        self._autoCompleteEntries = autoCompleteEntries
+        self._searchTextField = searchTextField
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self._autoCompleteEntries.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("AutoCompleteTableViewCell") as? UITableViewCell
+        if cell == nil {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "AutoCompleteTableViewCell")
+        }
+        cell?.textLabel!.text = self._autoCompleteEntries[indexPath.row]
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+        self._searchTextField.text = selectedCell?.textLabel?.text
     }
 }
