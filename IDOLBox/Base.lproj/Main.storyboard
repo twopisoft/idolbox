@@ -628,7 +628,7 @@ http://cssr.ru/simpliste</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="indexTableView" destination="E5G-Kp-qeZ" id="T4e-nX-LDe"/>
+                        <outlet property="resultsTableView" destination="E5G-Kp-qeZ" id="C3d-p3-Jx1"/>
                         <segue destination="pNP-Gm-PWp" kind="show" identifier="SearchResultDetail" id="JzH-AN-LF0"/>
                     </connections>
                 </tableViewController>

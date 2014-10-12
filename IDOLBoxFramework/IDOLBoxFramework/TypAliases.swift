@@ -27,6 +27,9 @@ public struct TypeAliases {
     public typealias ResponseHandler   = (data:NSData?, error:NSError?) -> ()
     public typealias JobRespHandler    = (jobId:String?, jobError:NSError?) -> ()
     
+    // Alert View Handler
+    public typealias AlertHanlder = () -> ()
+    
     // Cell Config Handler for FetchResultsControllerDelegate
     public typealias ConfigHandler = (controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell
 }

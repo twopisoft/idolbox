@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE13D3AB19EA825700581955 /* ViewDocumentResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE13D3AA19EA825700581955 /* ViewDocumentResponseParser.swift */; };
+		EE13D3AD19EA892F00581955 /* ActivityProgressAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE13D3AC19EA892F00581955 /* ActivityProgressAlert.swift */; };
 		EE2196DE19E8BF750027B190 /* IDOLBoxFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = EE2196DD19E8BF750027B190 /* IDOLBoxFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EE2196E419E8BF750027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196D819E8BF750027B190 /* IDOLBoxFramework.framework */; };
 		EE2196EB19E8BF750027B190 /* IDOLBoxFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2196EA19E8BF750027B190 /* IDOLBoxFrameworkTests.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE13D3AA19EA825700581955 /* ViewDocumentResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDocumentResponseParser.swift; sourceTree = "<group>"; };
+		EE13D3AC19EA892F00581955 /* ActivityProgressAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityProgressAlert.swift; sourceTree = "<group>"; };
 		EE2196D819E8BF750027B190 /* IDOLBoxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IDOLBoxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2196DC19E8BF750027B190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE2196DD19E8BF750027B190 /* IDOLBoxFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDOLBoxFramework.h; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				EE21970119E8C6420027B190 /* ListIndexResponseParser.swift */,
 				EE2196FD19E8C0000027B190 /* IDOLService.swift */,
 				EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */,
+				EE13D3AA19EA825700581955 /* ViewDocumentResponseParser.swift */,
 			);
 			name = IDOL;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 				EE21970619E8C7810027B190 /* Constants.swift */,
 				EE21970819E8C78A0027B190 /* DBHelper.swift */,
 				EEDAB0CF19E985AE00907B56 /* TypAliases.swift */,
+				EE13D3AC19EA892F00581955 /* ActivityProgressAlert.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -273,11 +279,13 @@
 				EEDAB0D219EA02C600907B56 /* FetchedResultsControllerDelegate.swift in Sources */,
 				EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */,
 				EEDAB0CE19E984B200907B56 /* QueryTextIndexResponseParser.swift in Sources */,
+				EE13D3AD19EA892F00581955 /* ActivityProgressAlert.swift in Sources */,
 				EE2196FE19E8C0000027B190 /* IDOLService.swift in Sources */,
 				EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */,
 				EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */,
 				EE21970919E8C78A0027B190 /* DBHelper.swift in Sources */,
 				EE5170ED19E8CA7500322AC5 /* ErrorReporter.swift in Sources */,
+				EE13D3AB19EA825700581955 /* ViewDocumentResponseParser.swift in Sources */,
 				EE5170F519E8D4A100322AC5 /* IDOLBox.xcdatamodeld in Sources */,
 				EE21970419E8C64E0027B190 /* SearchResultParser.swift in Sources */,
 				EE21970719E8C7810027B190 /* Constants.swift in Sources */,

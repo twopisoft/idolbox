@@ -20,15 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         /*let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
         let _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
-        IDOLService.sharedInstance.queryTextIndex(_apiKey!, text: "*", index: "myindex", completionHandler: { (data:NSData?, error:NSError?) in
+        IDOLService.sharedInstance.viewDocument(_apiKey!, url: "http://en.m.wikipedia.org/wiki/Othello",  completionHandler: { (data:NSData?, error:NSError?) in
             
             if error == nil {
-                let docs = QueryTextIndexResponseParser.parseResponse(data)
-                NSLog("docs=\(docs)")
+                let document = ViewDocumentResponseParser.parseResponse(data)
+                
             } else {
-                NSLog("error=\(error)")
+               
             }
         })*/
+        
         return true
     }
 

@@ -24,12 +24,21 @@
 	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
-		<key>NSExtensionFileProviderDocumentGroup</key>
-		<string>group.com.twopi.IDOLBox</string>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>UIDocumentPickerModes</key>
+			<array>
+				<string>UIDocumentPickerModeImport</string>
+			</array>
+			<key>UIDocumentPickerSupportedFileTypes</key>
+			<array>
+				<string>public.content</string>
+			</array>
+		</dict>
+		<key>NSExtensionMainStoryboard</key>
+		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.fileprovider-nonui</string>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).FileProvider</string>
+		<string>com.apple.fileprovider-ui</string>
 	</dict>
 </dict>
 </plist>

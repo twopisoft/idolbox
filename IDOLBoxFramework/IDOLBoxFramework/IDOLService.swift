@@ -32,6 +32,7 @@ public class IDOLService {
         static let addToIndexUrl    = asyncSvc + "/addtotextindex/v1"
         static let findSimilarUrl   = asyncSvc + "/findsimilar/v1"
         static let querytextindex   = asyncSvc + "/querytextindex/v1"
+        static let viewDocument     = asyncSvc + "/viewdocument/v1"
         static let jobResult        = baseURL + "/job/result/"
     }
     
@@ -68,6 +69,19 @@ public class IDOLService {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             let reqUrl = _URLS.querytextindex + "?apikey=" + apiKey + "&text=" + self.encodeStr(text) + "&indexes=" + self.encodeStr(index)
             // Submit the async job
+            self.submitAsyncJob(reqUrl, completionHandler: { (jobId: String?,jobErr: NSError?) in
+                // Then process the job result
+                self.processJobResult(apiKey, jobId: jobId, jobErr: jobErr, handler: handler)
+            })
+        })
+    }
+    
+    // Method to get the contents of a document.
+    public func viewDocument(apiKey:String, url:String, completionHandler handler: TypeAliases.ResponseHandler?) {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+            let reqUrl = _URLS.viewDocument + "?apiKey=" + apiKey + "&url=" + self.encodeStr(url)
+            //NSLog("reqUrl=\(reqUrl)")
             self.submitAsyncJob(reqUrl, completionHandler: { (jobId: String?,jobErr: NSError?) in
                 // Then process the job result
                 self.processJobResult(apiKey, jobId: jobId, jobErr: jobErr, handler: handler)

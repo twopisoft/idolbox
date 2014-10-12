@@ -19,7 +19,7 @@ class SearchResultTableViewController: UITableViewController {
     
     private var _selectedItem : IdolSearchResult? = nil
     
-    @IBOutlet var indexTableView: UITableView!
+    @IBOutlet var resultsTableView: UITableView!
     
     private lazy var activityIndicator : UIActivityIndicatorView = {
         var actInd = UIActivityIndicatorView(frame: CGRectMake(0, 0, 20, 20))
@@ -43,7 +43,7 @@ class SearchResultTableViewController: UITableViewController {
             for obj in self.fetchController().fetchedObjects! {
                 self.managedObjectContext.deleteObject(obj as NSManagedObject)
             }
-            indexTableView.reloadData()
+            resultsTableView.reloadData()
         }
         
         doSearch()
@@ -124,7 +124,7 @@ class SearchResultTableViewController: UITableViewController {
             fetchRequest.entity = entity
             fetchRequest.sortDescriptors = sortDescriptors
             
-            _fetchControllerDelegate = FetchedResultsControllerDelegate(tableView: self.indexTableView, configHandler : self.cellConfigHandler)
+            _fetchControllerDelegate = FetchedResultsControllerDelegate(tableView: self.resultsTableView, configHandler : self.cellConfigHandler)
             
             _fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "index", cacheName: nil)
             _fetchController!.delegate = _fetchControllerDelegate

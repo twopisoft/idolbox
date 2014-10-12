@@ -10,19 +10,17 @@ import UIKit
 
 public class ErrorReporter: NSObject {
     
-    public typealias alertHanlder = () -> ()
-    
     // convenience functions for displaying fixed error messages
-    public class func apiKeyNotSet(controller: UIViewController, handler : alertHanlder? = nil) {
+    public class func apiKeyNotSet(controller: UIViewController, handler : TypeAliases.AlertHanlder? = nil) {
         showAlertView(controller, title: "IDOLBox Error", message: "Please set the API Key", alertHandler: handler)
     }
     
-    public class func addIndexNotSet(controller: UIViewController, handler : alertHanlder? = nil) {
+    public class func addIndexNotSet(controller: UIViewController, handler : TypeAliases.AlertHanlder? = nil) {
         showAlertView(controller, title: "IDOLBox Error", message: "Please set the Add Index", alertHandler: handler)
     }
     
     // Main function for showing error alerts. If an alert handler is provided then execute it after user presses OK
-    public class func showAlertView(controller: UIViewController, title : String?, message : String?, alertHandler ch: alertHanlder? = nil) {
+    public class func showAlertView(controller: UIViewController, title : String?, message : String?, alertHandler ch: TypeAliases.AlertHanlder? = nil) {
         dispatch_async(dispatch_get_main_queue(), {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (alert: UIAlertAction!) in
@@ -40,7 +38,7 @@ public class ErrorReporter: NSObject {
     }
     
     // Show error modal when NSError is provided
-    public class func showErrorAlert(controller : UIViewController, error: NSError, handler : alertHanlder? = nil) {
+    public class func showErrorAlert(controller : UIViewController, error: NSError, handler : TypeAliases.AlertHanlder? = nil) {
         var title = ""
         var desc = ""
         if error.domain == Constants.IDOLService {
