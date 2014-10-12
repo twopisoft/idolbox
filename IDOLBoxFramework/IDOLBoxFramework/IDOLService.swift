@@ -65,9 +65,10 @@ public class IDOLService {
     }
     
     // Method to invoke Query Text Index service and get back the results to caller in a completion handler
-    public func queryTextIndex(apiKey:String, text:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
+    public func queryTextIndex(apiKey:String, text:String, index:String, searchParams : [String:String], completionHandler handler: TypeAliases.ResponseHandler?) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-            let reqUrl = _URLS.querytextindex + "?apikey=" + apiKey + "&text=" + self.encodeStr(text) + "&indexes=" + self.encodeStr(index)
+            let reqUrl = _URLS.querytextindex + "?apikey=" + apiKey + "&text=" + self.encodeStr(text) + "&indexes=" + self.encodeStr(index) + self.paramsForGet(searchParams)
+            
             // Submit the async job
             self.submitAsyncJob(reqUrl, completionHandler: { (jobId: String?,jobErr: NSError?) in
                 // Then process the job result

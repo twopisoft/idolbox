@@ -11,8 +11,9 @@ import UIKit
 public class Utils: NSObject {
    
     public class func isUrl(str : String) -> Bool {
+        let urlComps = str.componentsSeparatedByString("?")
         let urlRegEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
         let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegEx)
-        return urlTest!.evaluateWithObject(str)
+        return urlTest!.evaluateWithObject(urlComps[0])
     }
 }

@@ -123,7 +123,7 @@ class SelectDocTableViewController: UITableViewController {
         
         for (i,index) in enumerate(self.indexes) {
             
-            IDOLService.sharedInstance.queryTextIndex(self.apiKey, text: "*", index: index.name, completionHandler: { (data:NSData?, error:NSError?) in
+            IDOLService.sharedInstance.queryTextIndex(self.apiKey, text: "*", index: index.name, searchParams: [Constants.MaxResultParam:"100"], completionHandler: { (data:NSData?, error:NSError?) in
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     self.handleSearchResults(data, err: error)
