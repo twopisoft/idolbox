@@ -31,13 +31,13 @@
 				<key>NSExtensionActivationSupportsWebURLWithMaxCount</key>
 				<integer>1</integer>
 				<key>NSExtensionActivationSupportsFileWithMaxCount</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
 				<integer>0</integer>
 				<key>NSExtensionActivationSupportsMovieWithMaxCount</key>
 				<integer>0</integer>
 				<key>NSExtensionActivationSupportsText</key>
-				<true/>
+				<false/>
 			</dict>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>

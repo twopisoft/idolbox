@@ -18,12 +18,14 @@ class ShareViewController: SLComposeServiceViewController {
     private var _addIndex : String!
     
     override func viewDidLoad() {
-        self.textView.editable = false
+        //self.textView.editable = true
         
         readSettings()
     }
     
     override func presentationAnimationDidFinish() {
+        
+        self.textView.editable = false
         let extensionItem = self.extensionContext?.inputItems[0] as NSExtensionItem
         
         for attachment in extensionItem.attachments as [NSItemProvider] {
@@ -76,6 +78,7 @@ class ShareViewController: SLComposeServiceViewController {
         let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
         self._apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         self._addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
+        NSLog("_apiKey=\(_apiKey)")
     }
 
 }

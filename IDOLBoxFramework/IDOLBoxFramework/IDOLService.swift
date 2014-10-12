@@ -234,7 +234,7 @@ public class IDOLService {
                     handler(jobId: nil,jobError: self.createError(json))
                 }
             } else {
-                NSLog("Job submission error: \(error)")
+                NSLog("Job submission error: %@",error)
                 handler(jobId: nil,jobError: self.createError(error))
             }
             

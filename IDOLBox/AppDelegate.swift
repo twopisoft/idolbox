@@ -17,19 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        /*let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
-        let _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
-        IDOLService.sharedInstance.viewDocument(_apiKey!, url: "http://en.m.wikipedia.org/wiki/Othello",  completionHandler: { (data:NSData?, error:NSError?) in
-            
-            if error == nil {
-                let document = ViewDocumentResponseParser.parseResponse(data)
-                
-            } else {
-               
-            }
-        })*/
-        
         return true
     }
 
