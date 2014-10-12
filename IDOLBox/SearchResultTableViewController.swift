@@ -144,7 +144,7 @@ class SearchResultTableViewController: UITableViewController {
         let searchParams = getSearchParams()
         
         for (i,index) in enumerate(selectedIndexes) {
-            if isUrl(searchTerm!) {
+            if Utils.isUrl(searchTerm!) {
                 IDOLService.sharedInstance.findSimilarDocsUrl(apiKey!, url: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data : NSData?, err: NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
@@ -211,12 +211,6 @@ class SearchResultTableViewController: UITableViewController {
         
         return ret
         
-    }
-    
-    private func isUrl(str : String) -> Bool {
-        let urlRegEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
-        let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegEx)
-        return urlTest!.evaluateWithObject(str)
     }
 
     // MARK: - Navigation

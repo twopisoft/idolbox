@@ -56,34 +56,23 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
         if segue.sourceViewController.isKindOfClass(SelectDocTableViewController) {
             let vc = segue.sourceViewController as SelectDocTableViewController
             
-            NSLog("selected ref=\(vc.selectedReference)")
             if let ref = vc.selectedReference {
-                let refUrl = NSURL(string: ref)!
                 
-                let fileUrl = self.placeholderURL(refUrl)
-                
-                if NSFileManager.defaultManager().fileExistsAtPath(fileUrl.path!) {
-                    NSFileManager.defaultManager().removeItemAtURL(fileUrl, error: nil)
-                }
-                
-                NSLog("placeholderURL=\(fileUrl)")
-                
-                /*self._fileCoordinator.coordinateWritingItemAtURL(fileUrl, options: NSFileCoordinatorWritingOptions(), error: nil, byAccessor: { newUrl in
+                if Utils.isUrl(ref) {
+                    let refUrl = NSURL(string: ref)!
                     
-                    let str = "These are the contents of the file"
-                    let data = str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                    var e1: NSError? = nil
-                    data?.writeToURL(newUrl, options: NSDataWritingOptions.AtomicWrite, error: &e1)
+                    let fileUrl = self.placeholderURL(refUrl)
                     
-                    if e1 != nil {
-                        NSLog("e1=\(e1?.localizedDescription)")
-                        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
-                    } else {
-                        self.dismissGrantingAccessToURL(newUrl)
+                    if NSFileManager.defaultManager().fileExistsAtPath(fileUrl.path!) {
+                        NSFileManager.defaultManager().removeItemAtURL(fileUrl, error: nil)
                     }
-                })*/
-                
-                download(refUrl, fileUrl: fileUrl)
+                    
+                    download(refUrl, fileUrl: fileUrl)
+                } else {
+                    ErrorReporter.showAlertView(self, title: "IDOLBox Error", message: "Only HTTP(S) references are supported", alertHandler: {
+                        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+                    })
+                }
             }
         }
     }
