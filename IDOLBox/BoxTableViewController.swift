@@ -145,7 +145,6 @@ class BoxTableViewController: IdolEntriesTableViewController {
         if identifier == "BoxEntryDetail" {
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SearchResultDetailViewController
-            viewController.managedObjectContext = self._managedObjectContext
             
             let entity = NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: self._managedObjectContext)
             var idolSearchResult = IdolSearchResult(entity: entity!, insertIntoManagedObjectContext: self._managedObjectContext)

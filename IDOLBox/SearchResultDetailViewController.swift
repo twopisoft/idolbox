@@ -12,7 +12,6 @@ import IDOLBoxFramework
 
 class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
 
-    var managedObjectContext : NSManagedObjectContext!
     var selectedItem : IdolSearchResult?
     
     @IBOutlet weak var detailWebView: UIWebView!

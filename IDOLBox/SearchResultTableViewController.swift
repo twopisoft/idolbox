@@ -10,14 +10,14 @@ import UIKit
 import CoreData
 import IDOLBoxFramework
 
-class SearchResultTableViewController: UITableViewController {
+class SearchResultTableViewController: IdolEntriesTableViewController {
     
-    var apiKey : String? = nil
     var searchTerm : String? = nil
-    var managedObjectContext : NSManagedObjectContext!
+    
     var selectedIndexes : [String] = []
     
     private var _selectedItem : IdolSearchResult? = nil
+    private var _managedObjectContext : NSManagedObjectContext!
     
     @IBOutlet var resultsTableView: UITableView!
     
@@ -34,17 +34,11 @@ class SearchResultTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        self.managedObjectContext = appDelegate.managedObjectContext
+        self._managedObjectContext = DBHelper.sharedInstance.managedObjectContext
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicator)
         
-        if self.fetchController().performFetch(nil) {
-            for obj in self.fetchController().fetchedObjects! {
-                self.managedObjectContext.deleteObject(obj as NSManagedObject)
-            }
-            resultsTableView.reloadData()
-        }
+        
         
         doSearch()
     }
@@ -55,48 +49,6 @@ class SearchResultTableViewController: UITableViewController {
         _fetchController = nil
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = fetchController().sections {
-            return sections.count
-        }
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchController().sections {
-            if sections.count > 0 {
-                let secInfo = fetchController().sections![section] as NSFetchedResultsSectionInfo
-                return secInfo.numberOfObjects
-            }
-        }
-        return 0
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchResultCell", forIndexPath: indexPath) as UITableViewCell
-        
-        return cellConfigHandler(fetchController(), cell: cell, indexPath: indexPath)
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let sections = fetchController().sections {
-            if sections.count > 0 {
-                let secInfo = fetchController().sections![section] as NSFetchedResultsSectionInfo
-                return "Index: \(secInfo.name)"
-            }
-        }
-        return nil
-    }
-    
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-        return fetchController().sectionIndexTitles
-    }
-    
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        return fetchController().sectionForSectionIndexTitle(title, atIndex: index)
-    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         _selectedItem = fetchController().objectAtIndexPath(indexPath) as? IdolSearchResult
@@ -106,7 +58,7 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
     
-    func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
+    override func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResult
         
         cell.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
@@ -115,31 +67,43 @@ class SearchResultTableViewController: UITableViewController {
         return cell
     }
     
-    private func fetchController() -> NSFetchedResultsController {
+    override func fetchController() -> NSFetchedResultsController {
         if _fetchController == nil {
             let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "weight", ascending: true)]
             
             var fetchRequest = NSFetchRequest()
-            let entity = NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: self.managedObjectContext)
+            let entity = NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: self._managedObjectContext)
             fetchRequest.entity = entity
             fetchRequest.sortDescriptors = sortDescriptors
             
             _fetchControllerDelegate = FetchedResultsControllerDelegate(tableView: self.resultsTableView, configHandler : self.cellConfigHandler)
             
-            _fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "index", cacheName: nil)
+            _fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self._managedObjectContext, sectionNameKeyPath: "index", cacheName: nil)
             _fetchController!.delegate = _fetchControllerDelegate
         }
         
         return _fetchController!
     }
     
-    private func doSearch() {
+    override func doSearchPre() {
+        
+        self.activityIndicator.startAnimating()
+        
+        if self.fetchController().performFetch(nil) {
+            for obj in self.fetchController().fetchedObjects! {
+                self._managedObjectContext.deleteObject(obj as NSManagedObject)
+            }
+            resultsTableView.reloadData()
+        }
+    }
+    
+    override func doSearch() {
         if apiKey == nil || apiKey!.isEmpty {
             ErrorReporter.apiKeyNotSet(self, handler: nil)
             return
         }
         
-        self.activityIndicator.startAnimating()
+        doSearchPre()
         
         let searchParams = getSearchParams()
         
@@ -170,16 +134,16 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
     
-    private func handleSearchResults(data : NSData?, err: NSError?) {
+   override func handleSearchResults(data : NSData?, err: NSError?) {
         if err == nil {
             let results = SearchResultParser.parseResponse(data)
-            DBHelper.storeSearchResults(self.managedObjectContext, searchResults: results)
+            DBHelper.storeSearchResults(self._managedObjectContext, searchResults: results)
         } else {
             ErrorReporter.showErrorAlert(self, error: err!)
         }
     }
     
-    private func finishSearch() {
+    override func finishSearch() {
         if self.activityIndicator.isAnimating() {
             dispatch_async(dispatch_get_main_queue(), {
                 self.activityIndicator.stopAnimating()
@@ -221,7 +185,6 @@ class SearchResultTableViewController: UITableViewController {
         if identifier == Constants.SearchResultDetailSegue {
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SearchResultDetailViewController
-            viewController.managedObjectContext = self.managedObjectContext
             viewController.selectedItem = _selectedItem
         }
     }
