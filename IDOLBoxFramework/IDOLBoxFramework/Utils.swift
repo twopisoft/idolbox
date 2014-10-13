@@ -20,4 +20,20 @@ public class Utils: NSObject {
     public class func trim(str : String) -> String {
         return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
+    
+    public class func dateToString(date : NSDate) -> String? {
+        return dateFormatter().stringFromDate(NSDate())
+    }
+    
+    public class func stringToDate(str : String) -> NSDate? {
+        
+        return dateFormatter().dateFromString(str)
+    }
+    
+    private class func dateFormatter() -> NSDateFormatter {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+        return dateFormatter
+    }
 }

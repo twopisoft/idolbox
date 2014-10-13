@@ -31,7 +31,7 @@ public class DBHelper {
         var foundObjs :[Int:TypeAliases.IndexTuple] = [:]
         
         var freq = NSFetchRequest(entityName: "IdolIndex")
-        let res = managedObjectContext.executeFetchRequest(freq, error: nil)
+        let res = managedObjectContext.executeFetchRequest(freq, error: nil) as? [IdolIndex]
         
         for mo in res! {
             var found = false
@@ -69,6 +69,72 @@ public class DBHelper {
             obj.setValue(indexFlavor, forKey: "flavor")
             obj.setValue(isPublic, forKey: "isPublic")
             obj.setValue(indexInfo, forKey: "info")
+        }
+        
+        return nil
+    }
+    
+    // Update box entry data similar in logic to updateIndexes.
+    public class func updateBoxEntries(managedObjectContext : NSManagedObjectContext, data : [TypeAliases.ResultTuple]) -> NSError? {
+        var foundObjs :[Int:TypeAliases.ResultTuple] = [:]
+        
+        var freq = NSFetchRequest(entityName: "IdolBoxEntry")
+        let res = managedObjectContext.executeFetchRequest(freq, error: nil) as? [IdolBoxEntry]
+        
+        for mo in res! {
+            var found = false
+            for (i,entry) in enumerate(data) {
+                let (title,reference,_,index,moddate,summary,content) = entry
+                
+                // First update existing indexes info
+                if mo.reference == reference && mo.index == index {
+                    found = true
+                    mo.setValue(title, forKey: "title")
+                    mo.setValue(moddate, forKey: "moddate")
+                    mo.setValue(summary, forKey: "summary")
+                    mo.setValue(content, forKey: "content")
+                    foundObjs[i]=entry
+                }
+            }
+            
+            // Delete the ones, that no longer exist on the server
+            if !found {
+                managedObjectContext.deleteObject(mo as NSManagedObject)
+            }
+        }
+        
+        // Finally, add the new index entries
+        var newData : [TypeAliases.ResultTuple] = []
+        for (i,entry) in enumerate(data) {
+            if foundObjs[i] == nil {
+                newData.append(entry)
+            }
+        }
+        
+        for newEntry in newData {
+            let (title,reference,_,index,moddate,summary,content) = newEntry
+            let obj = IdolIndex(entity: NSEntityDescription.entityForName("IdolBoxEntry", inManagedObjectContext: managedObjectContext)!, insertIntoManagedObjectContext: managedObjectContext)
+            obj.setValue(title, forKey: "title")
+            obj.setValue(reference, forKey: "reference")
+            obj.setValue(index, forKey: "index")
+            obj.setValue(moddate, forKey: "moddate")
+            obj.setValue(summary, forKey: "summary")
+            obj.setValue(content, forKey: "content")
+        }
+        
+        return nil
+    }
+    
+    public class func storeBoxEntries(managedObjectContext : NSManagedObjectContext, searchResults : [TypeAliases.ResultTuple]) -> NSError? {
+        for result in searchResults {
+            let (title,reference,weight,index,moddate,summary,content) = result
+            let obj = IdolSearchResult(entity: NSEntityDescription.entityForName("IdolBoxEntry", inManagedObjectContext: managedObjectContext)!, insertIntoManagedObjectContext: managedObjectContext)
+            obj.setValue(title, forKeyPath: "title")
+            obj.setValue(reference, forKeyPath: "reference")
+            obj.setValue(index, forKeyPath: "index")
+            obj.setValue(moddate, forKeyPath: "moddate")
+            obj.setValue(summary, forKeyPath: "summary")
+            obj.setValue(content, forKeyPath: "content")
         }
         
         return nil

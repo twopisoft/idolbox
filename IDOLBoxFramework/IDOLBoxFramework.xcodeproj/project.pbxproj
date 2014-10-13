@@ -18,10 +18,12 @@
 		EE21970419E8C64E0027B190 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970319E8C64E0027B190 /* SearchResultParser.swift */; };
 		EE21970719E8C7810027B190 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970619E8C7810027B190 /* Constants.swift */; };
 		EE21970919E8C78A0027B190 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970819E8C78A0027B190 /* DBHelper.swift */; };
+		EE27E3E819EBE07400C970C5 /* IdolBoxEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27E3E719EBE07400C970C5 /* IdolBoxEntry.swift */; };
 		EE5170ED19E8CA7500322AC5 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */; };
 		EE5170F519E8D4A100322AC5 /* IDOLBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */; };
 		EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F619E8D6A900322AC5 /* IdolIndex.swift */; };
 		EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */; };
+		EE6104CC19EC0B700023FDB4 /* IdolEntriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6104CB19EC0B700023FDB4 /* IdolEntriesTableViewController.swift */; };
 		EEDAB0CE19E984B200907B56 /* QueryTextIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */; };
 		EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0CF19E985AE00907B56 /* TypAliases.swift */; };
 		EEDAB0D219EA02C600907B56 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */; };
@@ -52,10 +54,12 @@
 		EE21970319E8C64E0027B190 /* SearchResultParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
 		EE21970619E8C7810027B190 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EE21970819E8C78A0027B190 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		EE27E3E719EBE07400C970C5 /* IdolBoxEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolBoxEntry.swift; sourceTree = "<group>"; };
 		EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
 		EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDOLBox.xcdatamodel; sourceTree = "<group>"; };
 		EE5170F619E8D6A900322AC5 /* IdolIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolIndex.swift; sourceTree = "<group>"; };
 		EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearchResult.swift; sourceTree = "<group>"; };
+		EE6104CB19EC0B700023FDB4 /* IdolEntriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolEntriesTableViewController.swift; sourceTree = "<group>"; };
 		EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTextIndexResponseParser.swift; sourceTree = "<group>"; };
 		EEDAB0CF19E985AE00907B56 /* TypAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypAliases.swift; sourceTree = "<group>"; };
 		EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		EE2196DA19E8BF750027B190 /* IDOLBoxFramework */ = {
 			isa = PBXGroup;
 			children = (
+				EE6104C819EBE5AE0023FDB4 /* UI */,
 				EE21970A19E8C7AF0027B190 /* Data */,
 				EE21970519E8C6560027B190 /* Helpers */,
 				EE21970019E8C61A0027B190 /* IDOL */,
@@ -165,10 +170,19 @@
 			isa = PBXGroup;
 			children = (
 				EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */,
+				EE27E3E719EBE07400C970C5 /* IdolBoxEntry.swift */,
 				EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */,
 				EE5170F619E8D6A900322AC5 /* IdolIndex.swift */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		EE6104C819EBE5AE0023FDB4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EE6104CB19EC0B700023FDB4 /* IdolEntriesTableViewController.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,11 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE27E3E819EBE07400C970C5 /* IdolBoxEntry.swift in Sources */,
 				EE21970219E8C6420027B190 /* ListIndexResponseParser.swift in Sources */,
 				EEDAB0D219EA02C600907B56 /* FetchedResultsControllerDelegate.swift in Sources */,
 				EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */,
 				EEDAB0CE19E984B200907B56 /* QueryTextIndexResponseParser.swift in Sources */,
 				EE13D3AD19EA892F00581955 /* ActivityProgressAlert.swift in Sources */,
+				EE6104CC19EC0B700023FDB4 /* IdolEntriesTableViewController.swift in Sources */,
 				EE13D3AF19EA9B2D00581955 /* Utils.swift in Sources */,
 				EE2196FE19E8C0000027B190 /* IDOLService.swift in Sources */,
 				EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */,

@@ -11,7 +11,7 @@ import CoreData
 
 public struct TypeAliases {
     
-    // Tuple for index info
+    // Tuple for Index Info
     public typealias IndexTuple = (name:String,flavor:String,isPublic:Bool,info:String)
     
     // Tuple for Search Result

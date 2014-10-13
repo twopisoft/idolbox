@@ -49,10 +49,7 @@ public class SearchResultParser: NSObject {
                             
                             if let _moddate = doc["modified_date"] as? NSArray {
                                 if _moddate.count > 0 {
-                                    let dateFormatter = NSDateFormatter()
-                                    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
-                                    dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-                                    if let d = dateFormatter.dateFromString(_moddate[0] as String) {
+                                    if let d = Utils.stringToDate(_moddate[0] as String) {
                                         moddate = d
                                     }
                                 }
@@ -67,7 +64,7 @@ public class SearchResultParser: NSObject {
                             }
                             
                             let entry : TypeAliases.ResultTuple = (title,reference,weight,index,moddate,summary,content)
-                            //NSLog("summary=\(summary)")
+                            
                             searchResults.append(entry)
                             
                         }

@@ -23,6 +23,7 @@ public struct Constants {
     
     public static let ApiKeyParam          = "apikey"
     public static let IndexesParam         = "indexes"
+    public static let IndexParam           = "index"
     public static let RelevanceParam       = "relevance"
     public static let SortParam            = "sort"
     public static let SummaryParam         = "summary"
@@ -30,6 +31,10 @@ public struct Constants {
     public static let HighlightParam       = "highlight"
     public static let PrintFieldParam      = "print_fields"
     public static let StartTagParam        = "start_tag"
+    public static let IndexReferenceParam  = "index_reference"
+    public static let UrlParam             = "url"
+    public static let TextParam            = "text"
+    public static let AdditionaMetaParam   = "additional_metadata"
     
     public static let SummaryStyleQuick    = "quick"
     public static let SummaryStyleContext  = "context"
@@ -46,6 +51,8 @@ public struct Constants {
     
     public static let PrintFieldDate       = "modified_date,content"
     
+    public static let ModDateJson          = "{\"modified_date\":[\"%@\"]}"
+    
     public static let SelectIndexSearchSegue   = "SelectIndexSearch"
     public static let SelectIndexAddSegue      = "SelectIndexAdd"
     
@@ -61,5 +68,7 @@ public struct Constants {
     
     public static let PersonalIndexTitle       = "Personal"
     public static let PublicIndexTitle         = "Public"
+    
+    public static let MaxResultsPerIndex       = "100"
     
 }

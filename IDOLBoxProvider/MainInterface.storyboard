@@ -63,15 +63,15 @@
                             <outlet property="delegate" destination="a9d-1J-aiE" id="Fx2-1b-CLR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Documents in IDOL Indexes" id="AEB-GZ-54i">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="sRs-0v-B4Y">
-                            <connections>
-                                <action selector="doSearch" destination="a9d-1J-aiE" id="B3O-VA-B10"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Documents in IDOL Indexes" id="AEB-GZ-54i"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="350" height="400"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="P0C-hA-f5e">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh" destination="a9d-1J-aiE" eventType="valueChanged" id="3d9-uN-oYc"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="docListTableView" destination="RYk-Ci-tXx" id="rzC-aE-Mcf"/>
                         <segue destination="jk7-WL-cme" kind="unwind" identifier="unwindFromSelection" unwindAction="unwindFromSelection:" id="fDV-Uu-qhn"/>

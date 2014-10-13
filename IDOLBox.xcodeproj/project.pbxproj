@@ -8,24 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E714919DCF2CC00247A08 /* AppDelegate.swift */; };
-		EE0E715119DCF2CC00247A08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0E714F19DCF2CC00247A08 /* Main.storyboard */; };
-		EE0E715319DCF2CC00247A08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
-		EE0E715619DCF2CC00247A08 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */; };
 		EE0E716219DCF2CC00247A08 /* IDOLBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */; };
 		EE13D3A519EA6FE200581955 /* DocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE13D3A419EA6FE200581955 /* DocumentPickerViewController.swift */; };
 		EE13D3A719EA6FEA00581955 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE13D3A619EA6FEA00581955 /* MainInterface.storyboard */; };
 		EE13D3A919EA6FF100581955 /* SelectDocTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE13D3A819EA6FF100581955 /* SelectDocTableViewController.swift */; };
 		EE2196FF19E8C0B00027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
 		EE21970F19E8C8600027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
-		EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */; };
 		EE27E3E619EBB43F00C970C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
+		EE27E3E919EBE11500C970C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0E714F19DCF2CC00247A08 /* Main.storyboard */; };
+		EE27E3EA19EBE12100C970C5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715419DCF2CC00247A08 /* LaunchScreen.xib */; };
 		EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */; };
 		EE54352619E908C90037A6D6 /* IDOLBoxFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE54352719E915F00037A6D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EE59F88E19EA6BC0005A7657 /* IDOLBoxProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EE59F88319EA6BC0005A7657 /* IDOLBoxProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EE59F89419EA6C73005A7657 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
 		EE59F89519EA6C7A005A7657 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
+		EE6104CE19EC17820023FDB4 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */; };
 		EE81753B19EB6C5000874E65 /* extension_js.js in Resources */ = {isa = PBXBuildFile; fileRef = EE81753A19EB6C5000874E65 /* extension_js.js */; };
+		EE9FFBAF19EBE29C004BBE53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */; };
 		EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40319E6A8FB005A4D7E /* reset.css */; };
 		EEC9D40619E6A929005A4D7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40519E6A929005A4D7E /* style.css */; };
@@ -150,11 +150,11 @@
 		EE13D3A619EA6FEA00581955 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		EE13D3A819EA6FF100581955 /* SelectDocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDocTableViewController.swift; sourceTree = "<group>"; };
 		EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IDOLBoxFramework.xcodeproj; path = IDOLBoxFramework/IDOLBoxFramework.xcodeproj; sourceTree = "<group>"; };
-		EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
 		EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		EE59F88319EA6BC0005A7657 /* IDOLBoxProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IDOLBoxProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE59F88619EA6BC0005A7657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE59F88719EA6BC0005A7657 /* IDOLBoxProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IDOLBoxProvider.entitlements; sourceTree = "<group>"; };
+		EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
 		EE81753A19EB6C5000874E65 /* extension_js.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = extension_js.js; sourceTree = "<group>"; };
 		EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
 		EEC9D40319E6A8FB005A4D7E /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
@@ -372,9 +372,9 @@
 				EEF9DEC819E3954500F718F8 /* SelectIndexTableViewController.swift */,
 				EEF9DEC619E3789300F718F8 /* FindViewController.swift */,
 				EEF9DEC419E3738000F718F8 /* SettingsViewController.swift */,
-				EE24E8AB19DE2B5900391E11 /* BoxTableViewController.swift */,
 				EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */,
 				EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */,
+				EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -588,13 +588,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE0E715119DCF2CC00247A08 /* Main.storyboard in Resources */,
+				EE9FFBAF19EBE29C004BBE53 /* Images.xcassets in Resources */,
+				EE27E3EA19EBE12100C970C5 /* LaunchScreen.xib in Resources */,
+				EE27E3E919EBE11500C970C5 /* Main.storyboard in Resources */,
 				EEC9D40619E6A929005A4D7E /* style.css in Resources */,
 				EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */,
 				EEC9D41B19E7BCC4005A4D7E /* skin.css in Resources */,
-				EE0E715619DCF2CC00247A08 /* LaunchScreen.xib in Resources */,
 				EEC9D40A19E6A99F005A4D7E /* ViewDocumentTemplate.html in Resources */,
-				EE0E715319DCF2CC00247A08 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,11 +643,11 @@
 				EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */,
 				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
 				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,
-				EE24E8AC19DE2B5900391E11 /* BoxTableViewController.swift in Sources */,
 				EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */,
 				EEF9DEC719E3789300F718F8 /* FindViewController.swift in Sources */,
 				EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */,
 				EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */,
+				EE6104CE19EC17820023FDB4 /* BoxTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +748,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -925,7 +926,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = IDOLBoxAction/IDOLBoxAction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -945,7 +946,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_ENTITLEMENTS = IDOLBoxAction/IDOLBoxAction.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -961,7 +962,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = IDOLBoxShare/IDOLBoxShare.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -981,7 +981,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = IDOLBoxShare/IDOLBoxShare.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
