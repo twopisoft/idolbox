@@ -65,7 +65,9 @@ class ActionViewController: UIViewController {
 
     @IBAction func summarize(sender: AnyObject) {
         
-        /*let summary = "<article style=\"display: block; zoom: 1;\"><div style=\"width:95%; margin:2% 2% 2% 2%;\"><h2 style=\"text-decoration: underline;\">Summary by IDOL</h2><p>The domestic cat \n\n (Felis catus or Felis silvestris catus) is a small, usually furry, domesticated, and carnivorous mammal. Nomenclature and etymology\n\nThe English word cat (Old English catt) is in origin a loanword, introduced to many languages of Europe from Latin cattus  and Byzantine Greek  , including Portuguese and Spanish gato, French chat, German Katze, Lithuanian katė and Old Church Slavonic kotka, among others. While the African wildcat is the ancestral subspecies from which domestic cats are descended, and wildcats and domestic cats can completely interbreed, there are several intermediate stages between domestic pet and pedigree cats on the one hand and those entirely wild animals on the other. This has resulted in mixed usage of the terms, as the domestic cat can be called by its subspecies name, Felis silvestris catus. However, this has been criticized as implausible, because there may have been little reward for such an effort: cats generally do not carry out commands and, although they do eat rodents, other species such as ferrets or terriers may be better at controlling these pests.</p></div></article><hr>"*/
+        if !validate() {
+            return
+        }
         
         var alert : UIViewController!
         
@@ -121,6 +123,22 @@ class ActionViewController: UIViewController {
         extensionItem.attachments = [itemProvider]
         
         self.extensionContext!.completeRequestReturningItems([extensionItem], completionHandler: nil)
+    }
+    
+    private func validate() -> Bool {
+        if self._apiKey == nil || self._apiKey.isEmpty {
+            ErrorReporter.apiKeyNotSet(self, handler: {
+                self.done()
+            })
+            return false
+        } else if self._addIndex == nil || self._addIndex.isEmpty {
+            ErrorReporter.addIndexNotSet(self, handler: {
+                self.done()
+            })
+            return false
+        }
+        
+        return true
     }
     
     private func readSettings() {
