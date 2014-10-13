@@ -54,7 +54,10 @@ class SelectIndexTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if let sections = fetchController().sections {
+            return sections.count
+        }
+        return 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,6 +83,36 @@ class SelectIndexTableViewController: UITableViewController {
             }
         }
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = fetchController().sections {
+            if sections.count > 0 {
+                let secInfo = fetchController().sections![section] as NSFetchedResultsSectionInfo
+                return secInfo.name == "0" ? Constants.PersonalIndexTitle : Constants.PublicIndexTitle
+            }
+        }
+        return nil
+    }
+    
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+        var ret : [String] = []
+        for title in fetchController().sectionIndexTitles {
+            if title as String == "0" {
+                ret.append(Constants.PersonalIndexTitle)
+            } else {
+                ret.append(Constants.PublicIndexTitle)
+            }
+        }
+        
+        if ret.count == 0 {
+            return fetchController().sectionIndexTitles
+        }
+        return ret
+    }
+    
+    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        return fetchController().sectionForSectionIndexTitle(title, atIndex: index)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -176,7 +209,7 @@ class SelectIndexTableViewController: UITableViewController {
     
     private func fetchController() -> NSFetchedResultsController {
         if _fetchController == nil {
-            let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "name", ascending: true)]
+            let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "isPublic", ascending: true),NSSortDescriptor(key: "name", ascending: true)]
             let filterPredicate = !self.multiSelect ? NSPredicate(format: "isPublic=%@", argumentArray: [self.multiSelect]) : nil
             var fetchRequest = NSFetchRequest()
             let entity = NSEntityDescription.entityForName("IdolIndex", inManagedObjectContext: self.managedObjectContext)
@@ -186,7 +219,7 @@ class SelectIndexTableViewController: UITableViewController {
             
             _fetchControllerDelegate = FetchedResultsControllerDelegate(tableView: self.indexTableView, configHandler: self.cellConfigHandler)
             
-            _fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+            _fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "isPublic", cacheName: nil)
             _fetchController!.delegate = _fetchControllerDelegate
         }
         
