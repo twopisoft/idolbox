@@ -24,6 +24,7 @@
 		EE59F88E19EA6BC0005A7657 /* IDOLBoxProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EE59F88319EA6BC0005A7657 /* IDOLBoxProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EE59F89419EA6C73005A7657 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
 		EE59F89519EA6C7A005A7657 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
+		EE81753B19EB6C5000874E65 /* extension_js.js in Resources */ = {isa = PBXBuildFile; fileRef = EE81753A19EB6C5000874E65 /* extension_js.js */; };
 		EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */; };
 		EEC9D40419E6A8FB005A4D7E /* reset.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40319E6A8FB005A4D7E /* reset.css */; };
 		EEC9D40619E6A929005A4D7E /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D40519E6A929005A4D7E /* style.css */; };
@@ -31,7 +32,6 @@
 		EEC9D40E19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D40D19E6BAEC005A4D7E /* ViewDocumentTemplateProcessor.swift */; };
 		EEC9D41B19E7BCC4005A4D7E /* skin.css in Resources */ = {isa = PBXBuildFile; fileRef = EEC9D41A19E7BCC4005A4D7E /* skin.css */; };
 		EEE4BECD19E93E9400782DBB /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
-		EEE4BECF19E93EE100782DBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EEEFD72C19E7FAA40041D1EF /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */; };
 		EEEFD72E19E7FAA40041D1EF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEEFD72D19E7FAA40041D1EF /* MainInterface.storyboard */; };
 		EEEFD73119E7FAA40041D1EF /* IDOLBoxAction.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EEEFD72719E7FAA30041D1EF /* IDOLBoxAction.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -154,6 +154,7 @@
 		EE59F88319EA6BC0005A7657 /* IDOLBoxProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IDOLBoxProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE59F88619EA6BC0005A7657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE59F88719EA6BC0005A7657 /* IDOLBoxProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IDOLBoxProvider.entitlements; sourceTree = "<group>"; };
+		EE81753A19EB6C5000874E65 /* extension_js.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = extension_js.js; sourceTree = "<group>"; };
 		EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
 		EEC9D40319E6A8FB005A4D7E /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
 		EEC9D40519E6A929005A4D7E /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 				EEEFD72B19E7FAA40041D1EF /* ActionViewController.swift */,
 				EEEFD72D19E7FAA40041D1EF /* MainInterface.storyboard */,
 				EEEFD72919E7FAA40041D1EF /* Supporting Files */,
+				EE81753A19EB6C5000874E65 /* extension_js.js */,
 			);
 			path = IDOLBoxAction;
 			sourceTree = "<group>";
@@ -615,7 +617,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEE4BECF19E93EE100782DBB /* Images.xcassets in Resources */,
+				EE81753B19EB6C5000874E65 /* extension_js.js in Resources */,
 				EEEFD72E19E7FAA40041D1EF /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
