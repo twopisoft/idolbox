@@ -111,6 +111,6 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func readControls() {
-        _searchTerm = searchTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        _searchTerm = Utils.trim(searchTextField.text)
     }
 }

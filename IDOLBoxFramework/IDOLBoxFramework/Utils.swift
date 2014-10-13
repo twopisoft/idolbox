@@ -16,4 +16,8 @@ public class Utils: NSObject {
         let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegEx)
         return urlTest!.evaluateWithObject(urlComps[0])
     }
+    
+    public class func trim(str : String) -> String {
+        return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
 }

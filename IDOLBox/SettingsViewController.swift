@@ -62,9 +62,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func toggleSecureText(sender: UIButton) {
         self.apiKeyTextField.secureTextEntry = !self.apiKeyTextField.secureTextEntry
         if self.apiKeyTextField.secureTextEntry {
-            sender.setImage(UIImage(named: "lock"), forState: UIControlState.Normal)
-        } else {
             sender.setImage(UIImage(named: "unlock"), forState: UIControlState.Normal)
+        } else {
+            sender.setImage(UIImage(named: "lock"), forState: UIControlState.Normal)
         }
     }
     
@@ -165,7 +165,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func readControls() {
-        _apiKey = apiKeyTextField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        _apiKey = Utils.trim(apiKeyTextField.text)
         _maxResults = maxResultButton.titleForSegmentAtIndex(maxResultButton.selectedSegmentIndex)?.toInt()
         _summaryStyle = summaryStyleButton.titleForSegmentAtIndex(summaryStyleButton.selectedSegmentIndex)
         _sortStyle = sortStyleButton.titleForSegmentAtIndex(sortStyleButton.selectedSegmentIndex)

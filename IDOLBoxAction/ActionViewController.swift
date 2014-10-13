@@ -99,8 +99,14 @@ class ActionViewController: UIViewController {
                     } else {
                         let results = SearchResultParser.parseResponse(data2)
                         if results.count > 0 {
-                            self.jsContent = self.pre + results[0].summary + self.post + self.jsContent
-                            self.finalizeReplace()
+                            if Utils.trim(results[0].summary).isEmpty {
+                                ErrorReporter.showAlertView(self, title: "Sorry...", message: "IDOL could not generate a summary", alertHandler: {
+                                    self.done()
+                                })
+                            } else {
+                                self.jsContent = self.pre + results[0].summary + self.post + self.jsContent
+                                self.finalizeReplace()
+                            }
                         }
                     }
                 })
