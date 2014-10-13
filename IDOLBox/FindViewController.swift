@@ -97,7 +97,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func readSettings() {
-        let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         _searchIndexes = defaults!.valueForKey(Constants.kSearchIndexes) as? String
     }

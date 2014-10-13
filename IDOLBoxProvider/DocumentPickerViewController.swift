@@ -79,7 +79,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
     
     
     private func readSettings() {
-        let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         self._apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
     }
     

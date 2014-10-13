@@ -46,7 +46,7 @@ public class IDOLService {
     private lazy var sessionConfig : NSURLSessionConfiguration = {
         let configName = "com.twopi.IDOLBox"
         let sessionConfig = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(configName)
-        sessionConfig.sharedContainerIdentifier = "group.com.twopi.IDOLBox"
+        sessionConfig.sharedContainerIdentifier = Constants.GroupContainerName
         return sessionConfig
     }()
     

@@ -9,6 +9,8 @@
 import Foundation
 
 public struct Constants {
+    public static let GroupContainerName   = "group.com.twopi.IDOLBox"
+    
     public static let IDOLService          = "IDOLService"
     
     public static let kApiKey              = "IDOL_APIKey"

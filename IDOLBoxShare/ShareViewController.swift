@@ -75,7 +75,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     private func readSettings() {
-        let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         self._apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         self._addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
         NSLog("_apiKey=\(_apiKey)")

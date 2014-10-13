@@ -118,7 +118,7 @@ public class DBHelper {
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.twopi.IDOLBox" in the application's documents Application Support directory.
-        let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.twopi.IDOLBox")
+        let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.GroupContainerName)
         return url as NSURL!
         }()
     

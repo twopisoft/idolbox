@@ -43,7 +43,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func save(sender: AnyObject) {
         readControls()
-        var defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         defaults!.setObject(_apiKey, forKey: Constants.kApiKey)
         defaults!.setInteger(_maxResults!, forKey: Constants.kMaxResults)
         defaults!.setObject(_summaryStyle, forKey: Constants.kSummaryStyle)
@@ -115,7 +115,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
     
     private func loadSettings() {
-        let defaults = NSUserDefaults(suiteName: "group.com.twopi.IDOLBox")
+        let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         _maxResults = defaults!.valueForKey(Constants.kMaxResults) as? Int
         _summaryStyle = defaults!.valueForKey(Constants.kSummaryStyle) as? String
