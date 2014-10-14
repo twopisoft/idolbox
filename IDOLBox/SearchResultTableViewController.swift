@@ -185,7 +185,10 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         if identifier == Constants.SearchResultDetailSegue {
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SearchResultDetailViewController
-            viewController.selectedItem = _selectedItem
+            
+            let resultTuple = TypeAliases.ResultTuple(_selectedItem!.title,_selectedItem!.reference,_selectedItem!.weight,
+                                                    _selectedItem!.index,_selectedItem!.moddate,_selectedItem!.summary,_selectedItem!.content)
+            viewController.selectedItem = resultTuple
         }
     }
     

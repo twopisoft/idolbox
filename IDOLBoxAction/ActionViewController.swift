@@ -26,6 +26,7 @@ class ActionViewController: UIViewController {
         super.viewDidLoad()
         
         readSettings()
+        registerForSettingsChange()
         
         if let execContext = self.extensionContext {
             let inputItems = execContext.inputItems
@@ -152,6 +153,14 @@ class ActionViewController: UIViewController {
         self._apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         self._addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
         self._summaryStyle = defaults!.valueForKey(Constants.kSummaryStyle) as? String
+    }
+    
+    func settingsChanged(notification : NSNotification!) {
+        readSettings()
+    }
+    
+    private func registerForSettingsChange() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged:", name: NSUserDefaultsDidChangeNotification, object: nil)
     }
 
 }

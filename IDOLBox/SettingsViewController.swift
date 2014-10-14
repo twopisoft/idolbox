@@ -96,7 +96,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             } else {
                 viewController.multiSelect = false
                 if let ai = _addIndex {
-                    viewController.selectedIndexes = [ai]
+                    viewController.selectedIndexes = ai.isEmpty ? [] : [ai]
                 }
             }
         }
@@ -106,6 +106,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         if segue.sourceViewController.isKindOfClass(SelectIndexTableViewController) {
             let vc = segue.sourceViewController as SelectIndexTableViewController
             
+            NSLog("vc.selectedIndexes=\(vc.selectedIndexes)")
             if vc.multiSelect {
                 _searchIndexes = vc.selectedIndexes.count > 0 ? ",".join(vc.selectedIndexes) : ""
             } else {

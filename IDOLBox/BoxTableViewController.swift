@@ -29,6 +29,7 @@ class BoxTableViewController: IdolEntriesTableViewController {
         self._managedObjectContext = DBHelper.sharedInstance.managedObjectContext
         
         readSettings()
+        registerForSettingsChange()
         
         doSearch()
     }
@@ -75,10 +76,11 @@ class BoxTableViewController: IdolEntriesTableViewController {
         }
     }
     
-    override func doSearch() {
+    @IBAction override func doSearch() {
         
         if apiKey == nil || apiKey!.isEmpty {
             ErrorReporter.apiKeyNotSet(self, handler: nil)
+            refreshControl?.endRefreshing()
             return
         }
         
@@ -146,16 +148,9 @@ class BoxTableViewController: IdolEntriesTableViewController {
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SearchResultDetailViewController
             
-            let entity = NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: self._managedObjectContext)
-            var idolSearchResult = IdolSearchResult(entity: entity!, insertIntoManagedObjectContext: self._managedObjectContext)
-            idolSearchResult.setValue(selectedItem.title, forKey: "title")
-            idolSearchResult.setValue(selectedItem.reference, forKey: "reference")
-            idolSearchResult.setValue(selectedItem.index, forKey: "index")
-            idolSearchResult.setValue(selectedItem.moddate, forKey: "moddate")
-            idolSearchResult.setValue(selectedItem.summary, forKey: "summary")
-            idolSearchResult.setValue(selectedItem.content, forKey: "content")
-            idolSearchResult.setValue(100, forKey: "weight")
-            viewController.selectedItem = idolSearchResult
+            let resultTuple = TypeAliases.ResultTuple(selectedItem!.title,selectedItem!.reference,100.0,
+                                                      selectedItem!.index,selectedItem!.moddate,selectedItem!.summary,selectedItem!.content)
+            viewController.selectedItem = resultTuple
         }
     }
     
@@ -164,6 +159,14 @@ class BoxTableViewController: IdolEntriesTableViewController {
         apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         indexes = DBHelper.fetchIndexes(self._managedObjectContext, privateOnly: true)
         _summaryStyle = defaults!.valueForKey(Constants.kSummaryStyle) as? String
+    }
+    
+    func settingsChanged(notification : NSNotification!) {
+        readSettings()
+    }
+    
+    private func registerForSettingsChange() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged:", name: NSUserDefaultsDidChangeNotification, object: nil)
     }
 
 }

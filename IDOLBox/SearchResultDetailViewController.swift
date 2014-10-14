@@ -12,7 +12,7 @@ import IDOLBoxFramework
 
 class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
 
-    var selectedItem : IdolSearchResult?
+    var selectedItem : TypeAliases.ResultTuple?
     
     @IBOutlet weak var detailWebView: UIWebView!
     
@@ -67,7 +67,7 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         self.reloadButton.enabled = !self.detailWebView.loading
     }
     
-    private func processTemplate(data : IdolSearchResult) -> String {
+    private func processTemplate(data : TypeAliases.ResultTuple) -> String {
         
         var fields : [String : String] = ["title"       : data.title,
                                           "reference"   : data.reference,
@@ -77,7 +77,7 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         
         
         
-        let weight = NSString(format: "%5.2f", data.weight.doubleValue)
+        let weight = NSString(format: "%5.2f", data.weight)
         fields["weight"] = weight
         
         let moddate = NSDateFormatter.localizedStringFromDate(data.moddate, dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.LongStyle)

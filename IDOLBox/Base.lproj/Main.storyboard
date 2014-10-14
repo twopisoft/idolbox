@@ -328,7 +328,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9az-eV-Xrx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="O1x-k4-at9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="680"/>
+            <point key="canvasLocation" x="1143" y="2212"/>
         </scene>
         <!--About IDOLBox-->
         <scene sceneID="G2N-pP-8oh">
@@ -362,7 +362,9 @@ powered by</string>
                                         <string key="text">Submitter:
 arshad01
 
-Attributions:  Icons made by Freepik from
+Attributions:
+
+Icons made by Freepik from
 http://www.flaticon.com
 licensed under CC BY 3.0
 
@@ -402,7 +404,7 @@ http://cssr.ru/simpliste</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWe-Tw-wFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="1619"/>
+            <point key="canvasLocation" x="1850" y="3221"/>
         </scene>
         <!--Select Index-->
         <scene sceneID="7K2-m4-c3C">
@@ -452,7 +454,7 @@ http://cssr.ru/simpliste</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrI-vJ-aNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1EX-Lx-DuH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4367" y="1479"/>
+            <point key="canvasLocation" x="2979" y="1521"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2f2-tf-xnG">
@@ -468,7 +470,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBk-7Y-82Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1022" y="680"/>
+            <point key="canvasLocation" x="234" y="2920"/>
         </scene>
         <!--Search IDOL-->
         <scene sceneID="5dp-81-B6a">
@@ -566,7 +568,7 @@ http://cssr.ru/simpliste</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aea-A3-gFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="1959"/>
+            <point key="canvasLocation" x="-24" y="1857"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="0UX-dJ-YnK">
@@ -618,7 +620,7 @@ http://cssr.ru/simpliste</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rt6-Ve-tsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8Z3-VJ-3AW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1780" y="2291"/>
+            <point key="canvasLocation" x="1836" y="416"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -674,7 +676,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GfI-1P-9Vu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3469" y="1479"/>
+            <point key="canvasLocation" x="2073" y="1521"/>
         </scene>
         <!--Search Result Detail View Controller-->
         <scene sceneID="Tyd-Sf-46H">
@@ -737,7 +739,7 @@ http://cssr.ru/simpliste</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTQ-hc-5oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3562" y="2305"/>
+            <point key="canvasLocation" x="3728" y="416"/>
         </scene>
         <!--Search-->
         <scene sceneID="wW7-Re-BvS">
@@ -774,7 +776,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BuG-GM-OlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="2291"/>
+            <point key="canvasLocation" x="807" y="416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CfO-19-QId">
@@ -795,7 +797,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcT-Gt-Lwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2196" y="-110"/>
+            <point key="canvasLocation" x="2754" y="416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ein-5X-Oq2">
@@ -813,7 +815,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1N-1y-4wr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="1619"/>
+            <point key="canvasLocation" x="1143" y="3221"/>
         </scene>
     </scenes>
     <resources>
@@ -826,8 +828,8 @@ http://cssr.ru/simpliste</string>
         <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iem-So-T6q"/>
-        <segue reference="chc-90-xFL"/>
+        <segue reference="tSH-2g-tRj"/>
+        <segue reference="JzH-AN-LF0"/>
         <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>
