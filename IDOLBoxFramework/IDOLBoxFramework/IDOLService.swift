@@ -93,17 +93,18 @@ public class IDOLService {
         apiInvoke(apiKey, request: postRequest, completionHandler: handler)
     }
     
+    // Method to upload a file to an IDOL index using the Add to Index service. For local files we assign a reference starting with idol://
     public func addToIndexFile(apiKey:String, filePath : String, indexName : String, completionHandler handler: TypeAliases.ResponseHandler?) {
         let fileMeta = (filePath,filePath.lastPathComponent,false)
         
         let idolPath = "idol://" + indexName + "/" + fileMeta.1
-        NSLog("IdolPath=\(idolPath)")
         
         let postRequest = self.createAddIndexRequest([fileMeta], idolPath: idolPath, indexName: indexName, apiKey: apiKey)
         
         apiInvoke(apiKey, request: postRequest, completionHandler: handler)
     }
     
+    // Method to add a document to index when a publically accessible url is provided
     public func addToIndexUrl(apiKey:String, url:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
         
         let reqUrl = _URLS.addToIndexUrl + "?apikey=" + apiKey +

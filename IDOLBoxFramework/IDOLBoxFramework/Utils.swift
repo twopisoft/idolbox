@@ -8,8 +8,10 @@
 
 import UIKit
 
+// Class for Utility methods
 public class Utils: NSObject {
    
+    // Checks if a string is a https(s) url. Note that we only consider the part before the query.
     public class func isUrl(str : String) -> Bool {
         let urlComps = str.componentsSeparatedByString("?")
         let urlRegEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
@@ -17,16 +19,18 @@ public class Utils: NSObject {
         return urlTest!.evaluateWithObject(urlComps[0])
     }
     
+    // String trim.
     public class func trim(str : String) -> String {
         return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
     
+    // Date to String based on the yyyy-MM-ddTHH:mm:ssZ format
     public class func dateToString(date : NSDate) -> String? {
         return dateFormatter().stringFromDate(NSDate())
     }
     
+    // String to Date based on the yyyy-MM-ddTHH:mm:ssZ format
     public class func stringToDate(str : String) -> NSDate? {
-        
         return dateFormatter().dateFromString(str)
     }
     

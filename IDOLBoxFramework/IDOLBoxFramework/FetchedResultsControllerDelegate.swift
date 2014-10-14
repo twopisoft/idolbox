@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// Delegate for NSFetchedResultsController
 public class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControllerDelegate {
     
     private var _tableView : UITableView!
@@ -43,8 +44,6 @@ public class FetchedResultsControllerDelegate: NSObject, NSFetchedResultsControl
         case NSFetchedResultsChangeType.Update:
             if self._cellConfigHandler != nil {
                 let cell = self._tableView.cellForRowAtIndexPath(indexPath!)
-                NSLog("indexPath.section=\(indexPath?.section), indexPath.row=\(indexPath?.row)")
-                NSLog("cell=\(cell)")
                 self._cellConfigHandler!(controller: controller, cell: cell! ,indexPath: indexPath!)
             }
             

@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+// Framework wide TypeAliases
 public struct TypeAliases {
     
     // Tuple for Index Info

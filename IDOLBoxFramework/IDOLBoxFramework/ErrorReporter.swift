@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Utility class for displaying error messages
 public class ErrorReporter: NSObject {
     
     // convenience functions for displaying fixed error messages

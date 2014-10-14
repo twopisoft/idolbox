@@ -263,7 +263,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oa0-eO-0XU" id="G9Z-L0-JUk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bnW-Xb-aRA">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bnW-Xb-aRA">
                                                     <rect key="frame" x="543" y="6" width="51" height="31"/>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings Passcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ek-PV-v4a">
@@ -476,7 +476,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBk-7Y-82Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208" y="-296"/>
+            <point key="canvasLocation" x="1143" y="1226"/>
         </scene>
         <!--Search IDOL-->
         <scene sceneID="5dp-81-B6a">
@@ -575,7 +575,7 @@ http://cssr.ru/simpliste</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aea-A3-gFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="1955"/>
+            <point key="canvasLocation" x="-30" y="1955"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="0UX-dJ-YnK">
@@ -627,7 +627,7 @@ http://cssr.ru/simpliste</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rt6-Ve-tsf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8Z3-VJ-3AW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="416"/>
+            <point key="canvasLocation" x="1980" y="416"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -835,8 +835,8 @@ http://cssr.ru/simpliste</string>
         <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="X2d-h6-yTk"/>
+        <segue reference="sdT-c4-7EZ"/>
         <segue reference="UsL-I9-cgT"/>
-        <segue reference="iem-So-T6q"/>
+        <segue reference="JzH-AN-LF0"/>
     </inferredMetricsTieBreakers>
 </document>

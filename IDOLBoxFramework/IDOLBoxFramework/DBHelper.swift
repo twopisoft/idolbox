@@ -125,6 +125,7 @@ public class DBHelper {
         return nil
     }
     
+    // Store information about documents in the index
     public class func storeBoxEntries(managedObjectContext : NSManagedObjectContext, searchResults : [TypeAliases.ResultTuple]) -> NSError? {
         for result in searchResults {
             let (title,reference,weight,index,moddate,summary,content) = result
@@ -140,6 +141,7 @@ public class DBHelper {
         return nil
     }
     
+    // Store information about search results
     public class func storeSearchResults(managedObjectContext : NSManagedObjectContext, searchResults : [TypeAliases.ResultTuple]) -> NSError? {
         for result in searchResults {
             let (title,reference,weight,index,moddate,summary,content) = result
@@ -182,6 +184,7 @@ public class DBHelper {
         return ret
     }
     
+    // Core Data methods
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.twopi.IDOLBox" in the application's documents Application Support directory.
         let url = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(Constants.GroupContainerName)
@@ -219,6 +222,7 @@ public class DBHelper {
         return coordinator
         }()
     
+    // Use this to obtain the managed object context
     public lazy var managedObjectContext: NSManagedObjectContext? = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator

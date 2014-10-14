@@ -9,8 +9,10 @@
 import UIKit
 import IDOLBoxFramework
 
+// View controller for Find (Search) View
 class FindViewController: UITableViewController, UITextFieldDelegate {
 
+    // MARK: Properties
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
@@ -32,12 +34,14 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // Enable button to respond to events
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 1 {
             self.searchButton.becomeFirstResponder()
         }
     }
     
+    // When user pressed enter or Go, start the search
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.searchTextField.resignFirstResponder()
         
@@ -52,13 +56,16 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // Passcode setting/validation before moving to settings screen
     @IBAction func settings(sender: AnyObject) {
         
         if let pc = _passCodeEnbaled {
             if pc {
                 let login = SettingsLoginHandler()
                 login.showLogin(self, passCode: _passCodeVal, handler: { (newPassCode, cancelled) -> () in
+                    // If the user did not cancel
                     if !cancelled {
+                        // Passcode set case
                         if self._passCodeVal == nil || self._passCodeVal!.isEmpty {
                             if newPassCode == nil {
                                 ErrorReporter.showAlertView(self, title: "Passcode was not set", message: "Values did not match", alertHandler: nil)
@@ -69,8 +76,9 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
                                 self.performSegueWithIdentifier("Settings", sender: self)
                             }
                         } else {
+                            // Passcode validation
                             if self._passCodeVal! != newPassCode {
-                                ErrorReporter.showAlertView(self, title: "Passcode Incorrect", message: nil, alertHandler: nil)
+                                ErrorReporter.showAlertView(self, title: "Incorrect Passcode", message: nil, alertHandler: nil)
                             } else {
                                 self.performSegueWithIdentifier("Settings", sender: self)
                             }
@@ -85,14 +93,19 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: - Navigation
+    
+    // Unwind action for returning back from Settings screen
     @IBAction func unwindFromSettings(segue : UIStoryboardSegue) {
         
     }
     
+    // Unwind action for returning back from Search Result screen
     @IBAction func unwindFromSearchResult(segue : UIStoryboardSegue) {
         
     }
     
+    // Unwind action for returning from the index selection screen
     @IBAction func unwindFromSelection(segue : UIStoryboardSegue) {
         if segue.sourceViewController.isKindOfClass(SelectIndexTableViewController) {
             let vc = segue.sourceViewController as SelectIndexTableViewController
@@ -102,14 +115,11 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    
-    // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         let identifier = segue.identifier
-        if identifier == Constants.FindSelectIndexSegue {
+        if identifier == Constants.FindSelectIndexSegue { // For going to Select Index screen
             
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SelectIndexTableViewController
@@ -118,7 +128,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
             if let si = _searchIndexes {
                 viewController.selectedIndexes =  si.isEmpty ? [] : si.componentsSeparatedByString(",")
             }
-        } else if identifier == Constants.SearchResultSegue {
+        } else if identifier == Constants.SearchResultSegue { // For going to Search Result screen
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SearchResultTableViewController
             viewController.apiKey = _apiKey
@@ -131,6 +141,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: Helper method
     private func readSettings() {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String

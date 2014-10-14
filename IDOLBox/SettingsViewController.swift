@@ -21,7 +21,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     private var _maxResults : Int? = 5
     private var _summaryStyle : String? = Constants.SummaryStyleQuick
     private var _sortStyle : String? = Constants.SortStyleRelevance
-    private var _settingsPasscode : Bool? = true
+    private var _settingsPasscode : Bool? = false
     private var _settingsPasscodeVal : String? = nil
     private var _searchIndexes : String? = nil
     private var _addIndex : String? = nil
@@ -115,7 +115,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         if segue.sourceViewController.isKindOfClass(SelectIndexTableViewController) {
             let vc = segue.sourceViewController as SelectIndexTableViewController
             
-            NSLog("vc.selectedIndexes=\(vc.selectedIndexes)")
             if vc.multiSelect {
                 _searchIndexes = vc.selectedIndexes.count > 0 ? ",".join(vc.selectedIndexes) : ""
             } else {

@@ -8,8 +8,10 @@
 
 import UIKit
 
+// Simple template processor for generating document preview
 class ViewDocumentTemplateProcessor: NSObject {
     
+    // The fields dictionary contains the fields and the values to be replaced in the template
     class func processTemplate(fields : [String : String]) -> String {
         
         let filePath = NSBundle.mainBundle().pathForResource("ViewDocumentTemplate", ofType: "html")

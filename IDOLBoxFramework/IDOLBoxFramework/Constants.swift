@@ -8,11 +8,15 @@
 
 import Foundation
 
+// Provide framework wide constants.
 public struct Constants {
+    
+    // The Group container name. Update this when you choose a different group.
     public static let GroupContainerName   = "group.com.twopi.IDOLBox"
     
     public static let IDOLService          = "IDOLService"
     
+    // Key values for storing settings
     public static let kApiKey              = "IDOL_APIKey"
     public static let kMaxResults          = "IDOL_MaxResults"
     public static let kSummaryStyle        = "IDOL_SummaryStyle"
@@ -22,6 +26,7 @@ public struct Constants {
     public static let kSearchIndexes       = "IDOL_SearchIndexes"
     public static let kAddIndex            = "IDOL_AddIndex"
     
+    // IDOL param names
     public static let ApiKeyParam          = "apikey"
     public static let IndexesParam         = "indexes"
     public static let IndexParam           = "index"
@@ -37,6 +42,7 @@ public struct Constants {
     public static let TextParam            = "text"
     public static let AdditionaMetaParam   = "additional_metadata"
     
+    // IDOL param values
     public static let SummaryStyleQuick    = "quick"
     public static let SummaryStyleContext  = "context"
     public static let SummaryStyleConcept  = "concept"
@@ -52,8 +58,10 @@ public struct Constants {
     
     public static let PrintFieldDate       = "modified_date,content"
     
+    // Used for adding modified_date field when adding a document to the index
     public static let ModDateJson          = "{\"modified_date\":[\"%@\"]}"
     
+    // Segue identifiers.
     public static let SelectIndexSearchSegue   = "SelectIndexSearch"
     public static let SelectIndexAddSegue      = "SelectIndexAdd"
     

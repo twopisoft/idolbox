@@ -8,9 +8,9 @@
 
 import UIKit
 
+// Utility class for showing an alert with an activity indicator
 public class ActivityProgressAlert: NSObject {
    
-    // Main function for showing error alerts. If an alert handler is provided then execute it after user presses OK
     public class func showAlertView(controller: UIViewController, title : String?, message : String?) -> UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         
