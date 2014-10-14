@@ -81,7 +81,7 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         fields["weight"] = weight
         
         let moddate = NSDateFormatter.localizedStringFromDate(data.moddate, dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.LongStyle)
-        fields["moddate"] = moddate
+        fields["moddate"] = "Modified on: " + moddate
         
         return ViewDocumentTemplateProcessor.processTemplate(fields)
     }

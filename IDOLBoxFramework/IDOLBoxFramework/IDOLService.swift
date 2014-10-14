@@ -82,13 +82,24 @@ public class IDOLService {
     }
 
     // Method to upload documents to an IDOL index using the Add to Index service
-    public func addToIndexFile(apiKey:String, dirPath : String, indexName: String, completionHandler handler: TypeAliases.ResponseHandler?) {
+    public func addToIndexFiles(apiKey:String, dirPath : String, indexName: String, completionHandler handler: TypeAliases.ResponseHandler?) {
         
         // First get file meta info
         let fileMeta = self.getFileMeta(dirPath)
         
         // Then create an HTTP POST request containing file data
-        let postRequest = self.createAddIndexRequest(fileMeta, dirPath: dirPath, indexName: indexName, apiKey: apiKey)
+        let postRequest = self.createAddIndexRequest(fileMeta, idolPath: nil, indexName: indexName, apiKey: apiKey)
+        
+        apiInvoke(apiKey, request: postRequest, completionHandler: handler)
+    }
+    
+    public func addToIndexFile(apiKey:String, filePath : String, indexName : String, completionHandler handler: TypeAliases.ResponseHandler?) {
+        let fileMeta = (filePath,filePath.lastPathComponent,false)
+        
+        let idolPath = "idol://" + indexName + "/" + fileMeta.1
+        NSLog("IdolPath=\(idolPath)")
+        
+        let postRequest = self.createAddIndexRequest([fileMeta], idolPath: idolPath, indexName: indexName, apiKey: apiKey)
         
         apiInvoke(apiKey, request: postRequest, completionHandler: handler)
     }
@@ -258,7 +269,7 @@ public class IDOLService {
     // Create HTTP POST request for Add to Index service. This method iterates through a list
     // of files, reads their contents and appends to the post request. For a very large number of
     // *large size* files, this method may cause problems
-    private func createAddIndexRequest(fileMeta: [TypeAliases.FileMeta], dirPath: String, indexName: String, apiKey: String) -> NSURLRequest {
+    private func createAddIndexRequest(fileMeta: [TypeAliases.FileMeta], idolPath: String?, indexName: String, apiKey: String) -> NSURLRequest {
         
         let reqUrl = NSURL(string: _URLS.addToIndexUrl)
         var (req, postData) = initPostRequest(apiKey, reqUrlStr: _URLS.addToIndexUrl)
@@ -267,10 +278,12 @@ public class IDOLService {
         // return strange error for some files
         for (path,fname,isDir) in fileMeta {
             if !isDir {
-                NSLog("Processing file=%@",fname)
-                let fileData = NSFileManager.defaultManager().contentsAtPath(path)
+                NSLog("Processing file=%@, path=%@",fname,path)
+                let reference = idolPath == nil ? path : idolPath
+                let fileUrl = NSURL(string: path)
+                let fileData = NSData(contentsOfURL: fileUrl!)
                 postData.appendData(paramSeparatorData(Boundary))
-                postData.appendData(stringToData("Content-Disposition: form-data; name=\"file\"; filename=\"\(path)\"\r\n"))
+                postData.appendData(stringToData("Content-Disposition: form-data; name=\"file\"; filename=\"\(reference!)\"\r\n"))
                 postData.appendData(contentTypeData())
                 postData.appendData(fileData!)
             }

@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import IDOLBoxFramework
+import MobileCoreServices
 
-class BoxTableViewController: IdolEntriesTableViewController {
+class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDelegate {
 
     @IBOutlet var boxTableView: UITableView!
     
@@ -22,6 +23,7 @@ class BoxTableViewController: IdolEntriesTableViewController {
     private var _managedObjectContext : NSManagedObjectContext!
     
     private var _summaryStyle : String!
+    private var _addIndex : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +123,7 @@ class BoxTableViewController: IdolEntriesTableViewController {
     
     override func fetchController() -> NSFetchedResultsController {
         if _fetchController == nil {
-            let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "title", ascending: true)]
+            let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "moddate", ascending: false)]
             
             var fetchRequest = NSFetchRequest()
             let entity = NSEntityDescription.entityForName("IdolBoxEntry", inManagedObjectContext: self._managedObjectContext)
@@ -141,6 +143,12 @@ class BoxTableViewController: IdolEntriesTableViewController {
         
     }
     
+    @IBAction func pickDocument(sender: AnyObject) {
+        var docPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeText as String,kUTTypePlainText as String,kUTTypePDF as String,kUTTypeRTF as String], inMode: UIDocumentPickerMode.Import)
+        docPicker!.delegate = self
+        self.presentViewController(docPicker!, animated: true, completion: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let identifier = segue.identifier
         
@@ -154,11 +162,38 @@ class BoxTableViewController: IdolEntriesTableViewController {
         }
     }
     
+    func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
+        NSLog("url=\(url)")
+        
+        let startAccessingWorked = url.startAccessingSecurityScopedResource()
+        let fileCoordinator = NSFileCoordinator()
+        var error : NSError? = nil
+        
+        fileCoordinator.coordinateReadingItemAtURL(url, options: NSFileCoordinatorReadingOptions.allZeros, error: &error, byAccessor: {(newUrl) in
+            NSLog("newUrl=\(newUrl)")
+            IDOLService.sharedInstance.addToIndexFile(self.apiKey, filePath: newUrl!.absoluteString!, indexName: self._addIndex, completionHandler: { (data, err) -> () in
+                if err != nil {
+                    NSLog("error: \(err)")
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.doSearch()
+                    })
+                }
+                url.stopAccessingSecurityScopedResource()
+            })
+        })
+    }
+    
+    func documentPickerWasCancelled(controller: UIDocumentPickerViewController) {
+        
+    }
+    
     private func readSettings() {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         indexes = DBHelper.fetchIndexes(self._managedObjectContext, privateOnly: true)
         _summaryStyle = defaults!.valueForKey(Constants.kSummaryStyle) as? String
+        _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
     }
     
     func settingsChanged(notification : NSNotification!) {

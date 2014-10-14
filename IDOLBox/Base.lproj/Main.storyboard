@@ -41,6 +41,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="What's in the Box" id="iKv-yu-bFd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="Wia-c7-jP1">
+                            <connections>
+                                <action selector="pickDocument:" destination="aIf-Ug-K2d" id="qhI-kI-umV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" style="done" id="Q9g-44-zWh">
                             <connections>
                                 <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="chc-90-xFL"/>
@@ -828,8 +833,8 @@ http://cssr.ru/simpliste</string>
         <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tSH-2g-tRj"/>
-        <segue reference="JzH-AN-LF0"/>
+        <segue reference="chc-90-xFL"/>
+        <segue reference="iem-So-T6q"/>
         <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>
