@@ -111,7 +111,13 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         
         if err == nil {
             let results = SearchResultParser.parseResponse(data)
-            DBHelper.storeBoxEntries(self._managedObjectContext, searchResults: results)
+
+            if results.count > 0 {
+                navigationItem.title = Constants.BoxTitle
+                DBHelper.storeBoxEntries(self._managedObjectContext, searchResults: results)
+            } else {
+               navigationItem.title = Constants.BoxEmptyTitle
+            }
         } else {
             ErrorReporter.showErrorAlert(self, error: err!)
         }

@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--What's in the Box-->
+        <!--Box Contents-->
         <scene sceneID="wUw-aM-QEo">
             <objects>
                 <tableViewController id="aIf-Ug-K2d" customClass="BoxTableViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +40,7 @@
                             <outlet property="delegate" destination="aIf-Ug-K2d" id="c23-NO-oD0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="What's in the Box" id="iKv-yu-bFd">
+                    <navigationItem key="navigationItem" title="Box Contents" id="iKv-yu-bFd">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="Wia-c7-jP1">
                             <connections>
                                 <action selector="pickDocument:" destination="aIf-Ug-K2d" id="qhI-kI-umV"/>

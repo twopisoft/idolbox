@@ -71,4 +71,7 @@ public struct Constants {
     
     public static let MaxResultsPerIndex       = "100"
     
+    public static let BoxTitle                 = "Box Contents"
+    public static let BoxEmptyTitle            = "Box is Empty"
+    
 }

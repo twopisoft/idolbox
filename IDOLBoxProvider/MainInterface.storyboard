@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-163" y="-156"/>
         </scene>
-        <!--Documents in IDOL Indexes-->
+        <!--Box Contents-->
         <scene sceneID="bcd-d6-K7d">
             <objects>
                 <tableViewController id="a9d-1J-aiE" customClass="SelectDocTableViewController" customModule="IDOLBoxProvider" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                             <outlet property="delegate" destination="a9d-1J-aiE" id="Fx2-1b-CLR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Documents in IDOL Indexes" id="AEB-GZ-54i"/>
+                    <navigationItem key="navigationItem" title="Box Contents" id="AEB-GZ-54i"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="350" height="400"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="P0C-hA-f5e">
