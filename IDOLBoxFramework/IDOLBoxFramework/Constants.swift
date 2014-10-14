@@ -18,6 +18,7 @@ public struct Constants {
     public static let kSummaryStyle        = "IDOL_SummaryStyle"
     public static let kSortStyle           = "IDOL_SortStyle"
     public static let kSettingsPasscode    = "IDOL_SettingsPasscode"
+    public static let kSettingsPasscodeVal = "IDOL_SettingsPasscodeValue"
     public static let kSearchIndexes       = "IDOL_SearchIndexes"
     public static let kAddIndex            = "IDOL_AddIndex"
     

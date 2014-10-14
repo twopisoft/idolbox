@@ -48,7 +48,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" style="done" id="Q9g-44-zWh">
                             <connections>
-                                <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="chc-90-xFL"/>
+                                <action selector="settings:" destination="aIf-Ug-K2d" id="udi-7G-SoS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -62,6 +62,7 @@
                         <outlet property="boxTableView" destination="wVA-6S-UtA" id="1xt-Dv-6ic"/>
                         <outlet property="refreshControl" destination="Rbk-zE-cTa" id="GIG-hU-N1D"/>
                         <segue destination="pNP-Gm-PWp" kind="show" identifier="BoxEntryDetail" id="iem-So-T6q"/>
+                        <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="X2d-h6-yTk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogw-eh-R0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -416,7 +417,7 @@ http://cssr.ru/simpliste</string>
             <objects>
                 <tableViewController title="Select Index" id="Hq9-Uq-NoV" customClass="SelectIndexTableViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VPP-sb-4nI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -475,7 +476,7 @@ http://cssr.ru/simpliste</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBk-7Y-82Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="234" y="2920"/>
+            <point key="canvasLocation" x="2208" y="-296"/>
         </scene>
         <!--Search IDOL-->
         <scene sceneID="5dp-81-B6a">
@@ -561,7 +562,7 @@ http://cssr.ru/simpliste</string>
                     <navigationItem key="navigationItem" title="Search IDOL" id="Dae-Xn-Ioq">
                         <barButtonItem key="rightBarButtonItem" image="settings" id="ZSu-Nr-bt9">
                             <connections>
-                                <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="tSH-2g-tRj"/>
+                                <action selector="settings:" destination="Skm-hQ-Asx" id="kIG-aO-ly6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -569,11 +570,12 @@ http://cssr.ru/simpliste</string>
                         <outlet property="searchButton" destination="g8o-I6-K9t" id="xta-Ie-klb"/>
                         <outlet property="searchTextField" destination="yis-6v-dAR" id="Cn2-e4-vYT"/>
                         <segue destination="7VY-GP-Vc0" kind="show" identifier="SearchResult" id="3xq-Zn-PGt"/>
+                        <segue destination="a5U-7f-YKY" kind="show" identifier="Settings" id="sdT-c4-7EZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aea-A3-gFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-24" y="1857"/>
+            <point key="canvasLocation" x="-36" y="1955"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="0UX-dJ-YnK">
@@ -833,8 +835,8 @@ http://cssr.ru/simpliste</string>
         <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="chc-90-xFL"/>
+        <segue reference="X2d-h6-yTk"/>
+        <segue reference="UsL-I9-cgT"/>
         <segue reference="iem-So-T6q"/>
-        <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,6 +24,8 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
     
     private var _summaryStyle : String!
     private var _addIndex : String!
+    private var _passCodeEnbaled : Bool!
+    private var _passCodeVal : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,38 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
 
     @IBAction func refresh(sender: AnyObject) {
         doSearch()
+    }
+    
+    @IBAction func settings(sender: AnyObject) {
+        if let pc = _passCodeEnbaled {
+            if pc {
+                let login = SettingsLoginHandler()
+                login.showLogin(self, passCode: _passCodeVal, handler: { (newPassCode, cancelled) -> () in
+                    if !cancelled {
+                        if self._passCodeVal == nil || self._passCodeVal!.isEmpty {
+                            if newPassCode == nil {
+                                ErrorReporter.showAlertView(self, title: "Passcode was not set", message: "Values did not match", alertHandler: nil)
+                            } else {
+                                self._passCodeVal = newPassCode
+                                var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
+                                defaults!.setObject(self._passCodeVal, forKey: Constants.kSettingsPasscodeVal)
+                                self.performSegueWithIdentifier("Settings", sender: self)
+                            }
+                        } else {
+                            if self._passCodeVal! != newPassCode {
+                                ErrorReporter.showAlertView(self, title: "Passcode Incorrect", message: nil, alertHandler: nil)
+                            } else {
+                                self.performSegueWithIdentifier("Settings", sender: self)
+                            }
+                        }
+                    }
+                })
+            } else {
+                performSegueWithIdentifier("Settings", sender: self)
+            }
+        } else {
+            performSegueWithIdentifier("Settings", sender: self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -200,6 +234,8 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         indexes = DBHelper.fetchIndexes(self._managedObjectContext, privateOnly: true)
         _summaryStyle = defaults!.valueForKey(Constants.kSummaryStyle) as? String
         _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
+        _passCodeEnbaled = defaults!.valueForKey(Constants.kSettingsPasscode) as? Bool
+        _passCodeVal = defaults!.valueForKey(Constants.kSettingsPasscodeVal) as? String
     }
     
     func settingsChanged(notification : NSNotification!) {

@@ -22,6 +22,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     private var _summaryStyle : String? = Constants.SummaryStyleQuick
     private var _sortStyle : String? = Constants.SortStyleRelevance
     private var _settingsPasscode : Bool? = true
+    private var _settingsPasscodeVal : String? = nil
     private var _searchIndexes : String? = nil
     private var _addIndex : String? = nil
     
@@ -49,6 +50,14 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         defaults!.setObject(_summaryStyle, forKey: Constants.kSummaryStyle)
         defaults!.setObject(_sortStyle, forKey: Constants.kSortStyle)
         defaults!.setBool(_settingsPasscode!, forKey: Constants.kSettingsPasscode)
+        
+        if let sp = _settingsPasscode {
+            if sp {
+                defaults!.setObject(_settingsPasscodeVal, forKey: Constants.kSettingsPasscodeVal)
+            } else {
+                defaults!.setObject("", forKey: Constants.kSettingsPasscodeVal)
+            }
+        }
         
         defaults!.setObject(_searchIndexes, forKey: Constants.kSearchIndexes)
         defaults!.setObject(_addIndex, forKey: Constants.kAddIndex)
@@ -124,6 +133,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         _searchIndexes = defaults!.valueForKey(Constants.kSearchIndexes) as? String
         _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
         _settingsPasscode = defaults!.valueForKey(Constants.kSettingsPasscode) as? Bool
+        _settingsPasscodeVal = defaults!.valueForKey(Constants.kSettingsPasscodeVal) as? String
         
         adjustControls()
     }

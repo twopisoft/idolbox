@@ -25,6 +25,7 @@
 		EE6104CE19EC17820023FDB4 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */; };
 		EE6CAFB719ECB59500BC3437 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */; };
 		EE6CAFBB19ECC66F00BC3437 /* LaunchScreen2.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6CAFBA19ECC66F00BC3437 /* LaunchScreen2.xib */; };
+		EE6CAFBF19ECD9E500BC3437 /* SettingsLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6CAFBE19ECD9E500BC3437 /* SettingsLoginHandler.swift */; };
 		EE81753B19EB6C5000874E65 /* extension_js.js in Resources */ = {isa = PBXBuildFile; fileRef = EE81753A19EB6C5000874E65 /* extension_js.js */; };
 		EE9FFBAF19EBE29C004BBE53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */; };
@@ -157,6 +158,7 @@
 		EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
 		EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EE6CAFBA19ECC66F00BC3437 /* LaunchScreen2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen2.xib; sourceTree = "<group>"; };
+		EE6CAFBE19ECD9E500BC3437 /* SettingsLoginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLoginHandler.swift; sourceTree = "<group>"; };
 		EE81753A19EB6C5000874E65 /* extension_js.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = extension_js.js; sourceTree = "<group>"; };
 		EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
 		EEC9D40319E6A8FB005A4D7E /* reset.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = reset.css; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				EEC9D3FE19E68DBC005A4D7E /* SearchResultDetailViewController.swift */,
 				EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */,
 				EE6CAFBA19ECC66F00BC3437 /* LaunchScreen2.xib */,
+				EE6CAFBE19ECD9E500BC3437 /* SettingsLoginHandler.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6CAFBF19ECD9E500BC3437 /* SettingsLoginHandler.swift in Sources */,
 				EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */,
 				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
 				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,

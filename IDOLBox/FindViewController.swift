@@ -17,6 +17,8 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     private var _apiKey : String? = nil
     private var _searchIndexes : String? = nil
     private var _searchTerm : String? = nil
+    private var _passCodeEnbaled : Bool?
+    private var _passCodeVal : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,39 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         readControls()
         if !_searchTerm!.isEmpty {
             performSegueWithIdentifier(Constants.SearchResultSegue, sender: self)
+        }
+    }
+    
+    @IBAction func settings(sender: AnyObject) {
+        
+        if let pc = _passCodeEnbaled {
+            if pc {
+                let login = SettingsLoginHandler()
+                login.showLogin(self, passCode: _passCodeVal, handler: { (newPassCode, cancelled) -> () in
+                    if !cancelled {
+                        if self._passCodeVal == nil || self._passCodeVal!.isEmpty {
+                            if newPassCode == nil {
+                                ErrorReporter.showAlertView(self, title: "Passcode was not set", message: "Values did not match", alertHandler: nil)
+                            } else {
+                                self._passCodeVal = newPassCode
+                                var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
+                                defaults!.setObject(self._passCodeVal, forKey: Constants.kSettingsPasscodeVal)
+                                self.performSegueWithIdentifier("Settings", sender: self)
+                            }
+                        } else {
+                            if self._passCodeVal! != newPassCode {
+                                ErrorReporter.showAlertView(self, title: "Passcode Incorrect", message: nil, alertHandler: nil)
+                            } else {
+                                self.performSegueWithIdentifier("Settings", sender: self)
+                            }
+                        }
+                    }
+                })
+            } else {
+                performSegueWithIdentifier("Settings", sender: self)
+            }
+        } else {
+            performSegueWithIdentifier("Settings", sender: self)
         }
     }
     
@@ -100,6 +135,8 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         _searchIndexes = defaults!.valueForKey(Constants.kSearchIndexes) as? String
+        _passCodeEnbaled = defaults!.valueForKey(Constants.kSettingsPasscode) as? Bool
+        _passCodeVal = defaults!.valueForKey(Constants.kSettingsPasscodeVal) as? String
     }
     
     func settingsChanged(notification : NSNotification!) {
