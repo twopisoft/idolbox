@@ -11,8 +11,10 @@ import CoreData
 import IDOLBoxFramework
 import MobileCoreServices
 
+// View Controller for the Box View
 class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDelegate {
 
+    // MARK: Properties and Outlets
     @IBOutlet var boxTableView: UITableView!
     
     var selectedItem : IdolBoxEntry!
@@ -27,6 +29,8 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
     private var _passCodeEnbaled : Bool!
     private var _passCodeVal : String!
     
+    // Read the settings, register for settings change and kick start the search when this
+    // view is loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,40 +42,14 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         doSearch()
     }
 
+    // Execute when refresh control wakes up
     @IBAction func refresh(sender: AnyObject) {
         doSearch()
     }
     
+    // Setting button action.
     @IBAction func settings(sender: AnyObject) {
-        if let pc = _passCodeEnbaled {
-            if pc {
-                let login = SettingsLoginHandler()
-                login.showLogin(self, passCode: _passCodeVal, handler: { (newPassCode, cancelled) -> () in
-                    if !cancelled {
-                        if self._passCodeVal == nil || self._passCodeVal!.isEmpty {
-                            if newPassCode == nil {
-                                ErrorReporter.showAlertView(self, title: "Passcode was not set", message: "Values did not match", alertHandler: nil)
-                            } else {
-                                self._passCodeVal = newPassCode
-                                var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
-                                defaults!.setObject(self._passCodeVal, forKey: Constants.kSettingsPasscodeVal)
-                                self.performSegueWithIdentifier("Settings", sender: self)
-                            }
-                        } else {
-                            if self._passCodeVal! != newPassCode {
-                                ErrorReporter.showAlertView(self, title: "Passcode Incorrect", message: nil, alertHandler: nil)
-                            } else {
-                                self.performSegueWithIdentifier("Settings", sender: self)
-                            }
-                        }
-                    }
-                })
-            } else {
-                performSegueWithIdentifier("Settings", sender: self)
-            }
-        } else {
-            performSegueWithIdentifier("Settings", sender: self)
-        }
+        SettingsLoginHandler.validate(self, passcodeFlag: self._passCodeEnbaled, passCodeVal: self._passCodeVal)
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,10 +57,12 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         self._fetchController = nil
     }
     
+    // MARK: IdolEntriesTableViewController overriddenmethods
     override func tableView() -> UITableView! {
         return boxTableView
     }
 
+    // Cell Config handler
     override func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolBoxEntry
         
@@ -92,6 +72,7 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         return cell
     }
     
+    // MARK: Table View Delegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let si = fetchController().objectAtIndexPath(indexPath) as? IdolBoxEntry
         
@@ -101,6 +82,7 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         }
     }
     
+    // Start the refresh control and reload the table
     override func doSearchPre() {
         
         refreshControl?.beginRefreshing()
@@ -112,6 +94,8 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         }
     }
     
+    // Perform search using the query text index api. We use '*' as text search term to retrieve
+    // all the documents stored in IDOL index
     @IBAction override func doSearch() {
         
         if apiKey == nil || apiKey!.isEmpty {
@@ -141,6 +125,7 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         }
     }
     
+    // Parse the results and store in DB
     override func handleSearchResults(data : NSData?, err: NSError?) {
         
         if err == nil {
@@ -157,10 +142,13 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         }
     }
     
+    // Stop refresh control
     override func finishSearch() {
         refreshControl?.endRefreshing()
     }
     
+    // Create Fetched result controller. Sort descriptor uses modification date to list documents in a section
+    // latest-to-oldest
     override func fetchController() -> NSFetchedResultsController {
         if _fetchController == nil {
             let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "moddate", ascending: false)]
@@ -179,14 +167,9 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         return _fetchController!
     }
     
+    // MARK: Navigation
     @IBAction func unwindFromSettings(segue : UIStoryboardSegue) {
         
-    }
-    
-    @IBAction func pickDocument(sender: AnyObject) {
-        var docPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeText as String,kUTTypePlainText as String,kUTTypePDF as String,kUTTypeRTF as String], inMode: UIDocumentPickerMode.Import)
-        docPicker!.delegate = self
-        self.presentViewController(docPicker!, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -197,11 +180,25 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
             var viewController = navController.topViewController as SearchResultDetailViewController
             
             let resultTuple = TypeAliases.ResultTuple(selectedItem!.title,selectedItem!.reference,100.0,
-                                                      selectedItem!.index,selectedItem!.moddate,selectedItem!.summary,selectedItem!.content)
+                selectedItem!.index,selectedItem!.moddate,selectedItem!.summary,selectedItem!.content)
             viewController.selectedItem = resultTuple
         }
     }
     
+    // Action when add document '+' button is pressed
+    @IBAction func pickDocument(sender: AnyObject) {
+        
+        if _addIndex == nil || _addIndex!.isEmpty {
+            ErrorReporter.addIndexNotSet(self, handler: nil)
+            return
+        }
+        
+        var docPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeText as String,kUTTypePlainText as String,kUTTypePDF as String,kUTTypeRTF as String], inMode: UIDocumentPickerMode.Import)
+        docPicker!.delegate = self
+        self.presentViewController(docPicker!, animated: true, completion: nil)
+    }
+    
+    // MARK: Document Picker delegate methods
     func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
         NSLog("url=\(url)")
         
@@ -228,6 +225,7 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         
     }
     
+    // MARK: Helpers
     private func readSettings() {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         apiKey = defaults!.valueForKey(Constants.kApiKey) as? String

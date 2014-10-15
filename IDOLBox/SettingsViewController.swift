@@ -9,8 +9,10 @@
 import UIKit
 import IDOLBoxFramework
 
+// View Controller for Settings screen
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
     
+    // MARK: Properties and Outlets
     @IBOutlet weak var apiKeyTextField: UITextField!
     @IBOutlet weak var maxResultButton: UISegmentedControl!
     @IBOutlet weak var summaryStyleButton: UISegmentedControl!
@@ -36,12 +38,14 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    // Make apikey field first responder for handling events
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 0 {
             self.apiKeyTextField.becomeFirstResponder()
         }
     }
 
+    // Save the settings
     @IBAction func save(sender: AnyObject) {
         readControls()
         var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
@@ -51,6 +55,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         defaults!.setObject(_sortStyle, forKey: Constants.kSortStyle)
         defaults!.setBool(_settingsPasscode!, forKey: Constants.kSettingsPasscode)
         
+        // Remove passcode value if user has switched it off
         if let sp = _settingsPasscode {
             if sp {
                 defaults!.setObject(_settingsPasscodeVal, forKey: Constants.kSettingsPasscodeVal)
@@ -67,7 +72,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         performSegueWithIdentifier("SettingsSave", sender: self)
     }
     
-    
+    // Change text field secure entry attribute as well as the lock/unlock icon
     @IBAction func toggleSecureText(sender: UIButton) {
         self.apiKeyTextField.secureTextEntry = !self.apiKeyTextField.secureTextEntry
         if self.apiKeyTextField.secureTextEntry {
@@ -77,7 +82,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    
+    // On return, hide the keyborad
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.apiKeyTextField.resignFirstResponder()
         return true
@@ -97,6 +102,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             var viewController = navController.topViewController as SelectIndexTableViewController
             viewController.apiKey = _apiKey
             
+            // Moving to select index screen. Set the multiselect flag to true if selecting search indexes
+            // otherwise false
             if identifier == Constants.SelectIndexSearchSegue {
                 viewController.multiSelect = true
                 if let si = _searchIndexes {
@@ -123,6 +130,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: Helper methods
+    // Read settings from user defaults
     private func loadSettings() {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
@@ -137,6 +146,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         adjustControls()
     }
     
+    // Update controls based on the settings values
     private func adjustControls() {
         if let ak = _apiKey {
             apiKeyTextField.text = ak

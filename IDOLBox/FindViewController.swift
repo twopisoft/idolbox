@@ -58,39 +58,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
     
     // Passcode setting/validation before moving to settings screen
     @IBAction func settings(sender: AnyObject) {
-        
-        if let pc = _passCodeEnbaled {
-            if pc {
-                let login = SettingsLoginHandler()
-                login.showLogin(self, passCode: _passCodeVal, handler: { (newPassCode, cancelled) -> () in
-                    // If the user did not cancel
-                    if !cancelled {
-                        // Passcode set case
-                        if self._passCodeVal == nil || self._passCodeVal!.isEmpty {
-                            if newPassCode == nil {
-                                ErrorReporter.showAlertView(self, title: "Passcode was not set", message: "Values did not match", alertHandler: nil)
-                            } else {
-                                self._passCodeVal = newPassCode
-                                var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
-                                defaults!.setObject(self._passCodeVal, forKey: Constants.kSettingsPasscodeVal)
-                                self.performSegueWithIdentifier("Settings", sender: self)
-                            }
-                        } else {
-                            // Passcode validation
-                            if self._passCodeVal! != newPassCode {
-                                ErrorReporter.showAlertView(self, title: "Incorrect Passcode", message: nil, alertHandler: nil)
-                            } else {
-                                self.performSegueWithIdentifier("Settings", sender: self)
-                            }
-                        }
-                    }
-                })
-            } else {
-                performSegueWithIdentifier("Settings", sender: self)
-            }
-        } else {
-            performSegueWithIdentifier("Settings", sender: self)
-        }
+        SettingsLoginHandler.validate(self, passcodeFlag: self._passCodeEnbaled, passCodeVal: self._passCodeVal)
     }
     
     // MARK: - Navigation
@@ -116,6 +84,7 @@ class FindViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 
+    // Pass data to View Controllers before navigating to them
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         let identifier = segue.identifier

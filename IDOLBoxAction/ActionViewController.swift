@@ -10,18 +10,22 @@ import UIKit
 import MobileCoreServices
 import IDOLBoxFramework
 
+// Custome Action extension View Controller
 class ActionViewController: UIViewController {
 
-    var jsContent : String!
-    var jsUrl : String!
+    // MARK: Properties
+    var jsContent : String!    // For page body contents
+    var jsUrl : String!        // For page url
     
     private var _apiKey : String!
     private var _addIndex : String!
     private var _summaryStyle : String!
     
+    // Inline style specification
     let pre = "<article style=\"display: block; zoom: 1;\"><div style=\"width:95%; margin:2% 2% 2% 2%;\"><h2 style=\"text-decoration: underline;\">Summary by IDOL</h2><p>"
     let post = "</p></div></article><hr>"
 
+    // MARK: Custom Action
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +47,7 @@ class ActionViewController: UIViewController {
                         
                         itemProvider.loadItemForTypeIdentifier(kUTTypePropertyList as NSString, options: nil, completionHandler: { [unowned self] (result: NSSecureCoding!, error: NSError!) -> Void in
                             
+                            //  Get data from Javascript
                             if let resultDict = result as? NSDictionary {
                                 
                                 self.jsContent = resultDict[NSExtensionJavaScriptPreprocessingResultsKey]!["content"] as? String
@@ -64,6 +69,7 @@ class ActionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // Summarize the page
     @IBAction func summarize(sender: AnyObject) {
         
         if !validate() {
@@ -76,6 +82,7 @@ class ActionViewController: UIViewController {
             alert = ActivityProgressAlert.showAlertView(self, title: "Please wait", message: "IDOL is summarizing")
         })
         
+        // First add the document to IDOL
         IDOLService.sharedInstance.addToIndexUrl(self._apiKey, url: self.jsUrl, index: self._addIndex, completionHandler: { (data1:NSData?, error1:NSError?) in
             
             if error1 != nil {
@@ -87,6 +94,7 @@ class ActionViewController: UIViewController {
                     self.done()
                 })
             } else {
+                // Then issue a Find Similar document API call. Only read 1 result
                 IDOLService.sharedInstance.findSimilarDocsUrl(self._apiKey, url: self.jsUrl, indexName: self._addIndex, searchParams: [Constants.MaxResultParam : "1", Constants.SummaryParam : self._summaryStyle], completionHandler: { (data2:NSData?, error2:NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
@@ -98,6 +106,7 @@ class ActionViewController: UIViewController {
                             self.done()
                         })
                     } else {
+                        // Parse the resilt
                         let results = SearchResultParser.parseResponse(data2)
                         if results.count > 0 {
                             if Utils.trim(results[0].summary).isEmpty {
@@ -105,6 +114,7 @@ class ActionViewController: UIViewController {
                                     self.done()
                                 })
                             } else {
+                                // Send the updated page body to Javascript
                                 self.jsContent = self.pre + results[0].summary + self.post + self.jsContent
                                 self.finalizeReplace()
                             }
@@ -116,10 +126,12 @@ class ActionViewController: UIViewController {
         })
     }
     
+    // Cancel action
     @IBAction func done() {
         finalizeReplace()
     }
     
+    // Pass the result back to Javascript
     private func finalizeReplace() {
         var extensionItem = NSExtensionItem()
         
@@ -132,6 +144,7 @@ class ActionViewController: UIViewController {
         self.extensionContext!.completeRequestReturningItems([extensionItem], completionHandler: nil)
     }
     
+    // MARK: Helpers
     private func validate() -> Bool {
         if self._apiKey == nil || self._apiKey.isEmpty {
             ErrorReporter.apiKeyNotSet(self, handler: {

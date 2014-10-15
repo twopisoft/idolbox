@@ -10,8 +10,11 @@ import UIKit
 import CoreData
 import IDOLBoxFramework
 
+// View controller for Search Result view
+// Subclass of IdolEntriesTableViewController
 class SearchResultTableViewController: IdolEntriesTableViewController {
     
+    // MARK: Properties and Outlets
     var searchTerm : String? = nil
     
     var selectedIndexes : [String] = []
@@ -21,6 +24,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
     
     @IBOutlet var resultsTableView: UITableView!
     
+    // Create activity indicator lazily
     private lazy var activityIndicator : UIActivityIndicatorView = {
         var actInd = UIActivityIndicatorView(frame: CGRectMake(0, 0, 20, 20))
         actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
@@ -31,14 +35,13 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
     private var _fetchController : NSFetchedResultsController? = nil
     private var _fetchControllerDelegate : FetchedResultsControllerDelegate? = nil
 
+    // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self._managedObjectContext = DBHelper.sharedInstance.managedObjectContext
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.activityIndicator)
-        
-        
         
         doSearch()
     }
@@ -58,6 +61,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         }
     }
     
+    // cell config handler override
     override func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResult
         
@@ -67,9 +71,10 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         return cell
     }
     
+    // Create fetch controller. Sort descriptor is index name (section) and weight (row).
     override func fetchController() -> NSFetchedResultsController {
         if _fetchController == nil {
-            let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "weight", ascending: true)]
+            let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "index", ascending: true),NSSortDescriptor(key: "weight", ascending: false)]
             
             var fetchRequest = NSFetchRequest()
             let entity = NSEntityDescription.entityForName("IdolSearchResult", inManagedObjectContext: self._managedObjectContext)
@@ -89,6 +94,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         
         self.activityIndicator.startAnimating()
         
+        // Delete all entries and reload table
         if self.fetchController().performFetch(nil) {
             for obj in self.fetchController().fetchedObjects! {
                 self._managedObjectContext.deleteObject(obj as NSManagedObject)
@@ -109,6 +115,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         
         for (i,index) in enumerate(selectedIndexes) {
             if Utils.isUrl(searchTerm!) {
+                // For URL based search
                 IDOLService.sharedInstance.findSimilarDocsUrl(apiKey!, url: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data : NSData?, err: NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
@@ -120,6 +127,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
                     }
                 })
             } else {
+                // For text based search
                 IDOLService.sharedInstance.findSimilarDocs(apiKey!, text: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data: NSData?, err: NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
@@ -133,7 +141,8 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
             }
         }
     }
-    
+   
+   // Parse the search results and store in DB
    override func handleSearchResults(data : NSData?, err: NSError?) {
         if err == nil {
             let results = SearchResultParser.parseResponse(data)
@@ -143,6 +152,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         }
     }
     
+    // Stop the activity indicator
     override func finishSearch() {
         if self.activityIndicator.isAnimating() {
             dispatch_async(dispatch_get_main_queue(), {
@@ -151,6 +161,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         }
     }
     
+    // Search query params
     private func getSearchParams() -> [String:String] {
         var ret : [String:String] = [:]
         
@@ -178,7 +189,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
     }
 
     // MARK: - Navigation
-    
+    // Pass data before navigating to Search Result Detail screen
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let identifier = segue.identifier
         

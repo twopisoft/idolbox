@@ -11,12 +11,11 @@ import UIKit
 // Class for Utility methods
 public class Utils: NSObject {
    
-    // Checks if a string is a https(s) url. Note that we only consider the part before the query.
+    // Checks if a string is a https(s) url. Note that we only consider the url scheme.
     public class func isUrl(str : String) -> Bool {
-        let urlComps = str.componentsSeparatedByString("?")
-        let urlRegEx = "(http|https)://((\\w)*|([0-9]*)|([-|_])*)+([\\.|/]((\\w)*|([0-9]*)|([-|_])*))+"
-        let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegEx)
-        return urlTest!.evaluateWithObject(urlComps[0])
+        let url = NSURL(string: str)!
+        let scheme = url.scheme?.lowercaseString
+        return scheme == "http" || scheme == "https"
     }
     
     // String trim.

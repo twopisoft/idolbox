@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 import IDOLBoxFramework
 
+// View Controller for Search Result Detail View
 class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
 
+    // Properties
     var selectedItem : TypeAliases.ResultTuple?
     
     @IBOutlet weak var detailWebView: UIWebView!
@@ -33,6 +35,8 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: WebView Delegate methods
     func webViewDidStartLoad(webView: UIWebView) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         updateButtons()
@@ -48,6 +52,9 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         updateButtons()
     }
     
+    // Back button action
+    // Note that the back button is never disabled. On the last page
+    // it will keep showing the first page.
     @IBAction func back(sender: AnyObject) {
         if !self.detailWebView.canGoBack {
             loadPage()
@@ -56,17 +63,21 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
+    // MARK: Helpers
     private func loadPage() {
         let baseUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().bundlePath)
         self.detailWebView.loadHTMLString(processTemplate(self.selectedItem!), baseURL: baseUrl)
     }
     
+    // Update WebView's button status
     private func updateButtons() {
         self.forwardButton.enabled = self.detailWebView.canGoForward
         self.stopButton.enabled = self.detailWebView.loading
         self.reloadButton.enabled = !self.detailWebView.loading
     }
     
+    // Pass the data to template processor. Modification date is not set if not
+    // found in the search result
     private func processTemplate(data : TypeAliases.ResultTuple) -> String {
         
         var fields : [String : String] = ["title"       : data.title,

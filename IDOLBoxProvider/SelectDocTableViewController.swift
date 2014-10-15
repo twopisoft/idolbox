@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 import IDOLBoxFramework
 
+// View Controller for document selection in provider extension
 class SelectDocTableViewController: IdolEntriesTableViewController {
     
+    // MARK: Properties
     var selectedReference : String!
     
     @IBOutlet var docListTableView: UITableView!
@@ -21,6 +23,7 @@ class SelectDocTableViewController: IdolEntriesTableViewController {
     
     private var _managedObjectContext : NSManagedObjectContext!
     
+    // MARK: Delegate methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,7 @@ class SelectDocTableViewController: IdolEntriesTableViewController {
         self._fetchController = nil
     }
     
+    // MARK: Overrides for IdolEntriesTableViewController
     override func tableView() -> UITableView! {
         return docListTableView
     }

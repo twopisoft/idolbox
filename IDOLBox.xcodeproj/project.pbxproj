@@ -23,6 +23,7 @@
 		EE59F89419EA6C73005A7657 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
 		EE59F89519EA6C7A005A7657 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EE6104CE19EC17820023FDB4 /* BoxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */; };
+		EE6652FF19EE3EE60062B0F2 /* submission.txt in Resources */ = {isa = PBXBuildFile; fileRef = EE6652FE19EE3EE60062B0F2 /* submission.txt */; };
 		EE6CAFB719ECB59500BC3437 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */; };
 		EE6CAFBB19ECC66F00BC3437 /* LaunchScreen2.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6CAFBA19ECC66F00BC3437 /* LaunchScreen2.xib */; };
 		EE6CAFBF19ECD9E500BC3437 /* SettingsLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6CAFBE19ECD9E500BC3437 /* SettingsLoginHandler.swift */; };
@@ -156,6 +157,7 @@
 		EE59F88619EA6BC0005A7657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE59F88719EA6BC0005A7657 /* IDOLBoxProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = IDOLBoxProvider.entitlements; sourceTree = "<group>"; };
 		EE6104CD19EC17820023FDB4 /* BoxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxTableViewController.swift; sourceTree = "<group>"; };
+		EE6652FE19EE3EE60062B0F2 /* submission.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = submission.txt; sourceTree = "<group>"; };
 		EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		EE6CAFBA19ECC66F00BC3437 /* LaunchScreen2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen2.xib; sourceTree = "<group>"; };
 		EE6CAFBE19ECD9E500BC3437 /* SettingsLoginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLoginHandler.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		EE0E713B19DCF2CC00247A08 = {
 			isa = PBXGroup;
 			children = (
+				EE6652FE19EE3EE60062B0F2 /* submission.txt */,
 				EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */,
 				EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */,
 				EE0E714619DCF2CC00247A08 /* IDOLBox */,
@@ -595,6 +598,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6652FF19EE3EE60062B0F2 /* submission.txt in Resources */,
 				EE9FFBAF19EBE29C004BBE53 /* Images.xcassets in Resources */,
 				EE27E3E919EBE11500C970C5 /* Main.storyboard in Resources */,
 				EEC9D40619E6A929005A4D7E /* style.css in Resources */,

@@ -11,6 +11,7 @@ import Social
 import IDOLBoxFramework
 import MobileCoreServices
 
+// View Controller for Share Extension
 class ShareViewController: SLComposeServiceViewController {
 
     private var _url : NSURL!
@@ -21,6 +22,7 @@ class ShareViewController: SLComposeServiceViewController {
         readSettings()
     }
     
+    // Read the page url. Note that the editing of the post box is disabled
     override func presentationAnimationDidFinish() {
         
         if let execContext = self.extensionContext {
@@ -48,6 +50,7 @@ class ShareViewController: SLComposeServiceViewController {
         return true
     }
 
+    // Post the link to IDOL
     override func didSelectPost() {
         
         if self._apiKey == nil || self._apiKey.isEmpty {

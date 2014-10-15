@@ -489,7 +489,7 @@ http://cssr.ru/simpliste</string>
                         <sections>
                             <tableViewSection headerTitle="" id="IsI-DS-J52">
                                 <cells>
-                                    <tableViewCell opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1mD-v5-Gzm">
+                                    <tableViewCell hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1mD-v5-Gzm">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1mD-v5-Gzm" id="q2s-3i-1Ip">
                                             <autoresizingMask key="autoresizingMask"/>

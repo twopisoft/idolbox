@@ -10,8 +10,10 @@ import UIKit
 import CoreData
 import IDOLBoxFramework
 
+// View Controller for Document Provider extension
 class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UITableViewDelegate {
     
+    // MARK: Properties
     private var _managedObjectContext : NSManagedObjectContext!
     
     private var _apiKey : String!
@@ -23,11 +25,13 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
         return fc
     }
     
+    // MARK: Delaget methods
     override func viewDidLoad() {
         self._managedObjectContext = DBHelper.sharedInstance.managedObjectContext
         readSettings()
     }
 
+    // We only support Imports.
     override func prepareForPresentationInMode(mode: UIDocumentPickerMode) {
         if self._apiKey == nil || self._apiKey.isEmpty {
             ErrorReporter.apiKeyNotSet(self, handler: {
@@ -35,6 +39,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
             })
         } else {
             if mode == UIDocumentPickerMode.Import {
+                // Fetch all personal indexes from DB
                 let indexes = DBHelper.fetchIndexes(DBHelper.sharedInstance.managedObjectContext!, privateOnly: true)
                 self._indexes = indexes
                 performSegueWithIdentifier(Constants.SelectDocSegue, sender: nil)
@@ -42,6 +47,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
         }
     }
     
+    // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier
         if identifier == Constants.SelectDocSegue {
@@ -77,7 +83,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
         }
     }
     
-    
+    // MARK: Helpers
     private func readSettings() {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         self._apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
@@ -92,6 +98,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
         return dirUrl.URLByAppendingPathComponent(fileName)
     }
     
+    // Download document from IDOL index
     private func download(refUrl : NSURL, fileUrl : NSURL) {
         
         var alert : UIViewController!

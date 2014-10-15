@@ -1,0 +1,36 @@
+Blog Post:
+==========
+
+http://arshad01.wordpress.com/2014/10/15/idol-box-app-for-ios-8-power-of-hp-idol-ondemand-on-your-mobile-device/
+
+Video:
+======
+
+5 min version:
+--------------
+
+http://youtu.be/0aBn1u6sg4s
+
+Longer version: (showing more features and more details)
+---------------
+
+http://youtu.be/e27lKFY9Cv4
+
+How to Build:
+=============
+
+1. Open the project in Xcode 6.1 Beta 2 (6A1030).
+2. Press Command-B to build.
+
+How to Run on Simulator or Device:
+==================================
+
+1. Press Command-R to Run on the Simualtor or Device.
+2. For running on a device, make sure your device is properly configured in Xcode.
+2. You may have to update the iCloud entitlements to run some of the extensions.
+3. If you change the group container name, make sure you change the value of constant 'GroupContainerName' in the file IDOLBoxFramework.Constants.
+
+Latest Source Code:
+===================
+
+https://twopisoft@bitbucket.org/twopisoft/idolbox.git
