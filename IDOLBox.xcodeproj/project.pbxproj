@@ -16,6 +16,7 @@
 		EE21970F19E8C8600027B190 /* IDOLBoxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; };
 		EE27E3E619EBB43F00C970C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
 		EE27E3E919EBE11500C970C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0E714F19DCF2CC00247A08 /* Main.storyboard */; };
+		EE35573E19F3690A003A41D7 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = EE35573D19F3690A003A41D7 /* README.md */; };
 		EE4899A219E5497D00BB7977 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */; };
 		EE54352619E908C90037A6D6 /* IDOLBoxFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE2196FA19E8BF760027B190 /* IDOLBoxFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EE54352719E915F00037A6D6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0E715219DCF2CC00247A08 /* Images.xcassets */; };
@@ -152,6 +153,7 @@
 		EE13D3A619EA6FEA00581955 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		EE13D3A819EA6FF100581955 /* SelectDocTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDocTableViewController.swift; sourceTree = "<group>"; };
 		EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IDOLBoxFramework.xcodeproj; path = IDOLBoxFramework/IDOLBoxFramework.xcodeproj; sourceTree = "<group>"; };
+		EE35573D19F3690A003A41D7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EE4899A119E5497D00BB7977 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		EE59F88319EA6BC0005A7657 /* IDOLBoxProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IDOLBoxProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE59F88619EA6BC0005A7657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		EE0E713B19DCF2CC00247A08 = {
 			isa = PBXGroup;
 			children = (
+				EE35573D19F3690A003A41D7 /* README.md */,
 				EE6652FE19EE3EE60062B0F2 /* submission.txt */,
 				EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */,
 				EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */,
@@ -653,6 +656,7 @@
 			files = (
 				EE6CAFBF19ECD9E500BC3437 /* SettingsLoginHandler.swift in Sources */,
 				EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */,
+				EE35573E19F3690A003A41D7 /* README.md in Sources */,
 				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
 				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,
 				EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */,
