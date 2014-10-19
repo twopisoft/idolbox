@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+public enum ChoiceAlertHandlerChoices {
+    case OK
+    case Cancel
+    case Delete
+}
+
 // Framework wide TypeAliases
 public struct TypeAliases {
     
@@ -30,6 +36,9 @@ public struct TypeAliases {
     
     // Alert View Handler
     public typealias AlertHanlder = () -> ()
+    
+    // Choice Alert Handler
+    public typealias ChoiceAlertHandler = (choice : ChoiceAlertHandlerChoices) -> ()
     
     // Cell Config Handler for FetchResultsControllerDelegate
     public typealias ConfigHandler = (controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell

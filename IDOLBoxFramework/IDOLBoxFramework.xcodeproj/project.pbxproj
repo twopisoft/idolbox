@@ -24,6 +24,7 @@
 		EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F619E8D6A900322AC5 /* IdolIndex.swift */; };
 		EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */; };
 		EE6104CC19EC0B700023FDB4 /* IdolEntriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6104CB19EC0B700023FDB4 /* IdolEntriesTableViewController.swift */; };
+		EEA0CF1D19F3369600693A69 /* UserAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA0CF1C19F3369600693A69 /* UserAlertViewController.swift */; };
 		EEDAB0CE19E984B200907B56 /* QueryTextIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */; };
 		EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0CF19E985AE00907B56 /* TypAliases.swift */; };
 		EEDAB0D219EA02C600907B56 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */; };
@@ -60,6 +61,7 @@
 		EE5170F619E8D6A900322AC5 /* IdolIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolIndex.swift; sourceTree = "<group>"; };
 		EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearchResult.swift; sourceTree = "<group>"; };
 		EE6104CB19EC0B700023FDB4 /* IdolEntriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolEntriesTableViewController.swift; sourceTree = "<group>"; };
+		EEA0CF1C19F3369600693A69 /* UserAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAlertViewController.swift; sourceTree = "<group>"; };
 		EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTextIndexResponseParser.swift; sourceTree = "<group>"; };
 		EEDAB0CF19E985AE00907B56 /* TypAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypAliases.swift; sourceTree = "<group>"; };
 		EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				EEDAB0CF19E985AE00907B56 /* TypAliases.swift */,
 				EE13D3AC19EA892F00581955 /* ActivityProgressAlert.swift */,
 				EE13D3AE19EA9B2D00581955 /* Utils.swift */,
+				EEA0CF1C19F3369600693A69 /* UserAlertViewController.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */,
 				EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */,
 				EE21970919E8C78A0027B190 /* DBHelper.swift in Sources */,
+				EEA0CF1D19F3369600693A69 /* UserAlertViewController.swift in Sources */,
 				EE5170ED19E8CA7500322AC5 /* ErrorReporter.swift in Sources */,
 				EE13D3AB19EA825700581955 /* ViewDocumentResponseParser.swift in Sources */,
 				EE5170F519E8D4A100322AC5 /* IDOLBox.xcdatamodeld in Sources */,

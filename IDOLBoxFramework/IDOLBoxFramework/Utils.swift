@@ -13,9 +13,11 @@ public class Utils: NSObject {
    
     // Checks if a string is a https(s) url. Note that we only consider the url scheme.
     public class func isUrl(str : String) -> Bool {
-        let url = NSURL(string: str)!
-        let scheme = url.scheme?.lowercaseString
-        return scheme == "http" || scheme == "https"
+        if let url = NSURL(string: str) {
+            let scheme = url.scheme?.lowercaseString
+            return scheme == "http" || scheme == "https"
+        }
+        return false
     }
     
     // String trim.

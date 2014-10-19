@@ -172,6 +172,14 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         
     }
     
+    @IBAction func unwindFromDetails(segue : UIStoryboardSegue) {
+        if segue.sourceViewController.isKindOfClass(SearchResultDetailViewController) {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.doSearch()
+            })
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let identifier = segue.identifier
         
@@ -182,6 +190,8 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
             let resultTuple = TypeAliases.ResultTuple(selectedItem!.title,selectedItem!.reference,100.0,
                 selectedItem!.index,selectedItem!.moddate,selectedItem!.summary,selectedItem!.content)
             viewController.selectedItem = resultTuple
+            viewController.allowDelete = true
+            viewController.apiKey = apiKey
         }
     }
     

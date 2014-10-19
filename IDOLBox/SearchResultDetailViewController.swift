@@ -15,6 +15,8 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
 
     // Properties
     var selectedItem : TypeAliases.ResultTuple?
+    var allowDelete : Bool = false
+    var apiKey : String!
     
     @IBOutlet weak var detailWebView: UIWebView!
     
@@ -26,6 +28,7 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.rightBarButtonItem?.enabled = allowDelete
         self.detailWebView.delegate = self
         loadPage()
     }
@@ -61,6 +64,25 @@ class SearchResultDetailViewController: UIViewController, UIWebViewDelegate {
         } else {
             self.detailWebView.goBack()
         }
+    }
+    
+    @IBAction func deleteFromIndex(sender: AnyObject) {
+        UserAlertViewController.deleteAlertView(self, title: "Confirm Delete", message: "Delete this Document?", alertHandler: { (choice : ChoiceAlertHandlerChoices) in
+            
+            if choice == ChoiceAlertHandlerChoices.Delete {
+                let alert = ActivityProgressAlert.showAlertView(self, title: "Deleting", message: "Deletion in Progress")
+                IDOLService.sharedInstance.deleteFromIndex(self.apiKey, reference: self.selectedItem!.reference, index: self.selectedItem!.index, completionHandler: { (data:NSData?, err:NSError?) in
+                    dispatch_async(dispatch_get_main_queue(), {
+                        alert.dismissViewControllerAnimated(true, completion: nil)
+                        self.performSegueWithIdentifier("SearchDetails", sender: self)
+                    })
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.performSegueWithIdentifier("SearchDetails", sender: self)
+                })
+            }
+        })
     }
     
     // MARK: Helpers

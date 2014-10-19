@@ -115,6 +115,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
         
         for (i,index) in enumerate(selectedIndexes) {
             if Utils.isUrl(searchTerm!) {
+                NSLog("Found URL search term: %@",searchTerm!)
                 // For URL based search
                 IDOLService.sharedInstance.findSimilarDocsUrl(apiKey!, url: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data : NSData?, err: NSError?) in
                     
@@ -128,6 +129,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
                 })
             } else {
                 // For text based search
+                NSLog("Found text search term: %@",searchTerm!)
                 IDOLService.sharedInstance.findSimilarDocs(apiKey!, text: searchTerm!, indexName: index, searchParams: searchParams, completionHandler: { (data: NSData?, err: NSError?) in
                     
                     dispatch_async(dispatch_get_main_queue(), {
