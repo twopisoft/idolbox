@@ -210,17 +210,17 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
     
     // MARK: Document Picker delegate methods
     func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
-        NSLog("url=\(url)")
+        NSLog("url=%@",url)
         
         let startAccessingWorked = url.startAccessingSecurityScopedResource()
         let fileCoordinator = NSFileCoordinator()
         var error : NSError? = nil
         
         fileCoordinator.coordinateReadingItemAtURL(url, options: NSFileCoordinatorReadingOptions.allZeros, error: &error, byAccessor: {(newUrl) in
-            NSLog("newUrl=\(newUrl)")
+            NSLog("newUrl=%@",newUrl)
             IDOLService.sharedInstance.addToIndexFile(self.apiKey, filePath: newUrl!.absoluteString!, indexName: self._addIndex, completionHandler: { (data, err) -> () in
                 if err != nil {
-                    NSLog("error: \(err)")
+                    NSLog("error: %@",err!)
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.doSearch()
