@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6246" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6246" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -511,7 +511,7 @@ http://cssr.ru/simpliste</string>
                                                         <action selector="search:" destination="Skm-hQ-Asx" eventType="touchUpOutside" id="aed-H4-ibN"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Search Text or URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yis-6v-dAR">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Search Text or URL" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yis-6v-dAR">
                                                     <rect key="frame" x="21" y="8" width="531" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search"/>
@@ -735,16 +735,24 @@ http://cssr.ru/simpliste</string>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="awe-az-hQ5"/>
+                    <navigationItem key="navigationItem" id="awe-az-hQ5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="ob6-CM-p45">
+                            <connections>
+                                <action selector="deleteFromIndex:" destination="dsd-U4-WQ2" id="a9p-X3-QuA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="sev-jd-iwC" id="4LR-jD-ycD"/>
                         <outlet property="detailWebView" destination="nyS-nb-iGn" id="gUm-mQ-ncE"/>
                         <outlet property="forwardButton" destination="xHW-xp-Nx7" id="xZ1-w7-Leb"/>
                         <outlet property="reloadButton" destination="myN-rb-Xft" id="dZw-GP-XVy"/>
                         <outlet property="stopButton" destination="ZAi-5a-Xpn" id="8vG-F0-834"/>
+                        <segue destination="vYg-Rc-03R" kind="unwind" identifier="SearchDetails" unwindAction="unwindFromDetails:" id="872-QY-ImQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTQ-hc-5oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="vYg-Rc-03R" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3728" y="416"/>
         </scene>

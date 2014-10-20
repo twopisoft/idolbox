@@ -172,6 +172,14 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
         
     }
     
+    @IBAction func unwindFromDetails(segue : UIStoryboardSegue) {
+        if segue.sourceViewController.isKindOfClass(SearchResultDetailViewController) {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.doSearch()
+            })
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let identifier = segue.identifier
         
@@ -182,6 +190,8 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
             let resultTuple = TypeAliases.ResultTuple(selectedItem!.title,selectedItem!.reference,100.0,
                 selectedItem!.index,selectedItem!.moddate,selectedItem!.summary,selectedItem!.content)
             viewController.selectedItem = resultTuple
+            viewController.allowDelete = true
+            viewController.apiKey = apiKey
         }
     }
     
@@ -200,17 +210,17 @@ class BoxTableViewController: IdolEntriesTableViewController,UIDocumentPickerDel
     
     // MARK: Document Picker delegate methods
     func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
-        NSLog("url=\(url)")
+        NSLog("url=%@",url)
         
         let startAccessingWorked = url.startAccessingSecurityScopedResource()
         let fileCoordinator = NSFileCoordinator()
         var error : NSError? = nil
         
         fileCoordinator.coordinateReadingItemAtURL(url, options: NSFileCoordinatorReadingOptions.allZeros, error: &error, byAccessor: {(newUrl) in
-            NSLog("newUrl=\(newUrl)")
+            NSLog("newUrl=%@",newUrl)
             IDOLService.sharedInstance.addToIndexFile(self.apiKey, filePath: newUrl!.absoluteString!, indexName: self._addIndex, completionHandler: { (data, err) -> () in
                 if err != nil {
-                    NSLog("error: \(err)")
+                    NSLog("error: %@",err!)
                 } else {
                     dispatch_async(dispatch_get_main_queue(), {
                         self.doSearch()

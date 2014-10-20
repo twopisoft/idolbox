@@ -34,6 +34,7 @@ public class IDOLService {
         static let querytextindex   = asyncSvc + "/querytextindex/v1"
         static let viewDocument     = asyncSvc + "/viewdocument/v1"
         static let getContent       = asyncSvc + "/getcontent/v1"
+        static let deleteFromIndex  = asyncSvc + "/deletefromtextindex/v1"
         static let jobResult        = baseURL + "/job/result/"
     }
     
@@ -109,6 +110,14 @@ public class IDOLService {
         
         let reqUrl = _URLS.addToIndexUrl + "?apikey=" + apiKey +
                      queryParams([Constants.UrlParam:url,Constants.IndexParam:index,Constants.AdditionaMetaParam:modifyDate()])
+        
+        apiInvoke(apiKey, reqUrl: reqUrl, completionHandler: handler)
+    }
+    
+    // Method to delete a document from an index
+    public func deleteFromIndex(apiKey:String, reference:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
+        let reqUrl = _URLS.deleteFromIndex + "?apikey=" + apiKey +
+                     queryParams([Constants.IndexParam : index, Constants.IndexReferenceParam : reference])
         
         apiInvoke(apiKey, reqUrl: reqUrl, completionHandler: handler)
     }
