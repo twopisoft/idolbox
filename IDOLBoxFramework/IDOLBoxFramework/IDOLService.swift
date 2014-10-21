@@ -197,7 +197,7 @@ public class IDOLService {
                 NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) in
                     
                     if error == nil {
-                        var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.convertFromNilLiteral(), error: nil) as NSDictionary
+                        var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableLeaves, error: nil) as NSDictionary
                         //NSLog("json=\(json)")
                         if let actions = json["actions"] as? NSArray {
                             //NSLog("actions=\(actions)")
@@ -336,7 +336,7 @@ public class IDOLService {
         
         // Get all director contents. Recursively descend to subdirectories
         let dirUrl = NSURL(fileURLWithPath: dirPath, isDirectory: true)
-        let dirIter = NSFileManager.defaultManager().enumeratorAtURL(dirUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsHiddenFiles, errorHandler: nil)
+        let dirIter = NSFileManager.defaultManager().enumeratorAtURL(dirUrl!, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsHiddenFiles, errorHandler: nil)
         
         // Iterate through all files and get their path, name and type (dir or not) info
         while let url = dirIter!.nextObject() as? NSURL {

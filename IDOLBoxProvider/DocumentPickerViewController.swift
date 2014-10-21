@@ -95,7 +95,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
         let tempDir = NSTemporaryDirectory()
         let dirUrl = NSURL(fileURLWithPath: tempDir, isDirectory: true)
         
-        return dirUrl.URLByAppendingPathComponent(fileName)
+        return dirUrl!.URLByAppendingPathComponent(fileName)
     }
     
     // Download document from IDOL index

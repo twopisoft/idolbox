@@ -60,7 +60,7 @@ public class IdolEntriesTableViewController: UITableViewController {
         if let sections = fetchController().sections {
             if sections.count > 0 {
                 let secInfo = fetchController().sections![section] as NSFetchedResultsSectionInfo
-                return "Index: \(secInfo.name)"
+                return "Index: \(secInfo.name!)"
             }
         }
         return nil

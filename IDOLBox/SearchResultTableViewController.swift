@@ -65,7 +65,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
     override func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResult
         
-        cell.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
+        cell.textLabel.text = !obj.title.isEmpty ? obj.title : obj.reference
         cell.detailTextLabel!.text = obj.reference
         
         return cell
@@ -206,7 +206,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
             let navController = segue.destinationViewController as UINavigationController
             var viewController = navController.topViewController as SearchResultDetailViewController
             
-            let resultTuple = TypeAliases.ResultTuple(_selectedItem!.title,_selectedItem!.reference,_selectedItem!.weight,
+            let resultTuple = TypeAliases.ResultTuple(_selectedItem!.title,_selectedItem!.reference,_selectedItem!.weight.doubleValue,
                                                     _selectedItem!.index,_selectedItem!.moddate,_selectedItem!.summary,_selectedItem!.content)
             viewController.selectedItem = resultTuple
         }

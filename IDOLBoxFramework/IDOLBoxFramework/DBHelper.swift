@@ -179,7 +179,7 @@ public class DBHelper {
         var ret : [TypeAliases.IndexTuple] = []
         
         for r in res! {
-            let e : TypeAliases.IndexTuple = (r.name,r.flavor,r.isPublic,r.info,r.type)
+            let e : TypeAliases.IndexTuple = (r.name,r.flavor,r.isPublic.boolValue,r.info,r.type)
             ret.append(e)
         }
 

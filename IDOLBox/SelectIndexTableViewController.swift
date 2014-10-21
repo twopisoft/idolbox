@@ -81,7 +81,7 @@ class SelectIndexTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("selectIndexCell", forIndexPath: indexPath) as UITableViewCell
         
         let obj = fetchController().objectAtIndexPath(indexPath) as IdolIndex
-        cell.textLabel!.text = obj.name
+        cell.textLabel.text = obj.name
         if let i = find(self.selectedIndexes, obj.name) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark // If the index was selected by the user, turn on the
                                                                         // checkmark accessory
@@ -154,7 +154,7 @@ class SelectIndexTableViewController: UITableViewController {
         }
         
         var cell = tableView.cellForRowAtIndexPath(indexPath)
-        let indexName = cell?.textLabel?.text
+        let indexName = cell?.textLabel.text
         
         // Update the checkmark on the newly selected row
         // For multi select table, selecting row with a check mark will toggle the checkmark
@@ -178,7 +178,7 @@ class SelectIndexTableViewController: UITableViewController {
     func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolIndex
         
-        cell.textLabel!.text = obj.name
+        cell.textLabel.text = obj.name
         
         return cell
     }
