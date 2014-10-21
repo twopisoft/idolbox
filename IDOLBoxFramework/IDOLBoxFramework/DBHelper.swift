@@ -171,7 +171,7 @@ public class DBHelper {
     //Get a list of all the stored indexes
     public class func fetchIndexes(managedObjectContext : NSManagedObjectContext, privateOnly : Bool) -> [TypeAliases.IndexTuple] {
         var freq = NSFetchRequest(entityName: "IdolIndex")
-        freq.predicate = privateOnly ? NSPredicate(format: "isPublic=%@", argumentArray: [!privateOnly]) : nil
+        freq.predicate = privateOnly ? NSPredicate(format: "(isPublic=%@) AND (type==%@)", argumentArray: [!privateOnly,"content"]) : nil
         
         var err : NSError? = NSError()
         let res = managedObjectContext.executeFetchRequest(freq, error: nil) as? [IdolIndex]
