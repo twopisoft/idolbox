@@ -18,5 +18,6 @@ public class IdolSearchResult: NSManagedObject {
     @NSManaged public var summary: String
     @NSManaged public var title: String
     @NSManaged public var weight: NSNumber
+    @NSManaged public var search: IdolSearch
 
 }

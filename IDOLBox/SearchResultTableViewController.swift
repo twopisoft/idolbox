@@ -92,6 +92,8 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
     
     override func doSearchPre() {
         
+        updateHistory()
+        
         self.activityIndicator.startAnimating()
         
         // Delete all entries and reload table
@@ -161,6 +163,11 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
                 self.activityIndicator.stopAnimating()
             })
         }
+    }
+    
+    // Update History table
+    private func updateHistory() {
+        
     }
     
     // Search query params

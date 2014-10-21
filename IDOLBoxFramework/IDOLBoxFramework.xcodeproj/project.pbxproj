@@ -19,6 +19,7 @@
 		EE21970719E8C7810027B190 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970619E8C7810027B190 /* Constants.swift */; };
 		EE21970919E8C78A0027B190 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE21970819E8C78A0027B190 /* DBHelper.swift */; };
 		EE27E3E819EBE07400C970C5 /* IdolBoxEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE27E3E719EBE07400C970C5 /* IdolBoxEntry.swift */; };
+		EE4FD17F19F4A47600BF826B /* IdolSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4FD17E19F4A47600BF826B /* IdolSearch.swift */; };
 		EE5170ED19E8CA7500322AC5 /* ErrorReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */; };
 		EE5170F519E8D4A100322AC5 /* IDOLBox.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */; };
 		EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5170F619E8D6A900322AC5 /* IdolIndex.swift */; };
@@ -28,6 +29,7 @@
 		EEDAB0CE19E984B200907B56 /* QueryTextIndexResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */; };
 		EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0CF19E985AE00907B56 /* TypAliases.swift */; };
 		EEDAB0D219EA02C600907B56 /* FetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */; };
+		EEEECF2E19F5029D00AAFBED /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEECF2D19F5029D00AAFBED /* SearchHistoryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		EE21970619E8C7810027B190 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EE21970819E8C78A0027B190 /* DBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		EE27E3E719EBE07400C970C5 /* IdolBoxEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolBoxEntry.swift; sourceTree = "<group>"; };
+		EE4FD17D19F4A39500BF826B /* IDOLBox 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IDOLBox 2.xcdatamodel"; sourceTree = "<group>"; };
+		EE4FD17E19F4A47600BF826B /* IdolSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolSearch.swift; sourceTree = "<group>"; };
 		EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReporter.swift; sourceTree = "<group>"; };
 		EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IDOLBox.xcdatamodel; sourceTree = "<group>"; };
 		EE5170F619E8D6A900322AC5 /* IdolIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdolIndex.swift; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		EEDAB0CD19E984B200907B56 /* QueryTextIndexResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTextIndexResponseParser.swift; sourceTree = "<group>"; };
 		EEDAB0CF19E985AE00907B56 /* TypAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypAliases.swift; sourceTree = "<group>"; };
 		EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegate.swift; sourceTree = "<group>"; };
+		EEEECF2D19F5029D00AAFBED /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +162,7 @@
 		EE21970519E8C6560027B190 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EEEECF2D19F5029D00AAFBED /* SearchHistoryManager.swift */,
 				EEDAB0D119EA02C600907B56 /* FetchedResultsControllerDelegate.swift */,
 				EE5170EC19E8CA7500322AC5 /* ErrorReporter.swift */,
 				EE21970619E8C7810027B190 /* Constants.swift */,
@@ -173,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */,
+				EE4FD17E19F4A47600BF826B /* IdolSearch.swift */,
 				EE27E3E719EBE07400C970C5 /* IdolBoxEntry.swift */,
 				EE5170F819E8D6A900322AC5 /* IdolSearchResult.swift */,
 				EE5170F619E8D6A900322AC5 /* IdolIndex.swift */,
@@ -299,10 +306,12 @@
 				EE21970219E8C6420027B190 /* ListIndexResponseParser.swift in Sources */,
 				EEDAB0D219EA02C600907B56 /* FetchedResultsControllerDelegate.swift in Sources */,
 				EE5170F919E8D6A900322AC5 /* IdolSearchResult.swift in Sources */,
+				EEEECF2E19F5029D00AAFBED /* SearchHistoryManager.swift in Sources */,
 				EEDAB0CE19E984B200907B56 /* QueryTextIndexResponseParser.swift in Sources */,
 				EE13D3AD19EA892F00581955 /* ActivityProgressAlert.swift in Sources */,
 				EE6104CC19EC0B700023FDB4 /* IdolEntriesTableViewController.swift in Sources */,
 				EE13D3AF19EA9B2D00581955 /* Utils.swift in Sources */,
+				EE4FD17F19F4A47600BF826B /* IdolSearch.swift in Sources */,
 				EE2196FE19E8C0000027B190 /* IDOLService.swift in Sources */,
 				EEDAB0D019E985AE00907B56 /* TypAliases.swift in Sources */,
 				EE5170F719E8D6A900322AC5 /* IdolIndex.swift in Sources */,
@@ -521,9 +530,10 @@
 		EE5170F319E8D4A100322AC5 /* IDOLBox.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EE4FD17D19F4A39500BF826B /* IDOLBox 2.xcdatamodel */,
 				EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */,
 			);
-			currentVersion = EE5170F419E8D4A100322AC5 /* IDOLBox.xcdatamodel */;
+			currentVersion = EE4FD17D19F4A39500BF826B /* IDOLBox 2.xcdatamodel */;
 			path = IDOLBox.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

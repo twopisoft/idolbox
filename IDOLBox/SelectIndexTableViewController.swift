@@ -30,6 +30,7 @@ class SelectIndexTableViewController: UITableViewController {
     private var _fetchController : NSFetchedResultsController? = nil
     private var _fetchControllerDelegate : FetchedResultsControllerDelegate? = nil
     private var _filterPredicate : NSPredicate? = nil
+    private var _defaultPredicate : NSPredicate? = NSPredicate(format: "type==%@", argumentArray:["content"])
     
     @IBOutlet var indexTableView: UITableView!
     
@@ -189,7 +190,7 @@ class SelectIndexTableViewController: UITableViewController {
         }
         
         // Remove all objects and reload the table
-        self.fetchController().fetchRequest.predicate = nil
+        self.fetchController().fetchRequest.predicate = _defaultPredicate
         if self.fetchController().performFetch(nil) {
             for obj in self.fetchController().fetchedObjects! {
                 self.managedObjectContext.deleteObject(obj as NSManagedObject)
@@ -233,7 +234,7 @@ class SelectIndexTableViewController: UITableViewController {
     private func fetchController() -> NSFetchedResultsController {
         if _fetchController == nil {
             let sortDescriptors : [AnyObject] = [NSSortDescriptor(key: "isPublic", ascending: true),NSSortDescriptor(key: "name", ascending: true)]
-            _filterPredicate = !self.multiSelect ? NSPredicate(format: "isPublic=%@", argumentArray: [self.multiSelect]) : nil
+            _filterPredicate = !self.multiSelect ? NSPredicate(format: "(isPublic==%@) AND (type==%@)", argumentArray: [self.multiSelect,"content"]) : _defaultPredicate
             var fetchRequest = NSFetchRequest()
             let entity = NSEntityDescription.entityForName("IdolIndex", inManagedObjectContext: self.managedObjectContext)
             fetchRequest.entity = entity

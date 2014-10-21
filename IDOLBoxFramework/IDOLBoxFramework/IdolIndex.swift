@@ -17,5 +17,6 @@ public class IdolIndex: NSManagedObject {
     @NSManaged public var name: String
     @NSManaged public var createdate: NSDate
     @NSManaged public var moddate: NSDate
+    @NSManaged public var type: String
 
 }

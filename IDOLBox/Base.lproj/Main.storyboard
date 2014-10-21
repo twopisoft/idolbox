@@ -551,6 +551,21 @@ http://cssr.ru/simpliste</string>
                                             <segue destination="86f-j7-PEN" kind="show" identifier="FindSelectIndex" id="UsL-I9-cgT"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell alpha="0.5" contentMode="center" selectionStyle="default" indentationWidth="10" textLabel="qR8-le-oII" style="IBUITableViewCellStyleDefault" id="eTI-7I-17K">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eTI-7I-17K" id="JTH-wR-bFv">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qR8-le-oII">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>

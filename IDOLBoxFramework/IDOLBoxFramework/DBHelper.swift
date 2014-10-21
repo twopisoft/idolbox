@@ -36,7 +36,7 @@ public class DBHelper {
         for mo in res! {
             var found = false
             for (i,entry) in enumerate(data) {
-                let (indexName,indexFlavor,isPublic,indexInfo) = entry
+                let (indexName,indexFlavor,isPublic,indexInfo,indexType) = entry
                 
                 // First update existing indexes info
                 if mo.name == indexName {
@@ -44,6 +44,7 @@ public class DBHelper {
                     mo.setValue(indexFlavor, forKey: "flavor")
                     mo.setValue(isPublic, forKey: "isPublic")
                     mo.setValue(indexInfo, forKey: "info")
+                    mo.setValue(indexType, forKey: "type")
                     foundObjs[i]=entry
                 }
             }
@@ -63,12 +64,13 @@ public class DBHelper {
         }
         
         for newEntry in newData {
-            let (indexName,indexFlavor,isPublic,indexInfo) = newEntry
+            let (indexName,indexFlavor,isPublic,indexInfo,indexType) = newEntry
             let obj = IdolIndex(entity: NSEntityDescription.entityForName("IdolIndex", inManagedObjectContext: managedObjectContext)!, insertIntoManagedObjectContext: managedObjectContext)
             obj.setValue(indexName, forKey: "name")
             obj.setValue(indexFlavor, forKey: "flavor")
             obj.setValue(isPublic, forKey: "isPublic")
             obj.setValue(indexInfo, forKey: "info")
+            obj.setValue(indexType, forKey: "type")
         }
         
         return nil
@@ -177,7 +179,7 @@ public class DBHelper {
         var ret : [TypeAliases.IndexTuple] = []
         
         for r in res! {
-            let e : TypeAliases.IndexTuple = (r.name,r.flavor,r.isPublic,r.info)
+            let e : TypeAliases.IndexTuple = (r.name,r.flavor,r.isPublic,r.info,r.type)
             ret.append(e)
         }
 
@@ -205,7 +207,9 @@ public class DBHelper {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("IDOLBox.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        var options = [NSMigratePersistentStoresAutomaticallyOption : NSNumber(bool: true),
+                       NSInferMappingModelAutomaticallyOption       : NSNumber(bool: true)]
+        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options, error: &error) == nil {
             coordinator = nil
             // Report any error we got.
             let dict = NSMutableDictionary()

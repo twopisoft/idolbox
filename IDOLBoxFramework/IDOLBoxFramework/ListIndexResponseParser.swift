@@ -28,18 +28,43 @@ public class ListIndexResponseParser: NSObject {
                         
                         if let publicIndexes = result["public_index"] as? NSArray {
                             for pui in publicIndexes as NSArray {
-                                let indexName = pui["index"] as String
-                                let indexType = pui["type"] as String
-                                indexes.append((name:indexName,flavor:indexType,isPublic:true,info:""))
+                                var indexName = ""
+                                var indexType = ""
+                                
+                                if let _indexName = pui["index"] as? String {
+                                    indexName = _indexName
+                                }
+                                
+                                if let _indexType = pui["type"] as? String {
+                                    indexType = _indexType
+                                }
+                                indexes.append((name:indexName,flavor:"",isPublic:true,info:"",type:indexType))
                             }
                         }
                         
                         if let privateIndexes = result["index"] as? NSArray {
                             for pri in privateIndexes as NSArray {
-                                let indexName = pri["index"] as String
-                                let indexFlavor = pri["flavor"] as String
-                                let indexInfo = pri["description"]! != nil ?  pri["description"] as String : ""
-                                indexes.append((name:indexName,flavor:indexFlavor,isPublic:false,info:indexInfo))
+                                var indexName = ""
+                                var indexFlavor = ""
+                                var indexInfo = ""
+                                var indexType = ""
+                                
+                                if let _indexName = pri["index"] as? String {
+                                    indexName = _indexName
+                                }
+                                
+                                if let _indexFlavor = pri["flavor"] as? String {
+                                    indexFlavor = _indexFlavor
+                                }
+                                
+                                if let _indexInfo = pri["description"] as? String {
+                                    indexInfo = _indexInfo
+                                }
+                                
+                                if let _indexType = pri["type"] as? String {
+                                    indexType = _indexType
+                                }
+                                indexes.append((name:indexName,flavor:indexFlavor,isPublic:false,info:indexInfo,type:indexType))
                             }
                         }
                     }

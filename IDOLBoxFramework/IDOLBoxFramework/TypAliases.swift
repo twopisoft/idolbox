@@ -19,7 +19,7 @@ public enum ChoiceAlertHandlerChoices {
 public struct TypeAliases {
     
     // Tuple for Index Info
-    public typealias IndexTuple = (name:String,flavor:String,isPublic:Bool,info:String)
+    public typealias IndexTuple = (name:String,flavor:String,isPublic:Bool,info:String,type:String)
     
     // Tuple for Search Result
     public typealias ResultTuple = (title:String,reference:String,weight:Double,index:String,moddate:NSDate,summary:String,content:String)
