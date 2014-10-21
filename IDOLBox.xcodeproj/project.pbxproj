@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE05151919F626F40014C017 /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05151819F626F40014C017 /* Dropbox.framework */; };
+		EE05151D19F627220014C017 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05151C19F627220014C017 /* CFNetwork.framework */; };
+		EE05151F19F6272F0014C017 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05151E19F6272F0014C017 /* Security.framework */; };
+		EE05152119F6273C0014C017 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152019F6273C0014C017 /* SystemConfiguration.framework */; };
+		EE05152319F627460014C017 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152219F627460014C017 /* QuartzCore.framework */; };
+		EE05152519F627510014C017 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152419F627510014C017 /* libc++.dylib */; };
+		EE05152719F6275B0014C017 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152619F6275B0014C017 /* libz.dylib */; };
 		EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E714919DCF2CC00247A08 /* AppDelegate.swift */; };
 		EE0E716219DCF2CC00247A08 /* IDOLBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */; };
 		EE13D3A519EA6FE200581955 /* DocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE13D3A419EA6FE200581955 /* DocumentPickerViewController.swift */; };
@@ -140,6 +147,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EE05151819F626F40014C017 /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Dropbox.framework; sourceTree = "<group>"; };
+		EE05151C19F627220014C017 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EE05151E19F6272F0014C017 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EE05152019F6273C0014C017 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EE05152219F627460014C017 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EE05152419F627510014C017 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		EE05152619F6275B0014C017 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		EE0E714419DCF2CC00247A08 /* IDOLBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDOLBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0E714819DCF2CC00247A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0E714919DCF2CC00247A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,7 +204,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE05152719F6275B0014C017 /* libz.dylib in Frameworks */,
+				EE05152519F627510014C017 /* libc++.dylib in Frameworks */,
+				EE05152319F627460014C017 /* QuartzCore.framework in Frameworks */,
+				EE05152119F6273C0014C017 /* SystemConfiguration.framework in Frameworks */,
+				EE05151F19F6272F0014C017 /* Security.framework in Frameworks */,
+				EE05151D19F627220014C017 /* CFNetwork.framework in Frameworks */,
 				EE6CAFB719ECB59500BC3437 /* MobileCoreServices.framework in Frameworks */,
+				EE05151919F626F40014C017 /* Dropbox.framework in Frameworks */,
 				EE2196FF19E8C0B00027B190 /* IDOLBoxFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,8 +253,15 @@
 		EE0E713B19DCF2CC00247A08 = {
 			isa = PBXGroup;
 			children = (
+				EE05152619F6275B0014C017 /* libz.dylib */,
+				EE05152419F627510014C017 /* libc++.dylib */,
+				EE05152219F627460014C017 /* QuartzCore.framework */,
+				EE05152019F6273C0014C017 /* SystemConfiguration.framework */,
+				EE05151E19F6272F0014C017 /* Security.framework */,
+				EE05151C19F627220014C017 /* CFNetwork.framework */,
 				EE35574219F3697B003A41D7 /* README.md */,
 				EE6652FE19EE3EE60062B0F2 /* submission.txt */,
+				EE05151819F626F40014C017 /* Dropbox.framework */,
 				EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */,
 				EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */,
 				EE0E714619DCF2CC00247A08 /* IDOLBox */,
@@ -837,6 +865,10 @@
 				CODE_SIGN_ENTITLEMENTS = IDOLBox/IDOLBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = IDOLBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -853,6 +885,10 @@
 				CODE_SIGN_ENTITLEMENTS = IDOLBox/IDOLBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = IDOLBox/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
