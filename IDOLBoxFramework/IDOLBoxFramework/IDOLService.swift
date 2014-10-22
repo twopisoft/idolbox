@@ -233,7 +233,7 @@ public class IDOLService {
             
             if error == nil {
                 var json = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-                //NSLog("jobId response=\(json)")
+                NSLog("jobId response=%@",json)
                 if let jobId = json["jobID"] as? String { // Handle the jobId response
                     handler(jobId: jobId,jobError: nil)
                 } else if json["details"] != nil {  // Handle the error response

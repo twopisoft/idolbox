@@ -18,6 +18,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var summaryStyleButton: UISegmentedControl!
     @IBOutlet weak var sortStyleButton: UISegmentedControl!
     @IBOutlet weak var passcodeSwitch: UISwitch!
+    @IBOutlet weak var dropboxSwitch: UISwitch!
     
     private var _apiKey : String? = nil
     private var _maxResults : Int? = 5
@@ -27,6 +28,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     private var _settingsPasscodeVal : String? = nil
     private var _searchIndexes : String? = nil
     private var _addIndex : String? = nil
+    private var _dropboxLink : Bool? = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +57,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         defaults!.setObject(_summaryStyle, forKey: Constants.kSummaryStyle)
         defaults!.setObject(_sortStyle, forKey: Constants.kSortStyle)
         defaults!.setBool(_settingsPasscode!, forKey: Constants.kSettingsPasscode)
+        defaults!.setBool(_dropboxLink!, forKey: Constants.kDBAccountLinked)
         
         // Remove passcode value if user has switched it off
         if let sp = _settingsPasscode {
@@ -82,12 +86,30 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    
     // On return, hide the keyborad
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.apiKeyTextField.resignFirstResponder()
         return true
     }
 
+    @IBAction func toggleDropboxLink(sender: UISwitch) {
+        if sender.on {
+            DropboxManager.sharedInstance.link(self, handler: { (linked) -> () in
+                if linked {
+                    self._dropboxLink = true
+                } else {
+                    self._dropboxLink = false
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.dropboxSwitch.setOn(false, animated: true)
+                    })
+                }
+            })
+        } else {
+            self._dropboxLink = false
+            DropboxManager.sharedInstance.unlink()
+        }
+    }
     
     // MARK: - Navigation
 
@@ -142,6 +164,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
         _settingsPasscode = defaults!.valueForKey(Constants.kSettingsPasscode) as? Bool
         _settingsPasscodeVal = defaults!.valueForKey(Constants.kSettingsPasscodeVal) as? String
+        _dropboxLink = defaults!.valueForKey(Constants.kDBAccountLinked) as? Bool
         
         adjustControls()
     }
@@ -182,6 +205,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             passcodeSwitch.setOn(sp, animated: true)
         }
         
+        if let dl = _dropboxLink {
+            dropboxSwitch.setOn(dl, animated: true)
+        }
+        
     }
     
     private func readControls() {
@@ -190,6 +217,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         _summaryStyle = summaryStyleButton.titleForSegmentAtIndex(summaryStyleButton.selectedSegmentIndex)
         _sortStyle = sortStyleButton.titleForSegmentAtIndex(sortStyleButton.selectedSegmentIndex)
         _settingsPasscode = passcodeSwitch.on
+        _dropboxLink = dropboxSwitch.on
     }
     
 

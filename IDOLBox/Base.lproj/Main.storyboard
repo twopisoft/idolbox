@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6246" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -74,7 +74,7 @@
             <objects>
                 <tableViewController id="Zo2-vH-bcx" customClass="SettingsViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="45" sectionHeaderHeight="10" sectionFooterHeight="10" id="AXp-wR-bo7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="750"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -256,6 +256,40 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Linkage" id="k2D-Yy-OFc">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ayv-3X-3c5">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayv-3X-3c5" id="Jek-Sz-5ls">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dropbox" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zy8-TM-THz">
+                                                    <rect key="frame" x="15" y="16" width="153" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="153" id="Omn-t8-ZNc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kA3-ZX-mJg">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggleDropboxLink:" destination="Zo2-vH-bcx" eventType="valueChanged" id="9HG-s4-LPc"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kA3-ZX-mJg" firstAttribute="trailing" secondItem="Jek-Sz-5ls" secondAttribute="trailingMargin" id="6gF-qv-1uC"/>
+                                                <constraint firstItem="kA3-ZX-mJg" firstAttribute="top" secondItem="Jek-Sz-5ls" secondAttribute="topMargin" constant="-2" id="80a-1D-jiS"/>
+                                                <constraint firstItem="Zy8-TM-THz" firstAttribute="top" secondItem="Jek-Sz-5ls" secondAttribute="topMargin" constant="8" id="d2F-sP-RXj"/>
+                                                <constraint firstItem="Zy8-TM-THz" firstAttribute="leading" secondItem="Jek-Sz-5ls" secondAttribute="leadingMargin" constant="7" id="nRi-Cl-H49"/>
+                                                <constraint firstItem="kA3-ZX-mJg" firstAttribute="bottom" secondItem="Zy8-TM-THz" secondAttribute="bottom" id="r37-dq-5yq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Security" id="9sB-Ht-mzp">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oa0-eO-0XU">
@@ -321,9 +355,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="750"/>
+                    <size key="freeformSize" width="600" height="850"/>
                     <connections>
                         <outlet property="apiKeyTextField" destination="jzb-K0-AoI" id="3nX-Tc-jPD"/>
+                        <outlet property="dropboxSwitch" destination="kA3-ZX-mJg" id="vJg-PY-Ucc"/>
                         <outlet property="maxResultButton" destination="hfJ-TO-tDa" id="c3H-YC-TR1"/>
                         <outlet property="passcodeSwitch" destination="bnW-Xb-aRA" id="hgH-al-dfw"/>
                         <outlet property="sortStyleButton" destination="m7I-uk-KT9" id="eOQ-gp-gL9"/>
@@ -417,7 +452,7 @@ http://cssr.ru/simpliste</string>
             <objects>
                 <tableViewController title="Select Index" id="Hq9-Uq-NoV" customClass="SelectIndexTableViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VPP-sb-4nI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -859,7 +894,7 @@ http://cssr.ru/simpliste</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sdT-c4-7EZ"/>
-        <segue reference="UsL-I9-cgT"/>
         <segue reference="JzH-AN-LF0"/>
+        <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>

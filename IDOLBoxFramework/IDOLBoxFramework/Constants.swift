@@ -25,6 +25,7 @@ public struct Constants {
     public static let kSettingsPasscodeVal = "IDOL_SettingsPasscodeValue"
     public static let kSearchIndexes       = "IDOL_SearchIndexes"
     public static let kAddIndex            = "IDOL_AddIndex"
+    public static let kDBAccountLinked     = "IDOL_DropboxAccountLinked"
     
     // IDOL param names
     public static let ApiKeyParam          = "apikey"

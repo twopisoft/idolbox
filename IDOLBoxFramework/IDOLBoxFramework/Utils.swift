@@ -35,6 +35,11 @@ public class Utils: NSObject {
         return dateFormatter().dateFromString(str)
     }
     
+    public class func decodeBase64(str : String) -> String? {
+        let data = NSData(base64EncodedString: str, options: NSDataBase64DecodingOptions.allZeros)
+        return NSString(data: data!, encoding: NSUTF8StringEncoding)
+    }
+    
     private class func dateFormatter() -> NSDateFormatter {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"

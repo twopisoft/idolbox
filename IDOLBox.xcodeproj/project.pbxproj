@@ -14,6 +14,7 @@
 		EE05152319F627460014C017 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152219F627460014C017 /* QuartzCore.framework */; };
 		EE05152519F627510014C017 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152419F627510014C017 /* libc++.dylib */; };
 		EE05152719F6275B0014C017 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EE05152619F6275B0014C017 /* libz.dylib */; };
+		EE05152A19F628C80014C017 /* DropboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE05152919F628C80014C017 /* DropboxManager.swift */; };
 		EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E714919DCF2CC00247A08 /* AppDelegate.swift */; };
 		EE0E716219DCF2CC00247A08 /* IDOLBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0E716119DCF2CC00247A08 /* IDOLBoxTests.swift */; };
 		EE13D3A519EA6FE200581955 /* DocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE13D3A419EA6FE200581955 /* DocumentPickerViewController.swift */; };
@@ -154,6 +155,8 @@
 		EE05152219F627460014C017 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EE05152419F627510014C017 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		EE05152619F6275B0014C017 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		EE05152919F628C80014C017 /* DropboxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxManager.swift; sourceTree = "<group>"; };
+		EE05152B19F63C8A0014C017 /* IDOLBox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IDOLBox-Bridging-Header.h"; sourceTree = "<group>"; };
 		EE0E714419DCF2CC00247A08 /* IDOLBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDOLBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0E714819DCF2CC00247A08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE0E714919DCF2CC00247A08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,26 +253,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE05152819F6288A0014C017 /* IDOLBoxDropbox */ = {
+			isa = PBXGroup;
+			children = (
+				EE05152919F628C80014C017 /* DropboxManager.swift */,
+				EE05152B19F63C8A0014C017 /* IDOLBox-Bridging-Header.h */,
+			);
+			name = IDOLBoxDropbox;
+			sourceTree = "<group>";
+		};
 		EE0E713B19DCF2CC00247A08 = {
 			isa = PBXGroup;
 			children = (
-				EE05152619F6275B0014C017 /* libz.dylib */,
-				EE05152419F627510014C017 /* libc++.dylib */,
-				EE05152219F627460014C017 /* QuartzCore.framework */,
-				EE05152019F6273C0014C017 /* SystemConfiguration.framework */,
-				EE05151E19F6272F0014C017 /* Security.framework */,
-				EE05151C19F627220014C017 /* CFNetwork.framework */,
 				EE35574219F3697B003A41D7 /* README.md */,
 				EE6652FE19EE3EE60062B0F2 /* submission.txt */,
-				EE05151819F626F40014C017 /* Dropbox.framework */,
-				EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */,
-				EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */,
 				EE0E714619DCF2CC00247A08 /* IDOLBox */,
 				EE0E715E19DCF2CC00247A08 /* IDOLBoxTests */,
 				EEEFD72819E7FAA40041D1EF /* IDOLBoxAction */,
 				EEEFD73D19E7FB760041D1EF /* IDOLBoxShare */,
 				EE59F88419EA6BC0005A7657 /* IDOLBoxProvider */,
+				EE05152819F6288A0014C017 /* IDOLBoxDropbox */,
 				EE0E714519DCF2CC00247A08 /* Products */,
+				EE2196F419E8BF750027B190 /* IDOLBoxFramework.xcodeproj */,
+				EE6CAFB619ECB59500BC3437 /* MobileCoreServices.framework */,
+				EE05151819F626F40014C017 /* Dropbox.framework */,
+				EE05151C19F627220014C017 /* CFNetwork.framework */,
+				EE05151E19F6272F0014C017 /* Security.framework */,
+				EE05152019F6273C0014C017 /* SystemConfiguration.framework */,
+				EE05152219F627460014C017 /* QuartzCore.framework */,
+				EE05152419F627510014C017 /* libc++.dylib */,
+				EE05152619F6275B0014C017 /* libz.dylib */,
 			);
 			sourceTree = "<group>";
 		};
@@ -683,6 +696,7 @@
 			files = (
 				EE6CAFBF19ECD9E500BC3437 /* SettingsLoginHandler.swift in Sources */,
 				EE0E714A19DCF2CC00247A08 /* AppDelegate.swift in Sources */,
+				EE05152A19F628C80014C017 /* DropboxManager.swift in Sources */,
 				EEF9DEC519E3738000F718F8 /* SettingsViewController.swift in Sources */,
 				EEF9DEC919E3954500F718F8 /* SelectIndexTableViewController.swift in Sources */,
 				EEC9D3FF19E68DBC005A4D7E /* SearchResultDetailViewController.swift in Sources */,
@@ -862,6 +876,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = IDOLBox/IDOLBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -874,6 +889,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "IDOLBox-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -882,6 +899,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = IDOLBox/IDOLBox.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -894,6 +912,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "IDOLBox-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
