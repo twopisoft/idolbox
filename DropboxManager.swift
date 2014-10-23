@@ -88,26 +88,19 @@ class DropboxManager: NSObject {
                 fs = DBFilesystem(account: account)
                 DBFilesystem.setSharedFilesystem(fs)
                 
-                fs.addObserver(_initObserver, block: { () -> Void in
-                    
-                    if fs.completedFirstSync {
-                        fs.removeObserver(self._initObserver)
-                        
-                        NSLog("completedFirstSync=%@",fs.completedFirstSync)
-                        let path = DBPath.root()
-                        var ferr : DBError? = nil
-                        if let files = fs.listFolder(path, error: &ferr) as? [DBFileInfo] {
-                            for f in files {
-                                NSLog("path=%@, isFolder=%@, modtime=%@",f.path,f.isFolder,f.modifiedTime)
-                            }
-                        } else {
-                            NSLog("File Error=%@",ferr!)
-                        }
-                        
-                    }
-                })
                 fs.addObserver(_changeObserver, forPathAndDescendants: DBPath.root(), block: { () -> Void in
                     NSLog("Changes at IDOLBox")
+                    
+                    if !fs.completedFirstSync {
+                        NSLog("completedFirstSync=%@",fs.completedFirstSync)
+                        
+                        fs.addObserver(self._initObserver, block: { () -> Void in
+                            fs.removeObserver(self._initObserver)
+                            self.readChanges()
+                        })
+                    } else {
+                        self.readChanges()
+                    }
                 })
             }
             
@@ -132,6 +125,19 @@ class DropboxManager: NSObject {
         let _dbAccountManager = DBAccountManager(appKey: dbAppKey(), secret: dbAppSecret())
         DBAccountManager.setSharedManager(_dbAccountManager)
         return DBAccountManager.sharedManager()
+    }
+    
+    private func readChanges() {
+        let fs = DBFilesystem.sharedFilesystem()
+        let path = DBPath.root()
+        var ferr : DBError? = nil
+        if let files = fs.listFolder(path, error: &ferr) as? [DBFileInfo] {
+            for f in files {
+                NSLog("path=%@, isFolder=%@, modtime=%@",f.path,f.isFolder,f.modifiedTime)
+            }
+        } else {
+            NSLog("File Error=%@",ferr!)
+        }
     }
     
     private func urlScheme() -> String {

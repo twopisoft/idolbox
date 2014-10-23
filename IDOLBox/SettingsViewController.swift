@@ -94,20 +94,28 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @IBAction func toggleDropboxLink(sender: UISwitch) {
+        var defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
+        
         if sender.on {
             DropboxManager.sharedInstance.link(self, handler: { (linked) -> () in
                 if linked {
                     self._dropboxLink = true
                 } else {
+                    // Linking cancelled
                     self._dropboxLink = false
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.dropboxSwitch.setOn(false, animated: true)
+                        self.dropboxSwitch.setOn(false, animated: true)  // Move the switch back to off position
                     })
                 }
+                
+                // Save this even if user has not saved it
+                defaults!.setBool(self._dropboxLink!, forKey: Constants.kDBAccountLinked)
+                
             })
         } else {
             self._dropboxLink = false
             DropboxManager.sharedInstance.unlink()
+            defaults!.setBool(self._dropboxLink!, forKey: Constants.kDBAccountLinked)
         }
     }
     
