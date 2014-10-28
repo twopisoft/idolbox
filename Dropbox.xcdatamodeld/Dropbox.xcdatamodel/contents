@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DropboxAccount" representedClassName="IDOLBox.DropboxAccount" syncable="YES">
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="files" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DropboxFile" inverseName="account" inverseEntity="DropboxFile" syncable="YES"/>
+    </entity>
+    <entity name="DropboxFile" representedClassName="IDOLBox.DropboxFile" syncable="YES">
+        <attribute name="modifiedTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="needsDelete" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="needsSync" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shareLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DropboxAccount" inverseName="files" inverseEntity="DropboxAccount" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DropboxAccount" positionX="-254" positionY="206" width="128" height="75"/>
+        <element name="DropboxFile" positionX="43" positionY="99" width="128" height="148"/>
+    </elements>
+</model>
