@@ -108,8 +108,9 @@ public class IDOLService {
     // Method to add a document to index when a publically accessible url is provided
     public func addToIndexUrl(apiKey:String, url:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
         
+        
         let reqUrl = _URLS.addToIndexUrl + "?apikey=" + apiKey +
-                     queryParams([Constants.UrlParam:url,Constants.IndexParam:index,Constants.AdditionaMetaParam:modifyDate()])
+                     queryParams([Constants.UrlParam:url,Constants.IndexParam:index,Constants.AdditionaMetaParam:modifyDateTitle(url.lastPathComponent)])
         
         apiInvoke(apiKey, reqUrl: reqUrl, completionHandler: handler)
     }
@@ -358,6 +359,7 @@ public class IDOLService {
         return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
     }
     
+    
     // Converts a string to Data
     private func stringToData(str : String) -> NSData {
         return (str as NSString).dataUsingEncoding(NSUTF8StringEncoding)!
@@ -378,6 +380,10 @@ public class IDOLService {
     
     private func modifyDate() -> String {
         return NSString(format: Constants.ModDateJson, Utils.dateToString(NSDate())!)
+    }
+    
+    private func modifyDateTitle(title : String) -> String {
+        return NSString(format: Constants.ModDateTitleJson, Utils.dateToString(NSDate())!,title.stringByRemovingPercentEncoding!)
     }
     
     // Create NSError instance by parsing the json response

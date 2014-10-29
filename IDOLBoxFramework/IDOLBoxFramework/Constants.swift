@@ -62,6 +62,9 @@ public struct Constants {
     // Used for adding modified_date field when adding a document to the index
     public static let ModDateJson          = "{\"modified_date\":[\"%@\"]}"
     
+    // Used for adding title and modified date field when adding to index
+    public static let ModDateTitleJson     = "{\"modified_date\":[\"%@\"],\"title\":\"%@\"}"
+    
     // Segue identifiers.
     public static let SelectIndexSearchSegue   = "SelectIndexSearch"
     public static let SelectIndexAddSegue      = "SelectIndexAdd"

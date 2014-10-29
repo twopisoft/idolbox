@@ -53,11 +53,11 @@ class ShareViewController: SLComposeServiceViewController {
     // Post the link to IDOL
     override func didSelectPost() {
         
-        if self._apiKey == nil || self._apiKey.isEmpty {
+        if Utils.isNullOrEmpty(self._apiKey) {
             ErrorReporter.apiKeyNotSet(self, handler: {
                 self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
             })
-        } else if self._addIndex == nil || self._addIndex.isEmpty {
+        } else if Utils.isNullOrEmpty(self._addIndex) {
             ErrorReporter.addIndexNotSet(self, handler: {
                 self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
             })

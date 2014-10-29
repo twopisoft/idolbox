@@ -9,8 +9,11 @@
 import UIKit
 import CoreData
 import IDOLBoxFramework
+import MobileCoreServices
 
 class DropboxManager: NSObject {
+    
+    private let CLZ = "DropboxManager"
     
     typealias  LinkageCompleteHandler = (linked : Bool) -> ()
     
@@ -19,6 +22,11 @@ class DropboxManager: NSObject {
     // Base-64 encoded Dropbox Sync API Key and Secret
     private let dbAppKeyBase64    = "NjNhbmJmY3JqZTRldWZn"
     private let dbAppSecretBase64 = "NGdxMW9iajUzMWlxbXg3"
+    
+    private let dbDirectHost = "dl.dropboxusercontent.com"
+    
+    private var _apiKey : String!
+    private var _addIndex : String!
     
     private let _initObserver = NSObject()
     private let _changeObserver = NSObject()
@@ -38,6 +46,8 @@ class DropboxManager: NSObject {
     
     private override init() {
         super.init()
+        
+        readSettings()
     }
     
     func dbAppKey() -> String {
@@ -58,13 +68,13 @@ class DropboxManager: NSObject {
         if url.scheme == urlScheme() {
             let pathComps = url.pathComponents as [String]
             if let _ = find(pathComps,"cancel") {
-                NSLog("Linking cancelled")
+                NSLog("%@: Linking cancelled",CLZ)
                 if _linkageCompleteHandler != nil {
                     _linkageCompleteHandler(linked: false)
                 }
             } else if let _ = find(pathComps,"connect") {
                 if let account = dbAccountManager().handleOpenURL(url) {
-                    NSLog("Dropbox account linked")
+                    NSLog("%@: Dropbox account linked",CLZ)
                     
                     startObserving()
                     _linkageCompleteHandler(linked: true)
@@ -79,7 +89,7 @@ class DropboxManager: NSObject {
     
     func unlink() -> Bool {
         if let account = dbAccountManager().linkedAccount {
-            NSLog("Unlinking account")
+            NSLog("%@: Unlinking account",CLZ)
             
             stopObserving()
             removeFileData(account)
@@ -115,7 +125,7 @@ class DropboxManager: NSObject {
                 })
             }
             
-            NSLog("Dropbox Manager: Started Observing")
+            NSLog("%@: Started Observing",CLZ)
         }
     }
     
@@ -123,7 +133,7 @@ class DropboxManager: NSObject {
         if let account = dbAccountManager().linkedAccount {
             if let fs = DBFilesystem.sharedFilesystem() {
                 DBFilesystem.sharedFilesystem().removeObserver(_changeObserver)
-                NSLog("Dropbox Manager: Stopped Observing")
+                NSLog("%@: Stopped Observing",CLZ)
             }
         }
     }
@@ -140,7 +150,7 @@ class DropboxManager: NSObject {
     
     private func initFileData(account : DBAccount) {
         
-        NSLog("initFileData")
+        NSLog("%@: initFileData",CLZ)
         // cleanup before init
         removeFileData(account)
         
@@ -148,7 +158,7 @@ class DropboxManager: NSObject {
         accountEntity.setValue(account.userId, forKey: "userId")
         
         for f in getFiles() {
-            NSLog("Adding file: %@",f.path)
+            NSLog("%@: Adding file: %@",CLZ,f.path)
             addFileObject(f, accountEntity: accountEntity)
         }
     
@@ -179,30 +189,20 @@ class DropboxManager: NSObject {
     }
     
     private func fetchNeedsSyncFiles(account : DBAccount) -> [DropboxFile]? {
-        NSLog("fetchNeedsSyncFiles")
+        NSLog("%@: fetchNeedsSyncFiles",CLZ)
         
-        var freq = NSFetchRequest(entityName: "DropboxAccount")
-        freq.predicate = NSPredicate(format: "userId == %@", argumentArray: [account.userId])
+        var freq = NSFetchRequest(entityName: "DropboxFile")
+        freq.predicate = NSPredicate(format: "needsSync == %@ AND account.userId == %@", argumentArray: [true,account.userId])
         
-        if let res = self._managedObjectContext?.executeFetchRequest(freq, error: nil) {
-            var needSyncFiles : [DropboxFile] = []
-            if res.count > 0 {
-                if let files = (res[0] as? DropboxAccount)?.files {
-                    for f in files {
-                        if (f as DropboxFile).needsSync.boolValue {
-                            needSyncFiles.append(f as DropboxFile)
-                        }
-                    }
-                    return needSyncFiles
-                }
-            }
+        if let files = self._managedObjectContext?.executeFetchRequest(freq, error: nil) as? [DropboxFile] {
+            return files
         }
         
         return nil
     }
     
     private func findNeedsSyncFiles(account : DBAccount) {
-        NSLog("findNeedsSyncFiles")
+        NSLog("%@: findNeedsSyncFiles",CLZ)
         
         let dbFiles = getFiles()
         
@@ -256,28 +256,37 @@ class DropboxManager: NSObject {
     }
     
     private func performSync(account : DBAccount) {
-        NSLog("performSync")
+        NSLog("%@: performSync",CLZ)
         
         if let files = fetchNeedsSyncFiles(account) {
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-                for f in files {
-                    if f.needsDelete.boolValue {
-                        NSLog("Deleting file: %@",f.path)
-                        self._managedObjectContext?.deleteObject(f)
-                    } else {
-                        if f.shareLink.isEmpty {
-                            if let sl = self.getShareLink(f.path) {
-                               f.setValue(sl, forKey: "shareLink")
+            if files.count > 0 {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                    for f in files {
+                        if f.needsDelete.boolValue {
+                            NSLog("%@: Deleting file: %@",self.CLZ,f.path)
+                            self._managedObjectContext?.deleteObject(f)
+                            
+                            if !f.shareLink.isEmpty {
+                               self.deleteFromIndex(f.shareLink)
                             }
+                        } else {
+                            if f.shareLink.isEmpty {
+                                if let sl = self.getShareLink(f.path) {
+                                   f.setValue(sl, forKey: "shareLink")
+                                    self.addToIndex(sl)
+                                }
+                            }
+                            f.setValue(NSNumber(bool: false), forKey: "needsSync")
+                            NSLog("%@: File Needs Sync: path=%@, modifiedTime=%@, shareLink=%@",self.CLZ,f.path,f.modifiedTime,f.shareLink)
                         }
-                        f.setValue(NSNumber(bool: false), forKey: "needsSync")
-                        NSLog("File Needs Sync: path=%@, modifiedTime=%@, shareLink=%@",f.path,f.modifiedTime,f.shareLink)
                     }
-                }
-                
-                CoreDataHelper.sharedInstance.commit()
-            })
+                    
+                    CoreDataHelper.sharedInstance.commit()
+                })
+            } else {
+                NSLog("%@: No files to sync",CLZ)
+            }
         }
     }
     
@@ -285,11 +294,13 @@ class DropboxManager: NSObject {
         let fs = DBFilesystem.sharedFilesystem()
         let dbPathh = DBPath(string: path)
         var ferr : DBError? = nil
-        if let shareLink = fs.fetchShareLinkForPath(dbPathh, shorten: true, error: &ferr) {
-            return shareLink
+        if let shareLink = fs.fetchShareLinkForPath(dbPathh, shorten: false, error: &ferr) {
+            let url = NSURL(string: shareLink)
+            let shareUrl = NSURL(scheme: url!.scheme!, host: dbDirectHost, path: url!.path!)
+            return shareUrl?.absoluteString
         } else {
             if ferr != nil {
-                NSLog("Error while getting shared link: %@",ferr!.localizedDescription)
+                NSLog("%@: Error while getting shared link: %@",CLZ,ferr!.localizedDescription)
             }
         }
         return nil
@@ -304,13 +315,25 @@ class DropboxManager: NSObject {
         if let files = fs.listFolder(path, error: &ferr) as? [DBFileInfo] {
             for f in files {
                 //NSLog("path=%@, isFolder=%@, modtime=%@",f.path,f.isFolder,f.modifiedTime)
-                fileInfo.append((path:f.path.stringValue(),modtime:f.modifiedTime,size:f.size))
+                if isTextType(f.path.stringValue()) {
+                    fileInfo.append((path:f.path.stringValue(),modtime:f.modifiedTime,size:f.size))
+                }
             }
         } else {
-            NSLog("File Error=%@",ferr!)
+            NSLog("%@: File Error=%@",CLZ,ferr!)
         }
         
         return fileInfo
+    }
+    
+    private func isTextType(path : String) -> Bool {
+        if let uttype = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, path.pathExtension, nil) {
+            return UTTypeConformsTo(uttype.takeUnretainedValue(), kUTTypeText) != 0 ||
+                   UTTypeConformsTo(uttype.takeUnretainedValue(), kUTTypePDF) != 0
+        }
+        
+        NSLog("%@: %@ is not supported for indexing",CLZ,path)
+        return false
     }
     
     private func addFileObject(fileInfo : FileInfo, accountEntity : DropboxAccount) -> DropboxFile {
@@ -327,6 +350,44 @@ class DropboxManager: NSObject {
         fileRel.addObject(fileEntity)
         
         return fileEntity
+    }
+    
+    private func addToIndex(url : String) {
+        NSLog("%@: Adding %@ to index %@",CLZ,url,_addIndex)
+        
+        IDOLService.sharedInstance.addToIndexUrl(_apiKey, url: url, index: _addIndex) { (data, error) -> () in
+            if error != nil {
+                NSLog("%@: Error while adding url to Index: %@",self.CLZ,url)
+            } else {
+                NSLog("%@: Added url: %@ to index %@",self.CLZ,url,self._addIndex)
+            }
+        }
+    }
+    
+    private func deleteFromIndex(url : String) {
+        NSLog("%@: Deleting %@ from index %@",CLZ,url,_addIndex)
+        
+        IDOLService.sharedInstance.deleteFromIndex(_apiKey, reference: url, index: _addIndex) { (data, error) -> () in
+            if error != nil {
+                NSLog("%@: Error while deleting url from Index: %@",self.CLZ,url)
+            } else {
+                NSLog("%@: Deleted url: %@ from index %@",self.CLZ,url,self._addIndex)
+            }
+        }
+    }
+    
+    private func readSettings() {
+        let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
+        _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
+        _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
+    }
+    
+    func settingsChanged(notification : NSNotification!) {
+        readSettings()
+    }
+    
+    private func registerForSettingsChange() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged:", name: NSUserDefaultsDidChangeNotification, object: nil)
     }
     
     private func urlScheme() -> String {

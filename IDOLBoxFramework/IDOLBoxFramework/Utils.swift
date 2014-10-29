@@ -25,6 +25,13 @@ public class Utils: NSObject {
         return str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
     }
     
+    public class func isNullOrEmpty(str : String!) -> Bool {
+        if str == nil || trim(str).isEmpty {
+            return true
+        }
+        return false
+    }
+    
     // Date to String based on the yyyy-MM-ddTHH:mm:ssZ format
     public class func dateToString(date : NSDate) -> String? {
         return dateFormatter().stringFromDate(NSDate())

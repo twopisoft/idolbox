@@ -33,7 +33,7 @@ class DocumentPickerViewController: UIDocumentPickerExtensionViewController, UIT
 
     // We only support Imports.
     override func prepareForPresentationInMode(mode: UIDocumentPickerMode) {
-        if self._apiKey == nil || self._apiKey.isEmpty {
+        if Utils.isNullOrEmpty(self._apiKey) {
             ErrorReporter.apiKeyNotSet(self, handler: {
                 self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
             })
