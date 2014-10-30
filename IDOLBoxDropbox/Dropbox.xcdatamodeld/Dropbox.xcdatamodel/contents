@@ -15,6 +15,6 @@
     </entity>
     <elements>
         <element name="DropboxAccount" positionX="-254" positionY="206" width="128" height="75"/>
-        <element name="DropboxFile" positionX="43" positionY="99" width="128" height="148"/>
+        <element name="DropboxFile" positionX="43" positionY="99" width="128" height="150"/>
     </elements>
 </model>
