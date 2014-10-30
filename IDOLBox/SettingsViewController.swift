@@ -104,6 +104,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                 ErrorReporter.addIndexNotSet(self, handler: nil)
                 self.dropboxSwitch.setOn(false, animated: true)
             } else {
+                // Force a save of properties
+                defaults!.setObject(_apiKey, forKey: Constants.kApiKey)
+                defaults!.setObject(_addIndex, forKey: Constants.kAddIndex)
+                
                 DropboxManager.sharedInstance.link(self, handler: { (linked) -> () in
                     if linked {
                         self._dropboxLink = true
@@ -181,6 +185,19 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         _settingsPasscode = defaults!.valueForKey(Constants.kSettingsPasscode) as? Bool
         _settingsPasscodeVal = defaults!.valueForKey(Constants.kSettingsPasscodeVal) as? String
         _dropboxLink = defaults!.valueForKey(Constants.kDBAccountLinked) as? Bool
+        
+        // Set defaults for some of the properties
+        if _summaryStyle == nil {
+            defaults!.setObject(Constants.SummaryStyleQuick, forKey: Constants.kSummaryStyle)
+        }
+        
+        if _maxResults == nil {
+           defaults!.setInteger(5, forKey: Constants.kMaxResults)
+        }
+        
+        if _sortStyle == nil {
+           defaults!.setObject(Constants.SortStyleRelevance, forKey: Constants.kSortStyle)
+        }
         
         adjustControls()
     }

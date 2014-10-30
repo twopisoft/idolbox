@@ -49,6 +49,7 @@ class DropboxManager: NSObject {
         super.init()
         
         readSettings()
+        registerForSettingsChange()
     }
     
     func dbAppKey() -> String {
@@ -401,6 +402,7 @@ class DropboxManager: NSObject {
     }
     
     private func addToIndex(url : String) {
+        
         NSLog("%@: Adding %@ to index %@",CLZ,url,_addIndex)
         
         IDOLService.sharedInstance.addToIndexUrl(_apiKey, url: url, index: _addIndex) { (data, error) -> () in
