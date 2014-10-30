@@ -10,5 +10,4 @@ The IDOL Box App has the following features:
 * Import documents into IDOL text index from external sources like Dropbox and iCloud.
 * Export documents in IDOL text index to external sources like Dropbox and iCloud.
 * Add documents into a IDOL text index directly from Safari.
-* Generate summary of a document using IDOL while browsing the document in Safari.
-* Dropbox Integration: Adding or Removing files from IDOLBox Apps folder triggers adding or removing files from IDOL index.
+* Dropbox Integration: Adding or Removing files from IDOLBox Apps folder triggers adding or removing files from IDOL index.* Generate summary of a document using IDOL while browsing the document in Safari.
