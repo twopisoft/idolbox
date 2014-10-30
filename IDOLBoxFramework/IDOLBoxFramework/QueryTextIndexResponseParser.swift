@@ -20,7 +20,7 @@ public class QueryTextIndexResponseParser: NSObject {
         var searchResults : [TypeAliases.ResultTuple] = []
         
         if error == nil {
-        
+            
             if let actions = json["actions"] as? NSArray {
                 if actions.count > 0 {
                     if let result = actions[0]["result"] as? NSDictionary {

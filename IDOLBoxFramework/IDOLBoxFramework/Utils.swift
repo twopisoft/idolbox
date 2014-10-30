@@ -34,7 +34,7 @@ public class Utils: NSObject {
     
     // Date to String based on the yyyy-MM-ddTHH:mm:ssZ format
     public class func dateToString(date : NSDate) -> String? {
-        return dateFormatter().stringFromDate(NSDate())
+        return dateFormatter().stringFromDate(date)
     }
     
     // String to Date based on the yyyy-MM-ddTHH:mm:ssZ format
@@ -45,6 +45,18 @@ public class Utils: NSObject {
     public class func decodeBase64(str : String) -> String? {
         let data = NSData(base64EncodedString: str, options: NSDataBase64DecodingOptions.allZeros)
         return NSString(data: data!, encoding: NSUTF8StringEncoding)
+    }
+    
+    public class func jsonStringify(value: AnyObject, prettyPrinted: Bool = false) -> String {
+        var options = prettyPrinted ? NSJSONWritingOptions.PrettyPrinted : nil
+        if NSJSONSerialization.isValidJSONObject(value) {
+            if let data = NSJSONSerialization.dataWithJSONObject(value, options: options, error: nil) {
+                if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    return string
+                }
+            }
+        }
+        return ""
     }
     
     private class func dateFormatter() -> NSDateFormatter {

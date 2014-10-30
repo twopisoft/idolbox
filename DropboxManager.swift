@@ -27,6 +27,7 @@ class DropboxManager: NSObject {
     
     private var _apiKey : String!
     private var _addIndex : String!
+    private var _dropboxLink : Bool!
     
     private let _initObserver = NSObject()
     private let _changeObserver = NSObject()
@@ -87,6 +88,18 @@ class DropboxManager: NSObject {
         return false
     }
     
+    func resumeLinkage() {
+        resumeObserving()
+    }
+    
+    func isLinked() -> Bool {
+        if let _isLinked = _dropboxLink {
+            return _isLinked
+        }
+        
+        return false
+    }
+    
     func unlink() -> Bool {
         if let account = dbAccountManager().linkedAccount {
             NSLog("%@: Unlinking account",CLZ)
@@ -123,9 +136,36 @@ class DropboxManager: NSObject {
                         })
                     }
                 })
+            } else {
+                fs.removeObserver(self._changeObserver)
+                
+                fs.addObserver(self._changeObserver, forPathAndDescendants: DBPath.root(), block: { () -> Void in
+                    self.findNeedsSyncFiles(account)
+                    self.performSync(account)
+                })
             }
             
             NSLog("%@: Started Observing",CLZ)
+        }
+    }
+    
+    private func resumeObserving() {
+        if let account = dbAccountManager().linkedAccount {
+            var fs = DBFilesystem.sharedFilesystem()
+            
+            if fs == nil {
+                fs = DBFilesystem(account: account)
+                DBFilesystem.setSharedFilesystem(fs)
+            } else {
+                fs.removeObserver(self._changeObserver)
+            }
+            
+            fs.addObserver(self._changeObserver, forPathAndDescendants: DBPath.root(), block: { () -> Void in
+                self.findNeedsSyncFiles(account)
+                self.performSync(account)
+            })
+            
+            NSLog("%@: Resumed Observing",CLZ)
         }
     }
     
@@ -224,6 +264,8 @@ class DropboxManager: NSObject {
                             found = true
                             foundObjs[i] = entry
                             
+                            NSLog("%@: findNeedsSyncFiles: File %@ found both locally and remotely",CLZ,entry.path)
+                            
                             if ((mo.valueForKey("modifiedTime") as NSDate).compare(entry.modtime) == NSComparisonResult.OrderedDescending) {
                                 mo.setValue(NSNumber(bool: true), forKey: "needsSync")
                                 mo.setValue(NSNumber(longLong: entry.size), forKey: "size")
@@ -235,6 +277,10 @@ class DropboxManager: NSObject {
                     if !found {
                         mo.setValue(NSNumber(bool: true), forKey: "needsSync")
                         mo.setValue(NSNumber(bool: true), forKey: "needsDelete")
+                        
+                        if let obj = mo as? DropboxFile {
+                            NSLog("%@: findNeedsSyncFiles: File %@ marked for deletion",CLZ,obj.path)
+                        }
                     }
 
                 }
@@ -242,6 +288,7 @@ class DropboxManager: NSObject {
                 var newFiles : [FileInfo] = []
                 for (i,entry) in enumerate(dbFiles) {
                     if foundObjs[i] == nil {
+                        NSLog("%@: findNeedsSyncFiles: File %@ added as new file",CLZ,entry.path)
                         newFiles.append(entry)
                     }
                 }
@@ -263,6 +310,7 @@ class DropboxManager: NSObject {
             if files.count > 0 {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
                     for f in files {
+                        NSLog("%@: performSync: processing file %@",self.CLZ,f.path)
                         if f.needsDelete.boolValue {
                             NSLog("%@: Deleting file: %@",self.CLZ,f.path)
                             self._managedObjectContext?.deleteObject(f)
@@ -380,6 +428,7 @@ class DropboxManager: NSObject {
         let defaults = NSUserDefaults(suiteName: Constants.GroupContainerName)
         _apiKey = defaults!.valueForKey(Constants.kApiKey) as? String
         _addIndex = defaults!.valueForKey(Constants.kAddIndex) as? String
+        _dropboxLink = defaults!.valueForKey(Constants.kDBAccountLinked) as? Bool
     }
     
     func settingsChanged(notification : NSNotification!) {

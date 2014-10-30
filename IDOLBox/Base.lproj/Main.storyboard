@@ -452,7 +452,7 @@ http://cssr.ru/simpliste</string>
             <objects>
                 <tableViewController title="Select Index" id="Hq9-Uq-NoV" customClass="SelectIndexTableViewController" customModule="IDOLBox" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VPP-sb-4nI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="850"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -586,7 +586,7 @@ http://cssr.ru/simpliste</string>
                                             <segue destination="86f-j7-PEN" kind="show" identifier="FindSelectIndex" id="UsL-I9-cgT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell alpha="0.5" contentMode="center" selectionStyle="default" indentationWidth="10" textLabel="qR8-le-oII" style="IBUITableViewCellStyleDefault" id="eTI-7I-17K">
+                                    <tableViewCell hidden="YES" alpha="0.5" contentMode="center" selectionStyle="default" indentationWidth="10" textLabel="qR8-le-oII" style="IBUITableViewCellStyleDefault" id="eTI-7I-17K">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eTI-7I-17K" id="JTH-wR-bFv">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -893,8 +893,8 @@ http://cssr.ru/simpliste</string>
         <image name="unlock" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="UsL-I9-cgT"/>
         <segue reference="sdT-c4-7EZ"/>
         <segue reference="JzH-AN-LF0"/>
-        <segue reference="P6x-Yk-2MB"/>
     </inferredMetricsTieBreakers>
 </document>

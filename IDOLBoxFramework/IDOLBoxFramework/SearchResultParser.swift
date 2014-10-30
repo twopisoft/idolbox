@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 // Parser for Search Reasults.
 public class SearchResultParser: NSObject {
@@ -20,6 +21,7 @@ public class SearchResultParser: NSObject {
         var searchResults : [TypeAliases.ResultTuple] = []
         
         if error == nil {
+            //NSLog("json=%@",json)
             if let actions = json["actions"] as? NSArray {
                 if actions.count > 0 {
                     if let result = actions[0]["result"] as? NSDictionary {
@@ -55,8 +57,12 @@ public class SearchResultParser: NSObject {
                                 
                                 if let _moddate = doc["modified_date"] as? NSArray {
                                     if _moddate.count > 0 {
-                                        if let d = Utils.stringToDate(_moddate[0] as String) {
+                                        
+                                        let md = _moddate[0] as String
+                                        if let d = Utils.stringToDate(md) {
                                             moddate = d
+                                        } else if let d = NSNumberFormatter().numberFromString(md) {
+                                            moddate = NSDate(timeIntervalSince1970: d.doubleValue)
                                         }
                                     }
                                 }
