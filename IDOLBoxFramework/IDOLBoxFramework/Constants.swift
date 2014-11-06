@@ -87,4 +87,6 @@ public struct Constants {
     public static let BoxTitle                 = "Box Contents"
     public static let BoxEmptyTitle            = "Box is Empty"
     
+    public static let WsLinkerUrl              = "https://wslinker.herokuapp.com/readability?url="
+    
 }

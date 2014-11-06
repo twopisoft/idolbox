@@ -35,6 +35,8 @@ public class IDOLService {
         static let viewDocument     = asyncSvc + "/viewdocument/v1"
         static let getContent       = asyncSvc + "/getcontent/v1"
         static let deleteFromIndex  = asyncSvc + "/deletefromtextindex/v1"
+        static let updateConnector  = asyncSvc + "/updateconnector/v1"
+        static let startConnector   = asyncSvc + "/startconnector/v1"
         static let jobResult        = baseURL + "/job/result/"
     }
     
@@ -116,6 +118,26 @@ public class IDOLService {
         apiInvoke(apiKey, reqUrl: reqUrl, completionHandler: handler)
     }
     
+    public func addToIndexJson(apiKey:String, json:String, indexName:String, completionHandler handler: TypeAliases.ResponseHandler?) {
+        
+        let reqUrl = NSURL(string: _URLS.addToIndexUrl)
+        var (req, postData) = initPostRequest(apiKey, reqUrlStr: _URLS.addToIndexUrl)
+        
+        postData.appendData(paramSeparatorData(Boundary))
+        postData.appendData(stringToData("Content-Disposition: form-data; name=\"json\"\r\n\r\n"))
+        postData.appendData(stringToData(json))
+        
+        postData.appendData(paramSeparatorData(Boundary))
+        postData.appendData(stringToData("Content-Disposition: form-data; name=\"index\"\r\n\r\n"))
+        postData.appendData(stringToData(indexName))
+        
+        postData.appendData(stringToData("\r\n--\(Boundary)--\r\n"))
+        
+        req.addValue("\(postData.length)", forHTTPHeaderField: "Content-Length")
+        
+        apiInvoke(apiKey, request: req, completionHandler: handler)
+    }
+    
     // Method to delete a document from an index
     public func deleteFromIndex(apiKey:String, reference:String, index:String, completionHandler handler: TypeAliases.ResponseHandler?) {
         let reqUrl = _URLS.deleteFromIndex + "?apikey=" + apiKey +
@@ -157,6 +179,27 @@ public class IDOLService {
         
         NSLog("findSimilarDocsFile: filename=%@, indexName=%@",fileName,indexName)
         apiInvoke(apiKey, request: request, completionHandler: handler)
+    }
+    
+    
+    
+    public func startConnector(apiKey:String, connectorName:String, url:String, indexName:String, completionHandler handler: TypeAliases.ResponseHandler?) {
+
+        updateConnector(apiKey, connectorName: connectorName, url: url, indexName: indexName) { (data, error) -> () in
+            if error == nil {
+                let destnJson = Utils.jsonStringify(["action" : "addtotextindex", "index" : indexName])
+                var urlStr = _URLS.startConnector + "?apikey=" + apiKey +
+                    self.queryParams(["connector" : connectorName, "destination" : destnJson])
+                
+                NSLog("startConnector: connector=%@, url=%@, indexName=%@",connectorName,url,indexName)
+                self.apiInvoke(apiKey, reqUrl: urlStr, completionHandler: handler)
+            } else {
+                if let h = handler {
+                    h(data: nil, error: error)
+                }
+            }
+        }
+        
     }
 
     // MARK: Helper methods
@@ -353,13 +396,25 @@ public class IDOLService {
         return fileMeta
     }
     
+    // Method to update a connector config
+    private func updateConnector(apiKey:String, connectorName:String, url:String, indexName:String,
+                                                                                    completionHandler handler: TypeAliases.ResponseHandler?) {
+        
+        let configJson = Utils.jsonStringify(["url" : url])
+        let destnJson = Utils.jsonStringify(["action" : "addtotextindex", "index" : indexName])
+        var urlStr = _URLS.updateConnector + "?apikey=" + apiKey +
+            queryParams(["connector" : connectorName, "config" : configJson])
+        
+        NSLog("updateConnector: connector=%@, url=%@, indexName=%@",connectorName,url,indexName)
+        apiInvoke(apiKey, reqUrl: urlStr, completionHandler: handler)
+    }
+    
     // MARK: Miscellaneous methods
     
     // Encode non-URL characters to URL allowed ones
     private func encodeStr(str : String) -> String {
         return str.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
     }
-    
     
     // Converts a string to Data
     private func stringToData(str : String) -> NSData {

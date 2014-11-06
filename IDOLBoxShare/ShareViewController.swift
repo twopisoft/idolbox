@@ -62,12 +62,28 @@ class ShareViewController: SLComposeServiceViewController {
                 self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
             })
         } else {
-            IDOLService.sharedInstance.addToIndexUrl(self._apiKey, url: self._url.absoluteString!, index: self._addIndex, completionHandler: { (data:NSData?, error:NSError?) in
-                if let e = error {
-                    NSLog("Failed while adding to Index: \(e.localizedDescription)")
+            let url = Constants.WsLinkerUrl+self._url.absoluteString!
+            let request = NSURLRequest(URL: NSURL(string: url)!)
+            
+            let queue = NSOperationQueue()
+            
+            NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) in
+                
+                if error == nil {
+                    let jsonObj = NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                    let json = Utils.jsonStringify(jsonObj, prettyPrinted: false)
+        
+                    IDOLService.sharedInstance.addToIndexJson(self._apiKey, json: json, indexName: self._addIndex, completionHandler: { (data:NSData?, error:NSError?) in
+                        if let e = error {
+                            NSLog("Failed while adding to Index: \(e.localizedDescription)")
+                        } else {
+                            NSLog("Successfully added to Index")
+                        }
+                    })
                 } else {
-                    NSLog("Successfully added to Index")
+                    NSLog("Failed while calling readability service: \(error.localizedDescription)")
                 }
+                
             })
             self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
         }
