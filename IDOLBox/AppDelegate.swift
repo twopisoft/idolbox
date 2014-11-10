@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             DropboxManager.sharedInstance.resumeLinkage()
         }
         
+        registerShareCompleteObserver()
+        
         return true
     }
 
@@ -45,10 +47,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.ShareCompleteNotify, object: nil)
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return DropboxManager.sharedInstance.completeLinkage(url)
+    }
+    
+    private func registerShareCompleteObserver() {
+        NSLog("registerShareCompleteObserver")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "localNotifyShareCompletion:", name: Constants.ShareCompleteNotify, object: nil)
+    }
+    
+    func localNotifyShareCompletion(note : NSNotification!) {
+        NSLog("Notified")
+        if let userInfo = note.userInfo {
+            if let result = userInfo["result"] as? Bool {
+                var localNotify = UILocalNotification()
+                localNotify.fireDate = NSDate()
+                localNotify.timeZone = NSTimeZone.systemTimeZone()
+                if result {
+                    localNotify.alertBody = "Successfully added link to IDOL"
+                } else {
+                    localNotify.alertBody = "Failed to add link to IDOL"
+                }
+                NSLog("Scheduling Notification")
+                UIApplication.sharedApplication().scheduleLocalNotification(localNotify)
+            }
+        }
     }
 
     

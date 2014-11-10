@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Social
 import IDOLBoxFramework
 import MobileCoreServices
@@ -75,8 +76,10 @@ class ShareViewController: SLComposeServiceViewController {
         
                     IDOLService.sharedInstance.addToIndexJson(self._apiKey, json: json, indexName: self._addIndex, completionHandler: { (data:NSData?, error:NSError?) in
                         if let e = error {
+                            //self.showNotification(false)
                             NSLog("Failed while adding to Index: \(e.localizedDescription)")
                         } else {
+                            //self.showNotification(true)
                             NSLog("Successfully added to Index")
                         }
                     })
@@ -91,6 +94,10 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func configurationItems() -> [AnyObject]! {
         return NSArray()
+    }
+    
+    private func showNotification(result : Bool) {
+        NSNotificationCenter.defaultCenter().postNotificationName(Constants.ShareCompleteNotify, object: self, userInfo: ["result" : result])
     }
     
     private func readSettings() {

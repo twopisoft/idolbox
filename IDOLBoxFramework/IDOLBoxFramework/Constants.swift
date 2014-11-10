@@ -89,4 +89,6 @@ public struct Constants {
     
     public static let WsLinkerUrl              = "https://wslinker.herokuapp.com/readability?url="
     
+    public static let ShareCompleteNotify      = "ShareCompleted"
+    
 }
