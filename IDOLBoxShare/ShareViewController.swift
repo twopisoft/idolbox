@@ -67,6 +67,7 @@ class ShareViewController: SLComposeServiceViewController {
             
             let queue = NSOperationQueue()
             
+            // Call the readability Web service to cleanup the document.
             NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) in
                 
                 if error == nil {
