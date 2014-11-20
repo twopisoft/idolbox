@@ -125,7 +125,7 @@ class SelectIndexTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        return fetchController().sectionForSectionIndexTitle(title, atIndex: index)
+        return fetchController().sectionForSectionIndexTitle("\(index)", atIndex: index)
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
