@@ -65,7 +65,7 @@ class SearchResultTableViewController: IdolEntriesTableViewController {
     override func cellConfigHandler(controller: NSFetchedResultsController, cell : UITableViewCell, indexPath: NSIndexPath) -> UITableViewCell {
         let obj = controller.objectAtIndexPath(indexPath) as IdolSearchResult
         
-        cell.textLabel.text = !obj.title.isEmpty ? obj.title : obj.reference
+        cell.textLabel!.text = !obj.title.isEmpty ? obj.title : obj.reference
         cell.detailTextLabel!.text = obj.reference
         
         return cell
