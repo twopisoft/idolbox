@@ -16,6 +16,9 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+scripts/profile/TravisCI_Profile.mobileprovision
+scripts/certs/dist.cer
+scripts/certs/dist.p12
 
 # CocoaPods
 #

@@ -1,3 +1,6 @@
+
+https://travis-ci.org/twopisoft/idolbox.svg?branch=master
+
 **What is IDOL Box App**
 
 IDOL Box is an application for Apple mobile devices running the latest iOS 8 Operating System. It is written entirely in Swift, the latest language from Apple. It makes use of the HP IDOL OnDemad APIs for doing Text search and analysis. It also makes use of the latest features of iOS 8 OS.
