@@ -1,3 +1,2 @@
 language: objective-c
-xcode_project: IDOLBox.xcodeproj
-xcode_scheme: IDOLBox
+script: xctool -project IDOLBox.xcodeproj -scheme IDOLBox -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
