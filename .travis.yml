@@ -1,19 +1,21 @@
 language: objective-c
-env:
-  global:
-  - APP_NAME="IDOLBox"
-  - 'DEVELOPER_NAME="iPhone Distribution: Muhammad Arshad Khan (WBDBMBMJVX)"'
-  - PROFILE_NAME="TravisCI_Profile"
-  - secure: UiNzCKXWe+D9RxkHjgLUHhvzw/FFhohXeenmZMAuEJh4Ck3sNmCB+OXMvYPfMqXfE1m7NKSfv/WH0QvuaEHZcHuJONr3RKZe/He2N1A2v3oGNiiacFH3ytE9fiUQANRb4FVRs5ZI3UvJCDSkDm+0nAfKfMljerbhNHWF/vvrRng=
-  - secure: klBwmIaMwqBHUGdlaUSISL7QWRqxtlYom8TYLJbcW2ta0GEN9Y3m5nnDffx0zHFhCcZZ3VXTWj91r2XsvCxSh1rrgsJRIpOPNFbElbKDwcp02sYKTPSM/pfv5n8+ThTdq6o0uskNraySo/BKYii1Ky2sCmQ6Uh+ZfCJ9vgVXD1U=
-before_script:
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TravisCI_Profile.mobileprovision.enc -d -a -out scripts/profile/TravisCI_Profile.mobileprovision
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
-  - ./scripts/add-key.sh
-script: xctool -project IDOLBox.xcodeproj -scheme IDOLBox -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
-after_success:
-  - ./scripts/sign-and-upload.sh
-after_script:
-  - ./scripts/remove-key.sh
+xcode_project: IDOLBox
+#env:
+#  global:
+#  - APP_NAME="IDOLBox"
+#  - 'DEVELOPER_NAME="iPhone Distribution: Muhammad Arshad Khan (WBDBMBMJVX)"'
+#  - PROFILE_NAME="TravisCI_Profile"
+#  - secure: UiNzCKXWe+D9RxkHjgLUHhvzw/FFhohXeenmZMAuEJh4Ck3sNmCB+OXMvYPfMqXfE1m7NKSfv/WH0QvuaEHZcHuJONr3RKZe/He2N1A2v3oGNiiacFH3ytE9fiUQANRb4FVRs5ZI3UvJCDSkDm+0nAfKfMljerbhNHWF/vvrRng=
+#  - secure: klBwmIaMwqBHUGdlaUSISL7QWRqxtlYom8TYLJbcW2ta0GEN9Y3m5nnDffx0zHFhCcZZ3VXTWj91r2XsvCxSh1rrgsJRIpOPNFbElbKDwcp02sYKTPSM/pfv5n8+ThTdq6o0uskNraySo/BKYii1Ky2sCmQ6Uh+ZfCJ9vgVXD1U=
+#before_script:
+#  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/TravisCI_Profile.mobileprovision.enc -d -a -out scripts/profile/TravisCI_Profile.mobileprovision
+#  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+#  - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+#  - ./scripts/add-key.sh
+#script: 
+#  - xctool -project IDOLBox.xcodeproj -scheme IDOLBox -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+#after_success:
+#  - ./scripts/sign-and-upload.sh
+#after_script:
+#  - ./scripts/remove-key.sh
 
