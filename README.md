@@ -1,5 +1,5 @@
 
-https://travis-ci.org/twopisoft/idolbox.svg?branch=master
+<img src="https://travis-ci.org/twopisoft/idolbox.svg?branch=master">
 
 **What is IDOL Box App**
 
