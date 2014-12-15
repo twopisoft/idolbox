@@ -256,6 +256,7 @@
 				TargetAttributes = {
 					EE2196D719E8BF750027B190 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = WBDBMBMJVX;
 					};
 					EE2196E219E8BF750027B190 = {
 						CreatedOnToolsVersion = 6.1;
@@ -434,6 +435,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -456,6 +458,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
