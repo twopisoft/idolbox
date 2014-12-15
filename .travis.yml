@@ -1,2 +1,3 @@
 language: objective-c
 xcode_project: IDOLBox.xcodeproj
+xcode_scheme: IDOLBox
