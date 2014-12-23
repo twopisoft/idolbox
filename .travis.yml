@@ -1,5 +1,6 @@
 language: objective-c
-xcode_project: IDOLBox
+script: xctool -project IDOLBox.xcodeproj -scheme IDOLBox -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+#xcode_project: IDOLBox
 
 #env:
 #  global:
